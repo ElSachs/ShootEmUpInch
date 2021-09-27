@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public BulletScriptable stat;
-    private Rigidbody2D rb;
+    [NonSerialized]public Rigidbody2D rb;
 
     private void Start()
     {

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
-        if (life == 0)
+        if (life <= 0)
         {
             Debug.Log("Game Over");
         }

@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D RedCube;
     [SerializeField] private Rigidbody2D TripleRed;
     [SerializeField] private Rigidbody2D TripleBlue;
-    private int waveType;
+    private int waveType = 0;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private Vector2 initialSpawnPoint;
     [SerializeField] Transform parent;
@@ -25,8 +25,10 @@ public class WaveManager : MonoBehaviour
     private int enemySpawned;
     private float distanceBeetweenEnemiesX;
     private float distanceBeetweenEnemiesY;
-    private int enemiesToSpawn;
+    public static int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
+    
+
     
     private void Update()
     {
@@ -34,7 +36,7 @@ public class WaveManager : MonoBehaviour
         {
             waveSpawning();
         }
-        if(parent.GetChildCount() == 0f)
+        if(enemiesToSpawn == 0f)
         {
             waveFinished = true;
         }
@@ -43,12 +45,12 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
-        int waveType = 7;
+        waveType ++;
         Debug.Log(waveType);
         switch (waveType)
         {
             case 1 :
-                enemyToSpawn = BlueEnemy;
+                enemyToSpawn = RedEnemy;
                 distanceBeetweenEnemiesX = 1f;
                 distanceBeetweenEnemiesY = 0f;
                 enemiesToSpawn = 8;
@@ -57,7 +59,7 @@ public class WaveManager : MonoBehaviour
                 
                 break;
             case 2 :
-                enemyToSpawn = RedEnemy;
+                enemyToSpawn = BlueEnemy;
                 distanceBeetweenEnemiesX = 1f;
                 distanceBeetweenEnemiesY = 0f;
                 enemiesToSpawn = 8;
@@ -118,6 +120,7 @@ public class WaveManager : MonoBehaviour
                 Wave();
                 spawnPoint = initialSpawnPoint;
                 break;
+            
             case 7 :
                 enemyToSpawn = TripleBlue;
                 distanceBeetweenEnemiesX = 1f;
@@ -135,12 +138,8 @@ public class WaveManager : MonoBehaviour
                     }
                 }
                 break;
-                
-                
         }
-            
-        
-        
+
     }
 
     void Wave()

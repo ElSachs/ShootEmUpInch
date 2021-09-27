@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: shipBullet
   m_EditorClassIdentifier: 
   damage: 1
-  bulletSpeed: 100
+  bulletSpeed: -400

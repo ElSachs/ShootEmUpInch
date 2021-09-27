@@ -13,6 +13,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private float shootingRate;
     public int life = 3;
     public bool resetShoot;
+    private Transform waveManager;
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -27,6 +28,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (life == 0)
         {
             gameObject.SetActive(false);
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesToSpawn = WaveManager.enemiesToSpawn - 1;
         }
     }
 
