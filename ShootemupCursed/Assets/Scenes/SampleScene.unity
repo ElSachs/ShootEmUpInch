@@ -562,6 +562,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedEnemy: {fileID: 3621422504722274629, guid: 3b0bc2f74294c5a49856ac851b7bd14c, type: 3}
   BlueEnemy: {fileID: 7179575042768289371, guid: bedd7fb21f9f028458380db47f3ca964, type: 3}
+  RedTriangle: {fileID: 5754374332092609436, guid: fc4c148626315f04eae6eaf3526cf3d5, type: 3}
+  BlueTriangle: {fileID: 8376450547745313865, guid: d816bf84639f7ed479476445015e5f56, type: 3}
   parent: {fileID: 889595248}
 --- !u!1 &932898470
 GameObject:
