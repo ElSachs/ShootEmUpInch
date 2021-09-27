@@ -564,6 +564,8 @@ MonoBehaviour:
   BlueEnemy: {fileID: 7179575042768289371, guid: bedd7fb21f9f028458380db47f3ca964, type: 3}
   RedTriangle: {fileID: 5754374332092609436, guid: fc4c148626315f04eae6eaf3526cf3d5, type: 3}
   BlueTriangle: {fileID: 8376450547745313865, guid: d816bf84639f7ed479476445015e5f56, type: 3}
+  BlueCube: {fileID: 1822299390462799801, guid: 2ae82b95e4cc4104d86f3aa35850769a, type: 3}
+  RedCube: {fileID: 4820843360287663892, guid: 8b8c26fe474973f4a9b88d70589706a2, type: 3}
   parent: {fileID: 889595248}
 --- !u!1 &932898470
 GameObject:

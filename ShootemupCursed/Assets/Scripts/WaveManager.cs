@@ -12,6 +12,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D BlueEnemy;
     [SerializeField] private Rigidbody2D RedTriangle;
     [SerializeField] private Rigidbody2D BlueTriangle;
+    [SerializeField] private Rigidbody2D BlueCube;
+    [SerializeField] private Rigidbody2D RedCube;
     private int waveType;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private Vector2 initialSpawnPoint;
@@ -22,12 +24,8 @@ public class WaveManager : MonoBehaviour
     private float distanceBeetweenEnemiesX;
     private float distanceBeetweenEnemiesY;
     private int enemiesToSpawn;
+    public static bool cubeShooting = false;
     
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if (waveFinished)
@@ -43,7 +41,7 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
-        int waveType = 5;
+        int waveType = 6;
         Debug.Log(waveType);
         switch (waveType)
         {
@@ -104,6 +102,17 @@ public class WaveManager : MonoBehaviour
                 spawnPoint.x = 3.5f;
                 spawnPoint.y = initialSpawnPoint.y;
                 enemiesToSpawn = 3;
+                Wave();
+                spawnPoint = initialSpawnPoint;
+                break;
+            case 6 :
+                enemyToSpawn = RedCube;
+                distanceBeetweenEnemiesX = 0f;
+                distanceBeetweenEnemiesY = 0f;
+                enemiesToSpawn = 1;
+                Wave();
+                enemyToSpawn = BlueCube;
+                spawnPoint.x = 3.5f;
                 Wave();
                 spawnPoint = initialSpawnPoint;
                 break;
