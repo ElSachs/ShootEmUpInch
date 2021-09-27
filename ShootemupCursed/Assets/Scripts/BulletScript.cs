@@ -7,17 +7,23 @@ public class BulletScript : MonoBehaviour
 {
     public BulletScriptable stat;
     [NonSerialized]public Rigidbody2D rb;
+    private bool isStart = true;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.down * stat.bulletSpeed);
+        isStart = false;
     }
 
-    void Update()
+    private void OnEnable()
     {
-        
+        if (!isStart)
+        { 
+            rb.AddForce(Vector2.down * stat.bulletSpeed);
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
