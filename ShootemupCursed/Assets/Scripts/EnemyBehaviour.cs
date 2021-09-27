@@ -29,14 +29,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
-            WaveManager.enemiesToSpawn = WaveManager.enemiesToSpawn - 1;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+        }
+
+        if (transform.position.y <= 2.5f)
+        {
+            self.velocity = Vector2.zero; 
         }
     }
 
     void Shooting()
     {
         resetShoot = false;
-        Debug.Log("wsh");
         PoolManager.Instance.spawnFromPool(bullet, transform);
         Invoke(("ResetShoot"), shootingRate);
     }

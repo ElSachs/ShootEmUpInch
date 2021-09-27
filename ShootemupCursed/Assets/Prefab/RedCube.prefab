@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 712060566270160608}
   m_Layer: 10
   m_Name: RedCube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   laserSpeed: 900
   glow: {fileID: 712060566270160608}
   animationName: RedCube
+  waveManager: {fileID: 0}
 --- !u!50 &4820843360287663892
 Rigidbody2D:
   serializedVersion: 4

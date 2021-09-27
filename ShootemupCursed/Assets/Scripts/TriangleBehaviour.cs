@@ -14,6 +14,7 @@ public class TriangleBehaviour : MonoBehaviour
     private bool resetShoot = true;
     private Vector2 triangleToPlayer;
     [SerializeField] private Transform player;
+    public int life = 4;
 
 
     private void Start()
@@ -31,11 +32,16 @@ public class TriangleBehaviour : MonoBehaviour
             Shooting();
         }
         LookAtPlayer();
+        if (life == 0)
+        {
+            gameObject.SetActive(false);
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+        }
     }
     void Shooting()
     {
         resetShoot = false;
-        Debug.Log("wsh");
         Rigidbody2D shotBullet = Instantiate(bullet, transform.position, transform.rotation);
         shotBullet.AddForce(triangleToPlayer * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);

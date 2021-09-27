@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8376450547745313910}
   m_Layer: 7
   m_Name: BlueTriangleEnemy
-  m_TagString: Untagged
+  m_TagString: Triangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

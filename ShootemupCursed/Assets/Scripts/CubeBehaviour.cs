@@ -15,12 +15,12 @@ public class CubeBehaviour : MonoBehaviour
     [SerializeField] private Animation glow;
     [SerializeField] private string animationName;
     [SerializeField] private Transform waveManager;
+    public int life = 5;
     private void Start()
     {
         waveManager = GameObject.Find("WaveManager").transform;
         
         self = GetComponent<Rigidbody2D>();
-        Debug.Log(self.name);
         self.AddForce(Vector2.down * moveSpeed);
     }
 
@@ -35,6 +35,12 @@ public class CubeBehaviour : MonoBehaviour
         {
             self.velocity = Vector2.zero;
             
+        }
+        if (life == 0)
+        {
+            gameObject.SetActive(false);
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
         }
     }
 

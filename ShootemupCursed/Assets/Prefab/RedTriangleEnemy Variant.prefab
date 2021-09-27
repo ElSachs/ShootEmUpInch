@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8376450547745313911, guid: d816bf84639f7ed479476445015e5f56, type: 3}
+      propertyPath: m_TagString
+      value: Triangle
+      objectReference: {fileID: 0}
     - target: {fileID: 8718485871200401043, guid: d816bf84639f7ed479476445015e5f56, type: 3}
       propertyPath: m_Layer
       value: 10

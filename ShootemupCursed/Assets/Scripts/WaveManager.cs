@@ -18,15 +18,16 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D TripleBlue;
     private int waveType = 0;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
-    private Vector2 initialSpawnPoint;
+    private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);
     [SerializeField] Transform parent;
     private bool waveFinished;
     private Rigidbody2D enemyToSpawn;
     private int enemySpawned;
     private float distanceBeetweenEnemiesX;
     private float distanceBeetweenEnemiesY;
-    public static int enemiesToSpawn = 0;
+    private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
+    public static int enemiesLeft = 0;
     
 
     
@@ -36,7 +37,7 @@ public class WaveManager : MonoBehaviour
         {
             waveSpawning();
         }
-        if(enemiesToSpawn == 0f)
+        if(enemiesLeft == 0f)
         {
             waveFinished = true;
         }
@@ -56,6 +57,7 @@ public class WaveManager : MonoBehaviour
                 enemiesToSpawn = 8;
                 Wave();
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
                 
                 break;
             case 2 :
@@ -65,24 +67,28 @@ public class WaveManager : MonoBehaviour
                 enemiesToSpawn = 8;
                 Wave();
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
                 break;
             case 3 :
                 enemyToSpawn = RedEnemy;
                 distanceBeetweenEnemiesX = 1f;
                 distanceBeetweenEnemiesY = 0f;
                 enemiesToSpawn = 8;
+                enemySpawned = 0;
                 for (int i = 0; i < enemiesToSpawn; i++)
                 {
                     Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
                     spawnPoint.x = spawnPoint.x + 1f;
                     spawnedEnemy.transform.SetParent(parent);
                     enemySpawned = enemySpawned + 1;
+                    enemiesLeft++;
                     if (enemySpawned == 4)
                     {
                         enemyToSpawn = BlueEnemy;
                     }
                 }
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
                 break;
             case 4 :
                 enemyToSpawn = RedEnemy;
@@ -95,6 +101,7 @@ public class WaveManager : MonoBehaviour
                 spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
                 Wave();
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
                 break;
             case 5 :
                 enemyToSpawn = RedTriangle;
@@ -107,7 +114,10 @@ public class WaveManager : MonoBehaviour
                 spawnPoint.y = initialSpawnPoint.y;
                 enemiesToSpawn = 3;
                 Wave();
+                initialSpawnPoint = new Vector2(-3.5f, 6f);
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
+                
                 break;
             case 6 :
                 enemyToSpawn = RedCube;
@@ -119,10 +129,12 @@ public class WaveManager : MonoBehaviour
                 spawnPoint.x = 3.5f;
                 Wave();
                 spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
                 break;
             
             case 7 :
                 enemyToSpawn = TripleBlue;
+                enemySpawned = 0;
                 distanceBeetweenEnemiesX = 1f;
                 distanceBeetweenEnemiesY = 0f;
                 enemiesToSpawn = 8;
@@ -132,11 +144,14 @@ public class WaveManager : MonoBehaviour
                     spawnPoint.x = spawnPoint.x + 1f;
                     spawnedEnemy.transform.SetParent(parent);
                     enemySpawned = enemySpawned + 1;
+                    enemiesLeft++;
                     if (enemySpawned == 4)
                     {
                         enemyToSpawn = TripleRed;
                     }
                 }
+                Debug.Log(enemiesLeft);
+                enemySpawned = 0;
                 break;
         }
 
@@ -144,7 +159,6 @@ public class WaveManager : MonoBehaviour
 
     void Wave()
     {
-        initialSpawnPoint = spawnPoint;
         enemySpawned = 0;
         for (int i = 0; i < enemiesToSpawn; i++)
         {
@@ -153,6 +167,7 @@ public class WaveManager : MonoBehaviour
             spawnPoint.y = spawnPoint.y + distanceBeetweenEnemiesY;
             spawnedEnemy.transform.SetParent(parent);
             enemySpawned = enemySpawned + 1;
+            enemiesLeft++;
         }
     }
 }

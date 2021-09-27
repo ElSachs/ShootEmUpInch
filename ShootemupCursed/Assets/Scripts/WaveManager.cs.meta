@@ -3,7 +3,16 @@ guid: ac9ba30c96f1b37429021536a1dcb740
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RedEnemy: {fileID: 3621422504722274629, guid: 3b0bc2f74294c5a49856ac851b7bd14c, type: 3}
+  - BlueEnemy: {fileID: 7179575042768289371, guid: bedd7fb21f9f028458380db47f3ca964, type: 3}
+  - RedTriangle: {fileID: 5754374332092609436, guid: fc4c148626315f04eae6eaf3526cf3d5, type: 3}
+  - BlueTriangle: {fileID: 8376450547745313865, guid: d816bf84639f7ed479476445015e5f56, type: 3}
+  - BlueCube: {fileID: 1822299390462799801, guid: 2ae82b95e4cc4104d86f3aa35850769a, type: 3}
+  - RedCube: {fileID: 4820843360287663892, guid: 8b8c26fe474973f4a9b88d70589706a2, type: 3}
+  - TripleRed: {fileID: 7161509596279232609, guid: c8f10be8679bd254eb06ff84e7238214, type: 3}
+  - TripleBlue: {fileID: 3836893243822863282, guid: 2bb2f48af33cc1f4ea1430fa124b1888, type: 3}
+  - parent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
