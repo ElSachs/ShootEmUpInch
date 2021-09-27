@@ -8,9 +8,10 @@ public class EnemyBehaviour : MonoBehaviour
 {
     private Rigidbody2D self;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private Rigidbody2D bullet;
+    [SerializeField] private PoolManager.Generate bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
+    public int life = 3;
     public bool resetShoot;
     private void Start()
     {
@@ -23,14 +24,17 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(resetShoot == true)
             Shooting();
+        if (life == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Shooting()
     {
         resetShoot = false;
         Debug.Log("wsh");
-        Rigidbody2D shotBullet = Instantiate(bullet, transform.position, transform.rotation);
-        shotBullet.AddForce(Vector2.down * bulletSpeed);
+        PoolManager.Instance.spawnFromPool(bullet, transform);
         Invoke(("ResetShoot"), shootingRate);
     }
 
