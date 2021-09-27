@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="43579a3d-1469-411b-abd4-4416ef6effc8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB-lock" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB-lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/00/007d104bef4f04fa62a4e0da6f047407" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/03/0365a91b458ab7e266695629d18f7620" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0c/0c0220fac4377bbc6ff2f4e7e943fbf7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/16/169fc9a58af20f7be475a3fec0faa56b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/1a/1ada0b4b97109f52765a36b185ba3cdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/20/2036e86070d9877fdae5e38b8ed89093" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/23/23f15c652ca5ed823900beeac9cc4d20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3a/3a84c8b65bc5a9785ceac2289a9e3083" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/3d/3ddc06d3285bb3cac8db1547be7c9cdd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/40/40f4ed22f5572761029319eb851c2c94" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/4a/4a7d900b38f0e61472aa84d81033edf0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/53/53c5bdffe950c0b7f02697b4c41651bf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/5d/5daaf29a33664aa98461368c4c3220a3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/65/65be55e771fb1a67f7caec9397a7e428" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/7e/7e39a57fafac4e6e71b8a12722887b58" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/9f/9ff2d38d2d97a31f023a602b58d446b2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b3/b36c3afe7b907ad6ff8fe474e1a5afcb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b5/b597ac368f9429ab16e45c76693b57eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b5/b5f0255fefb7aafe771ff3cdaa4c862c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d4/d46c9aafd89005338129ff045027ae6a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/e3/e346190c672a473a9781bc8c4ad49a28" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/fb/fb7f6d8cd8377e49d21aecdec0418d03" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageManager/ProjectCache" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageManager/ProjectCache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageManager/ProjectCache.md5" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageManager/ProjectCache.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB-lock" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB-lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe5.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe5.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-Editor.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1yiSglclf4Ize6Q6xVxDtYunfZs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="43579a3d-1469-411b-abd4-4416ef6effc8" name="Changes" comment="" />
+      <created>1632733031062</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632733031062</updated>
+      <workItem from="1632733041370" duration="793000" />
+      <workItem from="1632734556007" duration="1000" />
+      <workItem from="1632734718498" duration="4588000" />
+      <workItem from="1632742344688" duration="1904000" />
+      <workItem from="1632746847980" duration="13000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
