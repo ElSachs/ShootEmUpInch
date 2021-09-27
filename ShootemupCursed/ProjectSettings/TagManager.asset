@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - PlayerBlue
   - Water
   - UI
   - CameraBorders
@@ -20,7 +20,7 @@ TagManager:
   - RedBullets
   - RedEnemies
   - ShipBullet
-  - 
+  - PlayerRed
   - 
   - 
   - 
