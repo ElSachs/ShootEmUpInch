@@ -14,6 +14,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D BlueTriangle;
     [SerializeField] private Rigidbody2D BlueCube;
     [SerializeField] private Rigidbody2D RedCube;
+    [SerializeField] private Rigidbody2D TripleRed;
+    [SerializeField] private Rigidbody2D TripleBlue;
     private int waveType;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private Vector2 initialSpawnPoint;
@@ -41,7 +43,7 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
-        int waveType = 6;
+        int waveType = 7;
         Debug.Log(waveType);
         switch (waveType)
         {
@@ -67,7 +69,7 @@ public class WaveManager : MonoBehaviour
                 distanceBeetweenEnemiesX = 1f;
                 distanceBeetweenEnemiesY = 0f;
                 enemiesToSpawn = 8;
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < enemiesToSpawn; i++)
                 {
                     Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
                     spawnPoint.x = spawnPoint.x + 1f;
@@ -116,7 +118,27 @@ public class WaveManager : MonoBehaviour
                 Wave();
                 spawnPoint = initialSpawnPoint;
                 break;
+            case 7 :
+                enemyToSpawn = TripleBlue;
+                distanceBeetweenEnemiesX = 1f;
+                distanceBeetweenEnemiesY = 0f;
+                enemiesToSpawn = 8;
+                for (int i = 0; i < enemiesToSpawn; i++)
+                {
+                    Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                    spawnPoint.x = spawnPoint.x + 1f;
+                    spawnedEnemy.transform.SetParent(parent);
+                    enemySpawned = enemySpawned + 1;
+                    if (enemySpawned == 4)
+                    {
+                        enemyToSpawn = TripleRed;
+                    }
+                }
+                break;
+                
+                
         }
+            
         
         
     }
