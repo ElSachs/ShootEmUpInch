@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float decelerationSpeed;
     [SerializeField] private float maxSpeed;
     private Rigidbody2D self;
+    public int life = 3;
+    public Transform Spawner;
 
     private void Start()
     {
@@ -19,6 +21,18 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+        if (life == 0)
+        {
+            Debug.Log("Game Over");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        { 
+            //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
+            PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner); 
+        }
+        
+        
     }
 
     void Move()
@@ -28,7 +42,6 @@ public class PlayerController : MonoBehaviour
         if (input != Vector3.zero)
         {
             move = input;
-            Debug.Log("je bouge");
         }
         else
         {

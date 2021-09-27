@@ -97,9 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  bullet: {fileID: 4360600540401303786, guid: 089a518e9d9965446be4e429ec6eb33d, type: 3}
+  bullet: 4
   bulletSpeed: 100
   shootingRate: 0.5
+  life: 3
   resetShoot: 0
 --- !u!50 &7179575042768289371
 Rigidbody2D:
