@@ -11,10 +11,12 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D RedEnemy;
     [SerializeField] private Rigidbody2D BlueEnemy;
     private int waveType;
-    private Vector2 spawnPoint = new Vector2(-3f, 6f);
+    private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private Vector2 initialSpawnPoint;
     [SerializeField] Transform parent;
     private bool waveFinished;
+    private Rigidbody2D enemyToSpawn;
+    private int enemySpawned;
     
     private void Start()
     {
@@ -36,32 +38,47 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
-        int waveType = Random.Range(1, 3);
+        int waveType = 3;
         Debug.Log(waveType);
         switch (waveType)
         {
             case 1 :
-                initialSpawnPoint = spawnPoint;
-                for (int i = 0; i < 7; i++)
-                {
-                    Rigidbody2D spawnedEnemy = Instantiate(RedEnemy, spawnPoint, Quaternion.identity);
-                    spawnPoint.x = spawnPoint.x + 1f;
-                    spawnedEnemy.transform.SetParent(parent);
-                }
-                spawnPoint = initialSpawnPoint;
+                enemyToSpawn = BlueEnemy;
+                Wave();
+                
                 break;
             case 2 :
-                initialSpawnPoint = spawnPoint;
-                for (int i = 0; i < 7; i++)
-                {
-                    Rigidbody2D spawnedEnemy = Instantiate(BlueEnemy, spawnPoint, Quaternion.identity);
-                    spawnPoint.x = spawnPoint.x + 1f;
-                    spawnedEnemy.transform.SetParent(parent);
-                }
-
-                spawnPoint = initialSpawnPoint;
+                enemyToSpawn = RedEnemy;
+                Wave();
                 break;
+            case 3 :
+                enemyToSpawn = RedEnemy;
+                
+                Wave();
+                if (enemySpawned == 4)
+                {
+                    enemyToSpawn = BlueEnemy;
+                }
+                break;
+                
         }
         
+    }
+
+    void Wave()
+    {
+        initialSpawnPoint = spawnPoint;
+        enemySpawned = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+            spawnPoint.x = spawnPoint.x + 1f;
+            spawnedEnemy.transform.SetParent(parent);
+            enemySpawned = enemySpawned + 1;
+        }
+
+        spawnPoint = initialSpawnPoint;
+        
+
     }
 }
