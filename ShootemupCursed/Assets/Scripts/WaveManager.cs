@@ -16,7 +16,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D RedCube;
     [SerializeField] private Rigidbody2D TripleRed;
     [SerializeField] private Rigidbody2D TripleBlue;
-    private int waveType = 0;
+    private int waveType = 4;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);
     [SerializeField] Transform parent;
