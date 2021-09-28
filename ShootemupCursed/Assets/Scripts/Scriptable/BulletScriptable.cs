@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New BulletStat", menuName = "Bullet Stat")]
 public class BulletScriptable : ScriptableObject
 {
-    public bool blueColor;
+    public bool isPointingPlayer;
     public int damage = 1;
     public int bulletSpeed = 100;
 }

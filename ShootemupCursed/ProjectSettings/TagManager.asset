@@ -7,6 +7,8 @@ TagManager:
   - Cube
   - Triangle
   - Triple
+  - BulletDestroyer
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -216,6 +216,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 135.9, y: 0, z: 0}
+--- !u!1 &40880408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40880409}
+  - component: {fileID: 40880410}
+  m_Layer: 0
+  m_Name: anilator
+  m_TagString: BulletDestroyer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &40880409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40880408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 792468300}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &40880410
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40880408}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0012810379, y: -0.0000004172325}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18782449, y: 0.18526256}
+  m_EdgeRadius: 0
 --- !u!1 &172579669
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,10 +830,13 @@ MonoBehaviour:
   decelerationSpeed: 5
   maxSpeed: 2500
   life: 3
+  attackSpeed: 5
+  coolDown: 0
   Spawner: {fileID: 1128860296}
   Isblue: 1
   redCube: {fileID: 1514652205}
   blueCube: {fileID: 172579669}
+  bulletSpeed: 500
 --- !u!4 &792468300
 Transform:
   m_ObjectHideFlags: 0
@@ -790,6 +850,7 @@ Transform:
   m_Children:
   - {fileID: 1658388676}
   - {fileID: 1128860296}
+  - {fileID: 40880409}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -827,7 +888,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013473183, y: 0.31325054}
+  m_Offset: {x: 0.00035360456, y: -0.0006504059}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -838,7 +899,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9461073, y: 0.9393711}
+  m_Size: {x: 0.18122572, y: 0.18074155}
   m_EdgeRadius: 0
 --- !u!1 &889595247
 GameObject:
@@ -1151,7 +1212,9 @@ Transform:
   m_Father: {fileID: 792468300}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1252493135
+
+--- !u!1 &1157000129
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1159,41 +1222,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  
   - component: {fileID: 1252493136}
   - component: {fileID: 1252493138}
   - component: {fileID: 1252493137}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
+  
+  - component: {fileID: 1157000130}
+  - component: {fileID: 1157000131}
+  m_Layer: 0
+  m_Name: BulletDestroy
+  m_TagString: BulletDestroyer
+  
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1252493136
-RectTransform:
+  
+--- !u!4 &1157000130
+Transform:
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252493135}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  
+  m_GameObject: {fileID: 1157000129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 997224949}
-  m_RootOrder: 0
+  m_Father: {fileID: 1681746476}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1252493137
-MonoBehaviour:
+--- !u!61 &1157000131
+BoxCollider2D:
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+
   m_GameObject: {fileID: 1252493135}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1230,6 +1301,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252493135}
   m_CullTransparentMesh: 1
+
+  m_GameObject: {fileID: 1157000129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 25.188992, y: 1}
+  m_EdgeRadius: 0
+
 --- !u!1001 &1319381453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1527,18 +1620,28 @@ MonoBehaviour:
   - name: Normal
     typeOfObject: 1
     Prefabs: {fileID: 5053239839553500801, guid: efc40bb83a33b6640991b3c4f2a471df, type: 3}
-    initialSize: 50
+    initialSize: 100
     Stat: {fileID: 11400000, guid: bcfa605996279a941854838114178301, type: 2}
   - name: RedBullet
     typeOfObject: 3
     Prefabs: {fileID: 1682098023450951121, guid: 8d98029e1a4ec4b479cae87f7e303837, type: 3}
-    initialSize: 50
+    initialSize: 100
     Stat: {fileID: 11400000, guid: 2e89cf4cd282e6a4281c78329d9624e8, type: 2}
   - name: BlueBullet
     typeOfObject: 4
     Prefabs: {fileID: 5053239839553500801, guid: 089a518e9d9965446be4e429ec6eb33d, type: 3}
-    initialSize: 50
+    initialSize: 100
     Stat: {fileID: 11400000, guid: 2e89cf4cd282e6a4281c78329d9624e8, type: 2}
+  - name: TriangleBlueBullet
+    typeOfObject: 5
+    Prefabs: {fileID: 5053239839553500801, guid: 089a518e9d9965446be4e429ec6eb33d, type: 3}
+    initialSize: 100
+    Stat: {fileID: 11400000, guid: bc9119c0fb111c843af5de9deb0290de, type: 2}
+  - name: TriangleRedBullet
+    typeOfObject: 6
+    Prefabs: {fileID: 1682098023450951121, guid: 8d98029e1a4ec4b479cae87f7e303837, type: 3}
+    initialSize: 100
+    Stat: {fileID: 11400000, guid: bc9119c0fb111c843af5de9deb0290de, type: 2}
 --- !u!4 &1582413793
 Transform:
   m_ObjectHideFlags: 0
@@ -1589,6 +1692,7 @@ Transform:
   - {fileID: 1566372743}
   - {fileID: 1973943801}
   - {fileID: 433222701}
+  - {fileID: 1157000130}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
