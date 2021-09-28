@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     private Rigidbody2D self;
     public int life = 3;
+    public float attackSpeed = 5;
+    public float coolDown = 0;
     public Transform Spawner;
     public bool Isblue = true;
     
@@ -30,10 +32,18 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        { 
-            //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
-            PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner); 
+        if (Input.GetKey(KeyCode.Space) && coolDown <=0)
+        {
+           
+                //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
+                PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);
+                coolDown = 2;
+
+        }
+
+        if (coolDown>0)
+        {
+            coolDown -= Time.deltaTime * attackSpeed;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift))

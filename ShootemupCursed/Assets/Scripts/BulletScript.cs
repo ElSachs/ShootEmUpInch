@@ -27,13 +27,23 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+<<<<<<< Updated upstream
         Debug.Log("enter Collider");
          
        if (other.tag == "Player")
+=======
+        Debug.Log(other.name);
+        if (other.tag == "Player")
+>>>>>>> Stashed changes
         {
          other.GetComponent<PlayerController>().life--; 
          gameObject.SetActive(false);
          Debug.Log("touch player");
+        }
+        else if (other.tag == "Untagged")
+        {
+           gameObject.SetActive(false);
+            
         }
         else
         {
@@ -42,6 +52,7 @@ public class BulletScript : MonoBehaviour
             gameObject.SetActive(false);
             
         }
+        
         
     }
 }
