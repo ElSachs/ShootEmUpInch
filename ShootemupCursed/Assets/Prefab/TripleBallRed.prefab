@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 7161509596279232608}
   m_Layer: 10
   m_Name: TripleBallRed
-  m_TagString: Untagged
+  m_TagString: Triple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

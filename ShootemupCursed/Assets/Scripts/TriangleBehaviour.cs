@@ -14,29 +14,45 @@ public class TriangleBehaviour : MonoBehaviour
     private bool resetShoot = true;
     private Vector2 triangleToPlayer;
     [SerializeField] private Transform player;
+    public int life = 4;
+    public PoolManager.Generate typeOfBullet;
+    private float timeElapsed;
+    private float timeUntilStop = 4f;
 
 
     private void Start()
     {
         waveManager = GameObject.Find("WaveManager").transform;
-        self = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
+        self = GetComponent<Rigidbody2D>();
         self.AddForce(Vector2.down * moveSpeed);
+        timeElapsed = Time.time;
     }
 
     private void Update()
     {
+        
         if (resetShoot)
         {
             Shooting();
         }
         LookAtPlayer();
+        if (life == 0)
+        {
+            gameObject.SetActive(false);
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+        }
+
+        if (Time.time > timeElapsed + timeUntilStop)
+        {
+            self.velocity = Vector2.zero;
+        }
     }
     void Shooting()
     {
         resetShoot = false;
-        Debug.Log("wsh");
-        Rigidbody2D shotBullet = Instantiate(bullet, transform.position, transform.rotation);
+        Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(typeOfBullet, transform);
         shotBullet.AddForce(triangleToPlayer * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
     }

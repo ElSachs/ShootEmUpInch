@@ -10,6 +10,8 @@ public class TripleBallBehaviour : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
     public bool resetShoot = true;
+    public int life = 5;
+    private Transform waveManager;
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -28,12 +30,17 @@ public class TripleBallBehaviour : MonoBehaviour
         {
             self.velocity = Vector2.zero;
         }
+        if (life == 0)
+        {
+            gameObject.SetActive(false);
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+        }
     }
 
     void Shooting()
     {
         resetShoot = false;
-        Debug.Log("wsh");
         Rigidbody2D shotBullet = Instantiate(bullet, transform.position, transform.rotation);
         Rigidbody2D shotBullet2 = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody2D shotBullet3 = Instantiate(bullet, transform.position, Quaternion.identity);

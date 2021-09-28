@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject redCube;
     public GameObject blueCube;
 
+    [SerializeField] private float bulletSpeed;
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -32,11 +33,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over");
         }
 
-        if (Input.GetKey(KeyCode.Space) && coolDown <=0)
-        {
-           
-                //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
-                PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);
+        if (Input.GetKeyDown(KeyCode.Space))
+        { 
+            //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
+            Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);
+            shotBullet.AddForce(Vector2.up * bulletSpeed);
                 coolDown = 2;
 
         }

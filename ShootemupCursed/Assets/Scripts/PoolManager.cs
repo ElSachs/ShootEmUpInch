@@ -29,7 +29,7 @@ public class PoolManager : MonoBehaviour
     public enum Generate
     {
         ______ShipBullet______, normalBullet,
-        ______EnnemieBullet______, RedBullet, BlueBullet,
+        ______EnnemieBullet______, RedBullet, BlueBullet, TriangleBlueBullet, TriangleRedBullet,
         ______Ennemies_______, RedEnnemy, BlueEnemy
     }
     
@@ -55,14 +55,15 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public void spawnFromPool(Generate tag, Transform transform)
+    public Rigidbody2D spawnFromPool(Generate tag, Transform transform)
     {
         Debug.Log(tag.ToString());
         GameObject obj = dictionaryPool[tag].Dequeue();
         obj.SetActive(true);
         obj.transform.position = transform.position;
         dictionaryPool[tag].Enqueue(obj);
-        
-        
+        return obj.GetComponent<Rigidbody2D>();
+
+
     }
 }

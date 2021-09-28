@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cube
+  - Triangle
+  - Triple
+  - BulletDestroyer
+  - Enemy
   layers:
   - Default
   - TransparentFX
