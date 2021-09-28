@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D TripleBlue;
     [SerializeField] private Rigidbody2D PentaBlue;
     [SerializeField] private Rigidbody2D PentaRed;
+    [SerializeField] private Rigidbody2D Boss;
     private int waveType = 0;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);
@@ -34,7 +35,7 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-        waveType = 10;
+        waveType = 0;
         waveFinished = true;
         enemiesLeft = 0;
     }
@@ -233,7 +234,15 @@ public class WaveManager : MonoBehaviour
                     spawnPoint = initialSpawnPoint;
                     enemySpawned = 0;
                     break;
-    
+            case 10 :
+                spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                enemyToSpawn = Boss;
+                enemiesToSpawn = 1;
+                Wave();
+                spawnPoint = initialSpawnPoint;
+                enemySpawned = 0;
+                break;
+            
         }
 
     }

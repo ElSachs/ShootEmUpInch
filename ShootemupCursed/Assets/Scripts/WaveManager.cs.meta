@@ -12,6 +12,8 @@ MonoImporter:
   - RedCube: {fileID: 4820843360287663892, guid: 8b8c26fe474973f4a9b88d70589706a2, type: 3}
   - TripleRed: {fileID: 7161509596279232609, guid: c8f10be8679bd254eb06ff84e7238214, type: 3}
   - TripleBlue: {fileID: 3836893243822863282, guid: 2bb2f48af33cc1f4ea1430fa124b1888, type: 3}
+  - PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
+  - PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
   - parent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
