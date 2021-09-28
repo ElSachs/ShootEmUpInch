@@ -41,7 +41,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Shooting()
     {
         resetShoot = false;
-        PoolManager.Instance.spawnFromPool(bullet, transform);
+        Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
+        shotBullet.AddForce(Vector2.down * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
     }
 

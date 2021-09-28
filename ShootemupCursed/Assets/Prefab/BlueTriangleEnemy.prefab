@@ -95,11 +95,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveManager: {fileID: 0}
   self: {fileID: 0}
-  moveSpeed: 15
+  moveSpeed: 40
   bulletSpeed: 100
   shootingRate: 0.5
   bullet: {fileID: 4360600540401303786, guid: 089a518e9d9965446be4e429ec6eb33d, type: 3}
   player: {fileID: 0}
+  life: 4
+  typeOfBullet: 5
 --- !u!1001 &8376450549341768642
 PrefabInstance:
   m_ObjectHideFlags: 0

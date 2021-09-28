@@ -7,31 +7,28 @@ public class BulletScript : MonoBehaviour
 {
     public BulletScriptable stat;
     [NonSerialized]public Rigidbody2D rb;
-    private bool isStart = true;
+    private Vector2 triangleToPlayer;
 
-    private void Start()
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.down * stat.bulletSpeed);
-        isStart = false;
     }
-
-    private void OnEnable()
+    
+    private void OnDisable()
     {
-        if (!isStart)
-        { 
-            rb.AddForce(Vector2.down * stat.bulletSpeed);
-        }
+        rb.velocity = Vector2.zero;
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        
         if (other.tag == "Player")
         {
-         other.GetComponent<PlayerController>().life--; 
+         other.GetComponent<PlayerController>().life--;
          gameObject.SetActive(false);
+
         }
         else if(other.tag == "Triangle")
         {
@@ -42,18 +39,22 @@ public class BulletScript : MonoBehaviour
         else if(other.tag == "Cube")
         {
             other.GetComponent<CubeBehaviour>().life--;
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
             
         }
         else if(other.tag == "Triple")
         {
             other.GetComponent<TripleBallBehaviour>().life--;
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+        else if (other.tag == "BulletDestroyer")
+        {
+            gameObject.SetActive(false);
         }
         else
         {
             other.GetComponent<EnemyBehaviour>().life--;
-           gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         
     }
