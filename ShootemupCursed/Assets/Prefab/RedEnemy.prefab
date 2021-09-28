@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2282234414169359615}
+  - component: {fileID: 9191262265775426384}
   - component: {fileID: 441353157282803745}
   - component: {fileID: 5621885176560032907}
   - component: {fileID: 3621422504722274629}
   - component: {fileID: 6802880535408800207}
-  - component: {fileID: 9191262265775426384}
   m_Layer: 10
   m_Name: RedEnemy
   m_TagString: Untagged
@@ -35,6 +35,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9191262265775426384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926276055607152734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27bed7f100db4640955de9eb91935af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
+  bullet: 3
+  bulletSpeed: 100
+  shootingRate: 0.5
+  life: 3
+  resetShoot: 0
 --- !u!33 &441353157282803745
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -121,20 +139,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &9191262265775426384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926276055607152734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b27bed7f100db4640955de9eb91935af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 15
-  bullet: {fileID: 62811035907970507, guid: 8d98029e1a4ec4b479cae87f7e303837, type: 3}
-  bulletSpeed: 100
-  shootingRate: 0.5
-  resetShoot: 0
