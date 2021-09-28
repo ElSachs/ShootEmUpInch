@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public GameObject redCube;
     public GameObject blueCube;
 
+    public GameObject gameOverCanvas;
+
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
         Move();
         if (life <= 0)
         {
-            Debug.Log("Game Over");
+            gameObject.SetActive(false);
+            gameOverCanvas.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

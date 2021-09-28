@@ -275,7 +275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 54}
+  m_AnchoredPosition: {x: 0, y: 76}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &210199566
@@ -1204,7 +1204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 202}
+  m_AnchoredPosition: {x: 0, y: 236}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170991744
@@ -1795,6 +1795,7 @@ GameObject:
   - component: {fileID: 1756769186}
   - component: {fileID: 1756769185}
   - component: {fileID: 1756769188}
+  - component: {fileID: 1756769189}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1862,6 +1863,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bc9f292a0f79e42a8b21aa3cf25fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1756769189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756769184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31ff1053dfe27146a0d5d521ec55604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscore1: {fileID: 1994284084}
+  highscore2: {fileID: 1224792886}
+  highscore3: {fileID: 1001169794}
+  highscore4: {fileID: 1150569635}
+  highscore5: {fileID: 1400806723}
 --- !u!1 &1994284081
 GameObject:
   m_ObjectHideFlags: 0
