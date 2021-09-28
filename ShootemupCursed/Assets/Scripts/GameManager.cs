@@ -34,4 +34,12 @@ public class GameManager : MonoBehaviour
        Lifes.Remove(Lifes[Lifes.Count-1]);
        
     }
+
+    public void InstantKill()
+    {
+        for (int i = 0; i < Lifes.Count; i++)
+        {
+           UpdateLife(); 
+        }
+    }
 }

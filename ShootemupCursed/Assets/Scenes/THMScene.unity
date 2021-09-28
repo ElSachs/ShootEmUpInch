@@ -1545,6 +1545,7 @@ MonoBehaviour:
   TripleBlue: {fileID: 3836893243822863282, guid: 2bb2f48af33cc1f4ea1430fa124b1888, type: 3}
   PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
   PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
+  waveType: 6
   parent: {fileID: 889595248}
 --- !u!1 &997224948
 GameObject:
@@ -1736,6 +1737,10 @@ PrefabInstance:
     - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
       propertyPath: m_TagString

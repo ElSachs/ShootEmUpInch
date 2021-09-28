@@ -40,9 +40,18 @@ public class BulletScript : MonoBehaviour
         switch (other.tag)
         {
             case "Player" :
+                if (gameObject.tag == "laser")
+                {
+                    GetComponent<PlayerController>().life = 0;
+                    GameManager.Instance.InstantKill();
+                }
+                else
+                {
                 other.GetComponent<PlayerController>().life--;
-                gameObject.SetActive(false);
                 GameManager.Instance.UpdateLife();
+                    
+                }
+                gameObject.SetActive(false);
                 break;
             
             case "Triangle" :
