@@ -51,11 +51,17 @@ public class BulletScript : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        else if (other.tag == "Untagged")
+        {
+           gameObject.SetActive(false);
+            
+        }
         else
         {
             other.GetComponent<EnemyBehaviour>().life--;
             gameObject.SetActive(false);
         }
+        
         
     }
 }
