@@ -51,13 +51,9 @@ public class BulletScript : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else if (other.tag == "Untagged")
-        {
-           gameObject.SetActive(false);
-            
-        }
         else
         {
+            Debug.Log("j'ai touché");
             other.GetComponent<EnemyBehaviour>().life--;
             gameObject.SetActive(false);
         }
