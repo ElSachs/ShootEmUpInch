@@ -38,12 +38,17 @@ public class TriangleBehaviour : MonoBehaviour
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
         }
+
+        if (transform.position.y <= 2.5f)
+        {
+            self.velocity = Vector2.zero;
+        }
     }
     void Shooting()
     {
         resetShoot = false;
         Rigidbody2D shotBullet = Instantiate(bullet, transform.position, transform.rotation);
-        shotBullet.AddForce(triangleToPlayer * bulletSpeed);
+        shotBullet.AddForce(triangleToPlayer.normalized * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
     }
 

@@ -97,13 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b93f093a4e8380478bed905ba4e88b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 50
   shootingRate: 9
   laser: {fileID: 4085435465998362549, guid: 2df0e5e6915565d42b3fa87ee8e00ea1, type: 3}
   laserSpeed: 900
   glow: {fileID: 712060566270160608}
   animationName: RedCube
   waveManager: {fileID: 0}
+  life: 5
 --- !u!50 &4820843360287663892
 Rigidbody2D:
   serializedVersion: 4
