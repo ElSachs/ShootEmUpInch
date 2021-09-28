@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3535524594282303422}
   - component: {fileID: 3535524594282303418}
   - component: {fileID: 4111954248717144378}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: BlueCubeLaser
   m_TagString: laser
   m_Icon: {fileID: 0}

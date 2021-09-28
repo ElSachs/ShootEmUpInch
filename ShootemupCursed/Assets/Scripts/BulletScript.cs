@@ -42,7 +42,7 @@ public class BulletScript : MonoBehaviour
             case "Player" :
                 if (gameObject.tag == "laser")
                 {
-                    GetComponent<PlayerController>().life = 0;
+                    other.GetComponent<PlayerController>().life = 0;
                     GameManager.Instance.InstantKill();
                 }
                 else
