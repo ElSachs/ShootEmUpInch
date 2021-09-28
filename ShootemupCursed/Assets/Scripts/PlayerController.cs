@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D self;
     public int life = 3;
     public float attackSpeed = 5;
+    [SerializeField] float SwitchSpeed;
     public float coolDown = 0;
     public Transform Spawner;
-    public bool Isblue = true;
+    public bool Isblue = false;
     
     public GameObject redCube;
     public GameObject blueCube;
@@ -56,16 +57,22 @@ public class PlayerController : MonoBehaviour
             {
                 Isblue = false;
                 gameObject.layer = 12;
-                redCube.SetActive(true);
-                blueCube.SetActive(false);
+                
             }
             else
             {
                 Isblue = true;
                 gameObject.layer = 3;
-                blueCube.SetActive(true);
-                redCube.SetActive(false);
+                
             }
+        }
+        if (Isblue && transform.rotation.eulerAngles.y < 175)
+        {
+            transform.Rotate(0f, 200f*Time.deltaTime*SwitchSpeed, 0f);
+        }
+        else if (!Isblue && transform.rotation.eulerAngles.y > 5)
+        {
+            transform.Rotate(0f, -200f*Time.deltaTime*SwitchSpeed, 0f);
         }
         
         

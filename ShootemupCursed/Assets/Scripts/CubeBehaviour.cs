@@ -16,6 +16,7 @@ public class CubeBehaviour : MonoBehaviour
     [SerializeField] private string animationName;
     [SerializeField] private Transform waveManager;
     public int life = 5;
+    [SerializeField] private int scoreGive = 30;
     private void Start()
     {
         waveManager = GameObject.Find("WaveManager").transform;
@@ -38,6 +39,7 @@ public class CubeBehaviour : MonoBehaviour
         }
         if (life == 0)
         {
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             WaveManager.cubeShooting = false;
             waveManager = GameObject.Find("WaveManager").transform;

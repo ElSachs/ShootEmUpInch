@@ -34,7 +34,7 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-        waveType = 0;
+        waveType = 10;
         waveFinished = true;
         enemiesLeft = 0;
     }

@@ -10,6 +10,7 @@ TagManager:
   - BulletDestroyer
   - Enemy
   - Penta
+  - Boss
   layers:
   - Default
   - TransparentFX

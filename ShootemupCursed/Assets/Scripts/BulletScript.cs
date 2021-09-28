@@ -42,6 +42,7 @@ public class BulletScript : MonoBehaviour
             case "Player" :
                 other.GetComponent<PlayerController>().life--;
                 gameObject.SetActive(false);
+                GameManager.Instance.UpdateLife();
                 break;
             
             case "Triangle" :
@@ -71,7 +72,10 @@ public class BulletScript : MonoBehaviour
                 other.GetComponent<PentaBehaviour>().life--;
                 gameObject.SetActive(false);
                 break;
-            
+            case "Boss" :
+                gameObject.SetActive(false);
+                
+                break;
             default :
                 Debug.Log("j'ai touché");
                 other.GetComponent<EnemyBehaviour>().life--;

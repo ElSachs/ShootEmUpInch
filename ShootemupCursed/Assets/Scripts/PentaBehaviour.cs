@@ -10,6 +10,7 @@ public class PentaBehaviour : MonoBehaviour
     [SerializeField] private PoolManager.Generate bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
+    [SerializeField] private int scoreGive = 30;
     public int life = 5;
     public bool resetShoot;
     private Transform waveManager;
@@ -31,6 +32,7 @@ public class PentaBehaviour : MonoBehaviour
             Shooting();
         if (life == 0)
         {
+            GameManager.Instance.AddScore(scoreGive);
             Debug.Log("mort");
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;

@@ -27,25 +27,29 @@ public class PentaBullet : MonoBehaviour
             rb.velocity = Vector2.zero;
             
             if(destroying == false)
-                StartCoroutine(Shooting());
+                Shooting();
         }
     }
 
-    IEnumerator Shooting()
+    private void Shooting()
     {
         destroying = true;
+
+        timeElapsed = Time.time;
         Debug.Log("jv exploser");
-        yield return new WaitForSeconds(1f);
-        Vector3 shootingDirection = Vector3.right;
-        for (int i = 0; i < 18; i++)
-        {
-            shootingDirection = Quaternion.AngleAxis(20f, Vector3.forward) * shootingDirection;
-            Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
-            shotBullet.AddForce(shootingDirection.normalized * bulletSpeed);
-            Destroy(gameObject);
+        
             
-        }
+            Vector3 shootingDirection = Vector3.right;
+
+            for (int i = 0; i < 18; i++)
+            {
+                shootingDirection = Quaternion.AngleAxis(20f, Vector3.forward) * shootingDirection;
+                Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
+                shotBullet.AddForce(shootingDirection.normalized * bulletSpeed);
+                gameObject.SetActive(false);
+
+            }
         
-        
+
     }
 }

@@ -18,6 +18,7 @@ public class TriangleBehaviour : MonoBehaviour
     public PoolManager.Generate typeOfBullet;
     private float timeElapsed;
     private float timeUntilStop = 4f;
+    [SerializeField] private int scoreGive = 30;
 
 
     private void Start()
@@ -39,6 +40,7 @@ public class TriangleBehaviour : MonoBehaviour
         LookAtPlayer();
         if (life == 0)
         {
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
