@@ -32,5 +32,6 @@ public class GameManager : MonoBehaviour
         Debug.Log(Lifes.Count-1);
        Lifes[Lifes.Count-1].SetActive(false);
        Lifes.Remove(Lifes[Lifes.Count-1]);
+       
     }
 }
