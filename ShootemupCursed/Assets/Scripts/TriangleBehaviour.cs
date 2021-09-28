@@ -10,7 +10,6 @@ public class TriangleBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
-    [SerializeField] private int scoreGive = 30;
     [SerializeField] private Rigidbody2D bullet;
     private bool resetShoot = true;
     private Vector2 triangleToPlayer;
@@ -40,7 +39,6 @@ public class TriangleBehaviour : MonoBehaviour
         LookAtPlayer();
         if (life == 0)
         {
-            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
