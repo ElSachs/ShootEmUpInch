@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7597047203722464752}
   - component: {fileID: 3557532862900120084}
   - component: {fileID: 5843295544154470025}
-  - component: {fileID: 6647845387844273598}
+  - component: {fileID: -8518244656681674094}
   m_Layer: 7
   m_Name: BluePenta
   m_TagString: Penta
@@ -81,7 +81,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7743841, y: 0.6933719}
   m_EdgeRadius: 0
---- !u!114 &6647845387844273598
+--- !u!114 &-8518244656681674094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,15 +90,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 733692853022740458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ee9883f3611804bbc29124a5cfdf4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f73969eb3e69434ba356d9bb457a74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 25
   bullet: 8
   bulletSpeed: 50
   shootingRate: 4
+  scoreGive: 30
+  stoppingPoint: 2.5
   life: 5
-  resetShoot: 0
+  resetShoot: 1
+  waveManager: {fileID: 0}
 --- !u!1001 &6919749914186150473
 PrefabInstance:
   m_ObjectHideFlags: 0

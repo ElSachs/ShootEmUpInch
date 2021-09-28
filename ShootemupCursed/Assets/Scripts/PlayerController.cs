@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D self;
     public int life = 3;
     public float attackSpeed = 5;
+    public int shootBullet = 1;
     [SerializeField] float SwitchSpeed;
     public float coolDown = 0;
-    public Transform Spawner;
+    public Transform[] Spawner;
     public bool Isblue = false;
     
     public GameObject redCube;
@@ -38,12 +39,16 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
-        { 
-            //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
-            Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);
-            shotBullet.AddForce(Vector2.up * bulletSpeed);
-                coolDown = 2;
+        {
+            for (int i = 0; i < shootBullet; i++)
+            {
+                
+                //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
+                Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
+                shotBullet.AddForce(Vector2.up * bulletSpeed);
 
+            }
+                coolDown = 2;
         }
 
         if (coolDown>0)

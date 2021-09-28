@@ -1,27 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriangleBehaviour : MonoBehaviour
+public class TriangleBehaviours : EnemyBehaviour
 {
-    [SerializeField] private Transform waveManager;
-    [SerializeField] private Rigidbody2D self;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float shootingRate;
-    [SerializeField] private Rigidbody2D bullet;
-    private bool resetShoot = true;
     private Vector2 triangleToPlayer;
-    [SerializeField] private Transform player;
-    public int life = 4;
-    public PoolManager.Generate typeOfBullet;
     private float timeElapsed;
     private float timeUntilStop = 4f;
-    [SerializeField] private int scoreGive = 30;
-
-
-    private void Start()
+    [SerializeField] private Transform player;
+    
+    public override void Start()
     {
         waveManager = GameObject.Find("WaveManager").transform;
         player = GameObject.Find("Player").transform;
@@ -30,9 +18,8 @@ public class TriangleBehaviour : MonoBehaviour
         timeElapsed = Time.time;
     }
 
-    private void Update()
+    public override void Update()
     {
-        
         if (resetShoot)
         {
             Shooting();
@@ -51,17 +38,13 @@ public class TriangleBehaviour : MonoBehaviour
             self.velocity = Vector2.zero;
         }
     }
-    void Shooting()
+
+    public override void Shooting()
     {
         resetShoot = false;
-        Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(typeOfBullet, transform);
+        Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
         shotBullet.AddForce(triangleToPlayer * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
-    }
-
-    private void ResetShoot()
-    {
-        resetShoot = true;
     }
     
     private void LookAtPlayer()

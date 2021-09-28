@@ -30,7 +30,7 @@ public class PentaBehaviour : MonoBehaviour
     {
         if(resetShoot == true)
             Shooting();
-        if (life == 0)
+        if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
             Debug.Log("mort");

@@ -6,43 +6,54 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private Rigidbody2D self;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private PoolManager.Generate bullet;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float shootingRate;
-    [SerializeField] private int scoreGive = 30;
+    public Rigidbody2D self;
+    [SerializeField] public float moveSpeed;
+    [SerializeField] public PoolManager.Generate bullet;
+    [SerializeField] public float bulletSpeed;
+    [SerializeField] public float shootingRate;
+    [SerializeField] public int scoreGive = 30;
+    [SerializeField] public float stoppingPoint = 2.5f;
     public int life = 3;
     public bool resetShoot;
-    private Transform waveManager;
+    public Transform waveManager;
+    [SerializeField] private Loot[] loots;
     
-    private void Start()
+    [System.Serializable]
+    public class Loot
     {
+        public GameManager.Bonus bonusType;
+        public int chanceOfDrop;
+    }
+    
+    public virtual void Start()
+    {
+        waveManager = GameObject.Find("WaveManager").transform;
+            
         self = GetComponent<Rigidbody2D>();
         self.AddForce(Vector2.down * moveSpeed);
         resetShoot = true;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if(resetShoot == true)
             Shooting();
-        if (life == 0)
+        if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
             Debug.Log("mort");
+            Drop();
             gameObject.SetActive(false);
-            waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
         }
 
-        if (transform.position.y <= 2.5f)
+        if (transform.position.y <= stoppingPoint)
         {
             self.velocity = Vector2.zero; 
         }
     }
 
-    void Shooting()
+    public virtual void Shooting()
     {
         resetShoot = false;
         Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
@@ -50,6 +61,21 @@ public class EnemyBehaviour : MonoBehaviour
         Invoke(("ResetShoot"), shootingRate);
     }
 
+    public void Drop()
+    {
+        foreach (Loot loot in loots)
+        {
+            float intt = UnityEngine.Random.Range(1f, 101f);
+            Debug.Log("intt : " + intt);
+            
+            if (intt <= loot.chanceOfDrop)
+            {
+                Debug.Log("drop");
+                Instantiate(GameManager.Instance.bonusDictionary[loot.bonusType], transform);
+            }
+        }
+    }
+    
     private void ResetShoot()
     {
         resetShoot = true;

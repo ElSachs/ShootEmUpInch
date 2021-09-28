@@ -96,12 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27bed7f100db4640955de9eb91935af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 25
   bullet: 4
   bulletSpeed: 100
   shootingRate: 0.5
+  scoreGive: 30
+  stoppingPoint: 2.5
   life: 3
   resetShoot: 0
+  waveManager: {fileID: 0}
+  loots:
+  - bonusType: 1
+    chanceOfDrop: 50
 --- !u!50 &7179575042768289371
 Rigidbody2D:
   serializedVersion: 4

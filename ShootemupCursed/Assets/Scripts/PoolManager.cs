@@ -57,7 +57,6 @@ public class PoolManager : MonoBehaviour
 
     public Rigidbody2D spawnFromPool(Generate tag, Transform transform)
     {
-        Debug.Log(tag.ToString());
         GameObject obj = dictionaryPool[tag].Dequeue();
         obj.SetActive(true);
         obj.transform.position = transform.position;

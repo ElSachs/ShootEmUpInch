@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 879812366131528378}
   - component: {fileID: 2919520113183386050}
   - component: {fileID: 4446840849066086127}
-  - component: {fileID: 1480041558496832478}
+  - component: {fileID: 5071652771545945056}
   m_Layer: 10
   m_Name: RedPenta
   m_TagString: Penta
@@ -81,7 +81,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7743841, y: 0.6933719}
   m_EdgeRadius: 0
---- !u!114 &1480041558496832478
+--- !u!114 &5071652771545945056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,15 +90,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8519643242542465874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ee9883f3611804bbc29124a5cfdf4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f73969eb3e69434ba356d9bb457a74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 25
   bullet: 7
   bulletSpeed: 50
   shootingRate: 4
+  scoreGive: 30
+  stoppingPoint: 2.5
   life: 5
-  resetShoot: 0
+  resetShoot: 1
+  waveManager: {fileID: 0}
 --- !u!1001 &3418206746056584917
 PrefabInstance:
   m_ObjectHideFlags: 0

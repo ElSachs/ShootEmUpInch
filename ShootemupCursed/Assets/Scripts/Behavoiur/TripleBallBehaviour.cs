@@ -31,7 +31,7 @@ public class TripleBallBehaviour : MonoBehaviour
         {
             self.velocity = Vector2.zero;
         }
-        if (life == 0)
+        if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);

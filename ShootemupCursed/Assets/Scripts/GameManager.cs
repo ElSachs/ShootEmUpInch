@@ -15,10 +15,32 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public enum Bonus
+    {
+        SpeedBullet, shootBullet
+    }
+
+    [System.Serializable]
+    public class BonusClass
+    {
+        public Bonus bonusType;
+        public GameObject itemPrefabs;
+    }
+
+    public Dictionary<Bonus, GameObject> bonusDictionary = new Dictionary<Bonus, GameObject>();
+
     public int Score;
     public List<GameObject> Lifes;
+    public List<BonusClass> allBonus;
     public TextMeshProUGUI scoreText;
-    
+
+    private void Start()
+    {
+        foreach (BonusClass clas in allBonus)
+        {
+            bonusDictionary.Add(clas.bonusType, clas.itemPrefabs);
+        }
+    }
 
     public void AddScore(int score)
     {

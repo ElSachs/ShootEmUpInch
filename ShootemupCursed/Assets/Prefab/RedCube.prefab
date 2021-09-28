@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8022696999814475748}
   - component: {fileID: 3365058415148787639}
   - component: {fileID: 7397564508250900743}
-  - component: {fileID: 6586064855429447571}
+  - component: {fileID: -1899996753899406518}
   - component: {fileID: 4820843360287663892}
   - component: {fileID: 8001126510736387774}
   - component: {fileID: 712060566270160608}
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6586064855429447571
+--- !u!114 &-1899996753899406518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,17 +94,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6847718366402794382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b93f093a4e8380478bed905ba4e88b9, type: 3}
+  m_Script: {fileID: 11500000, guid: e732302b32473574c886d3cdc826f721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 50
+  bullet: 0
+  bulletSpeed: 0
   shootingRate: 9
+  scoreGive: 30
+  life: 5
+  resetShoot: 1
+  waveManager: {fileID: 0}
   laser: {fileID: 4085435465998362549, guid: 2df0e5e6915565d42b3fa87ee8e00ea1, type: 3}
   laserSpeed: 900
   glow: {fileID: 712060566270160608}
   animationName: RedCube
-  waveManager: {fileID: 0}
-  life: 5
 --- !u!50 &4820843360287663892
 Rigidbody2D:
   serializedVersion: 4

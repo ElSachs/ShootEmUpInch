@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1822299390462799751}
   - component: {fileID: 1822299390462799748}
   - component: {fileID: 1822299390462799749}
-  - component: {fileID: -4222119489752981185}
+  - component: {fileID: -351529571790040519}
   - component: {fileID: 1822299390462799801}
   - component: {fileID: 1822299390462799746}
   - component: {fileID: 1822299390462799800}
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-4222119489752981185
+--- !u!114 &-351529571790040519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,17 +94,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1822299390462799747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b93f093a4e8380478bed905ba4e88b9, type: 3}
+  m_Script: {fileID: 11500000, guid: e732302b32473574c886d3cdc826f721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 50
+  bullet: 0
+  bulletSpeed: 0
   shootingRate: 9
+  scoreGive: 30
+  life: 5
+  resetShoot: 1
+  waveManager: {fileID: 0}
   laser: {fileID: 3535524594282303418, guid: 305533f84b8423045a57f8d22f11c2c6, type: 3}
   laserSpeed: 900
   glow: {fileID: 1822299390462799800}
   animationName: BlueCube
-  waveManager: {fileID: 0}
-  life: 5
 --- !u!50 &1822299390462799801
 Rigidbody2D:
   serializedVersion: 4
