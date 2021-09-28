@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public GameObject redCube;
     public GameObject blueCube;
 
+    public GameObject gameOverCanvas;
+    
     [SerializeField] private float bulletSpeed;
     private void Start()
     {
@@ -30,7 +32,8 @@ public class PlayerController : MonoBehaviour
         Move();
         if (life <= 0)
         {
-            Debug.Log("Game Over");
+            gameObject.SetActive(false);
+            gameOverCanvas.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
