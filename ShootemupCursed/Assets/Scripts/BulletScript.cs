@@ -23,8 +23,39 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if (other.tag == "Player")
+        switch (other.tag)
+        {
+            case "Player" :
+                other.GetComponent<PlayerController>().life--;
+                gameObject.SetActive(false);
+                break;
+            
+            case "Triangle" :
+                other.GetComponent<TriangleBehaviour>().life--;
+                gameObject.SetActive(false);
+                break;
+            
+            case "Cube" :
+                other.GetComponent<CubeBehaviour>().life--;
+                gameObject.SetActive(false);
+                break;
+            
+            case "Triple" :
+                other.GetComponent<TripleBallBehaviour>().life--;
+                gameObject.SetActive(false);
+                break;
+            
+            case "BulletDestroyer" :
+                gameObject.SetActive(false);
+                break;
+            
+            default :
+                Debug.Log("j'ai touché");
+                other.GetComponent<EnemyBehaviour>().life--;
+                gameObject.SetActive(false);
+                break;
+        }
+        /*if (other.tag == "Player")
         {
          other.GetComponent<PlayerController>().life--;
          gameObject.SetActive(false);
@@ -56,7 +87,7 @@ public class BulletScript : MonoBehaviour
             Debug.Log("j'ai touché");
             other.GetComponent<EnemyBehaviour>().life--;
             gameObject.SetActive(false);
-        }
+        }*/
         
         
     }
