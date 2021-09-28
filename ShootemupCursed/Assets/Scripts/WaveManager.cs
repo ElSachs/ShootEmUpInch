@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
+using UnityEditor.Experimental;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,6 +17,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D RedCube;
     [SerializeField] private Rigidbody2D TripleRed;
     [SerializeField] private Rigidbody2D TripleBlue;
+    [SerializeField] private Rigidbody2D PentaBlue;
+    [SerializeField] private Rigidbody2D PentaRed;
     private int waveType = 0;
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);
@@ -28,9 +31,14 @@ public class WaveManager : MonoBehaviour
     private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
-    
 
-    
+    private void Awake()
+    {
+        waveType = 0;
+        waveFinished = true;
+        enemiesLeft = 0;
+    }
+
     private void Update()
     {
         if (waveFinished)
@@ -106,7 +114,7 @@ public class WaveManager : MonoBehaviour
             case 5 :
                 enemyToSpawn = RedTriangle;
                 distanceBeetweenEnemiesX = 0f;
-                distanceBeetweenEnemiesY = 1f;
+                distanceBeetweenEnemiesY = -1f;
                 enemiesToSpawn = 3;
                 Wave();
                 enemyToSpawn = BlueTriangle;
@@ -131,7 +139,6 @@ public class WaveManager : MonoBehaviour
                 spawnPoint = initialSpawnPoint;
                 enemySpawned = 0;
                 break;
-            
             case 7 :
                 enemyToSpawn = TripleBlue;
                 enemySpawned = 0;
@@ -152,7 +159,82 @@ public class WaveManager : MonoBehaviour
                 }
                 Debug.Log(enemiesLeft);
                 enemySpawned = 0;
+                spawnPoint = initialSpawnPoint;
                 break;
+            case 8 :
+                    enemyToSpawn = RedTriangle;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 8;
+                    enemySpawned = 0;
+                    for (int i = 0; i < enemiesToSpawn; i++)
+                    {
+                        Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                        spawnPoint.x = spawnPoint.x + 1f;
+                        spawnedEnemy.transform.SetParent(parent);
+                        enemySpawned = enemySpawned + 1;
+                        enemiesLeft++;
+                        if (enemySpawned == 4)
+                        {
+                            enemyToSpawn = BlueTriangle;
+                        }
+                    }
+
+                    enemyToSpawn = TripleRed;
+                    spawnPoint = new Vector2(initialSpawnPoint.x, initialSpawnPoint.y - 1f);
+                    enemySpawned = 0;
+                    for (int i = 0; i < enemiesToSpawn; i++)
+                    {
+                        Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                        spawnPoint.x = spawnPoint.x + 1f;
+                        spawnedEnemy.transform.SetParent(parent);
+                        enemySpawned = enemySpawned + 1;
+                        enemiesLeft++;
+                        if (enemySpawned == 4)
+                        {
+                            enemyToSpawn = TripleBlue;
+                        }
+                    }
+                    enemyToSpawn = RedEnemy;
+                    spawnPoint = new Vector2(initialSpawnPoint.x, initialSpawnPoint.y - 1.5f);
+                    enemySpawned = 0;
+                    for (int i = 0; i < enemiesToSpawn; i++)
+                    {
+                        Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                        spawnPoint.x = spawnPoint.x + 1f;
+                        spawnedEnemy.transform.SetParent(parent);
+                        enemySpawned = enemySpawned + 1;
+                        enemiesLeft++;
+                        if (enemySpawned == 4)
+                        {
+                            enemyToSpawn = BlueEnemy;
+                        }
+                    }
+                    
+                    break;
+            case 9 :
+                    enemyToSpawn = PentaBlue;
+                    enemySpawned = 0;
+                    enemiesToSpawn = 2;
+                    distanceBeetweenEnemiesX = 1f;
+                    spawnPoint = initialSpawnPoint;
+                    Wave();
+                    enemiesToSpawn = 1;
+                    spawnPoint = new Vector2(-3f, 5f);
+                    Wave();
+                    enemyToSpawn = PentaRed;
+                    enemySpawned = 0;
+                    enemiesToSpawn = 2;
+                    distanceBeetweenEnemiesX = 1f;
+                    spawnPoint = new Vector2(2.5f, 6f);
+                    Wave();
+                    enemiesToSpawn = 1;
+                    spawnPoint = new Vector2(3f, 5f);
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+    
         }
 
     }

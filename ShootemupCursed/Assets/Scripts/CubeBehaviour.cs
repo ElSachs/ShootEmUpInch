@@ -39,6 +39,7 @@ public class CubeBehaviour : MonoBehaviour
         if (life == 0)
         {
             gameObject.SetActive(false);
+            WaveManager.cubeShooting = false;
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
         }

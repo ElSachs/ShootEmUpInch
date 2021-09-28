@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     public int life = 3;
     public bool resetShoot;
     private Transform waveManager;
+    
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();

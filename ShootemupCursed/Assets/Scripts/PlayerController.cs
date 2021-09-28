@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             gameOverCanvas.SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
         { 
             //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
             Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);

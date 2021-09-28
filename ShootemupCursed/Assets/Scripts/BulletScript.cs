@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     public BulletScriptable stat;
     [NonSerialized]public Rigidbody2D rb;
     private Vector2 triangleToPlayer;
+    private float notMoving;
 
 
     private void Awake()
@@ -18,6 +19,19 @@ public class BulletScript : MonoBehaviour
     private void OnDisable()
     {
         rb.velocity = Vector2.zero;
+    }
+
+    private void Update()
+    {
+        if (rb.velocity == Vector2.zero)
+        {
+            notMoving++;
+        }
+
+        if (notMoving >= 500f)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 
@@ -36,7 +50,11 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "Cube" :
-                other.GetComponent<CubeBehaviour>().life--;
+                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+                {
+                    other.GetComponent<CubeBehaviour>().life--;
+                }
+
                 gameObject.SetActive(false);
                 break;
             
@@ -46,6 +64,11 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "BulletDestroyer" :
+                gameObject.SetActive(false);
+                break;
+            
+            case "Penta" :
+                other.GetComponent<PentaBehaviour>().life--;
                 gameObject.SetActive(false);
                 break;
             

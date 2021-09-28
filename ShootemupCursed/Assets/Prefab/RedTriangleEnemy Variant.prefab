@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 62811035907970507, guid: 8d98029e1a4ec4b479cae87f7e303837, type: 3}
     - target: {fileID: 8376450547745313910, guid: d816bf84639f7ed479476445015e5f56, type: 3}
       propertyPath: moveSpeed
-      value: 40
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8376450547745313910, guid: d816bf84639f7ed479476445015e5f56, type: 3}
       propertyPath: typeOfBullet
