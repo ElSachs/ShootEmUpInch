@@ -8,6 +8,7 @@ public class CubeBehaviour : MonoBehaviour
     private Rigidbody2D self;
     [SerializeField] private float moveSpeed;
     [SerializeField] float shootingRate;
+    [SerializeField] private int scoreGive = 30;
     private bool resetShoot = true;
     [SerializeField] private Rigidbody2D laser;
     [SerializeField] private float laserSpeed;
@@ -38,6 +39,7 @@ public class CubeBehaviour : MonoBehaviour
         }
         if (life == 0)
         {
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             WaveManager.cubeShooting = false;
             waveManager = GameObject.Find("WaveManager").transform;

@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.PerformanceData;
 using UnityEngine;
 
-public class TripleBallBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     private Rigidbody2D self;
     [SerializeField] private float moveSpeed;
     [SerializeField] private PoolManager.Generate bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
-    public bool resetShoot = true;
-    public int life = 5;
+    [SerializeField] private int scoreGive = 30;
+    public int life = 3;
+    public bool resetShoot;
     private Transform waveManager;
+    
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -21,20 +25,21 @@ public class TripleBallBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (resetShoot == true)
-        {
+        if(resetShoot == true)
             Shooting();
-        }
-
-        if (transform.position.y <= 3f)
-        {
-            self.velocity = Vector2.zero;
-        }
         if (life == 0)
         {
+            Debug.Log("mort");
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+            
+        }
+
+        if (transform.position.y <= 2.5f)
+        {
+            self.velocity = Vector2.zero; 
         }
     }
 
@@ -42,11 +47,7 @@ public class TripleBallBehaviour : MonoBehaviour
     {
         resetShoot = false;
         Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
-        Rigidbody2D shotBullet2 = PoolManager.Instance.spawnFromPool(bullet, transform);
-        Rigidbody2D shotBullet3 = PoolManager.Instance.spawnFromPool(bullet, transform);
         shotBullet.AddForce(Vector2.down * bulletSpeed);
-        shotBullet2.AddForce((Vector2.down - Vector2.left) * bulletSpeed);
-        shotBullet3.AddForce((Vector2.down - Vector2.right) * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
     }
 

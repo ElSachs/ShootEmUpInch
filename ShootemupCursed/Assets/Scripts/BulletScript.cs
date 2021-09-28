@@ -42,6 +42,7 @@ public class BulletScript : MonoBehaviour
             case "Player" :
                 other.GetComponent<PlayerController>().life--;
                 gameObject.SetActive(false);
+                GameManager.Instance.UpdateLife();
                 break;
             
             case "Triangle" :
