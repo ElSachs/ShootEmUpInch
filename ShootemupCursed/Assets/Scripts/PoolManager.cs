@@ -28,9 +28,9 @@ public class PoolManager : MonoBehaviour
 
     public enum Generate
     {
-        ______ShipBullet______, normalBullet,
+        ______ShipBullet______,    normalBullet,
         ______EnnemieBullet______, RedBullet, BlueBullet, TriangleBlueBullet, TriangleRedBullet,
-        ______Ennemies_______, RedEnnemy, BlueEnemy
+        ________Ennemies_______,   RedEnnemy, BlueEnemy
     }
     
     public Transform Spawnpoint;

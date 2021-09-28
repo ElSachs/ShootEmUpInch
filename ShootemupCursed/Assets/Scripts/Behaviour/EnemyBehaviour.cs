@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private PoolManager.Generate bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
+    [SerializeField] private int scoreGive = 30;
     public int life = 3;
     public bool resetShoot;
     private Transform waveManager;
@@ -28,9 +29,11 @@ public class EnemyBehaviour : MonoBehaviour
         if (life == 0)
         {
             Debug.Log("mort");
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+            
         }
 
         if (transform.position.y <= 2.5f)

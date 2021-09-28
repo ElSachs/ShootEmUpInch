@@ -9,6 +9,7 @@ public class TripleBallBehaviour : MonoBehaviour
     [SerializeField] private Rigidbody2D bullet;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
+    [SerializeField] private int scoreGive = 30;
     public bool resetShoot = true;
     public int life = 5;
     private Transform waveManager;
@@ -32,6 +33,7 @@ public class TripleBallBehaviour : MonoBehaviour
         }
         if (life == 0)
         {
+            GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
