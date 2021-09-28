@@ -55,7 +55,6 @@ public class WaveManager : MonoBehaviour
     {
         waveFinished = false;
         waveType ++;
-        Debug.Log(waveType);
         switch (waveType)
         {
             case 1 :

@@ -1763,11 +1763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
       propertyPath: bulletSpeed
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
       propertyPath: shootingRate
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8380975382008171854, guid: cd2620307b769c840831f6460504c1ee, type: 3}
       propertyPath: m_Layer
