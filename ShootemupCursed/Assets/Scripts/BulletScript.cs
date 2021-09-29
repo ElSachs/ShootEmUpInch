@@ -85,11 +85,17 @@ public class BulletScript : MonoBehaviour
                 other.GetComponent<PentaBehaviours>().life--;
                 gameObject.SetActive(false);
                 break;
+            
             case "Boss" :
                 other.GetComponent<BossBehaviours>().life--;
                 gameObject.SetActive(false);
-                
                 break;
+            
+            case "Star" :
+                other.GetComponent<StarBehaviours>().life--;
+                gameObject.SetActive(false);
+                break;
+            
             default :
                 Debug.Log("j'ai touché");
                 other.GetComponent<EnemyBehaviour>().life--;

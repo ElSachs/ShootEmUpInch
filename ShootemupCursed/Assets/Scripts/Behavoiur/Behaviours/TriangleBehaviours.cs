@@ -6,7 +6,6 @@ public class TriangleBehaviours : EnemyBehaviour
 {
     private Vector2 triangleToPlayer;
     private float timeElapsed;
-    private float timeUntilStop = 4f;
     [SerializeField] private Transform player;
     
     public override void Start()

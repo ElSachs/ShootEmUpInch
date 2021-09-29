@@ -16,18 +16,21 @@ public class EnemyBehaviour : MonoBehaviour
     public bool resetShoot;
     public Transform waveManager;
     [SerializeField] private Loot[] loots;
+    private float elapsedTime;
+    [SerializeField] public float timeUntilStop = 2f;
     
     [System.Serializable]
     public class Loot
     {
+        
         public PoolManager.Generate bonusType;
         public int chanceOfDrop;
     }
     
     public virtual void Start()
     {
+        elapsedTime = Time.time;
         waveManager = GameObject.Find("WaveManager").transform;
-            
         self = GetComponent<Rigidbody2D>();
         self.AddForce(Vector2.down * moveSpeed);
         resetShoot = true;
@@ -46,9 +49,9 @@ public class EnemyBehaviour : MonoBehaviour
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
         }
 
-        if (transform.position.y <= stoppingPoint)
+        if (Time.time >= elapsedTime + timeUntilStop)
         {
-            self.velocity = Vector2.zero; 
+            self.velocity = Vector2.zero;
         }
     }
 

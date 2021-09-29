@@ -257,6 +257,8 @@ MonoBehaviour:
   life: 5
   resetShoot: 1
   waveManager: {fileID: 0}
+  loots: []
+  timeUntilStop: 5
 --- !u!1 &7161509596347646295
 GameObject:
   m_ObjectHideFlags: 0

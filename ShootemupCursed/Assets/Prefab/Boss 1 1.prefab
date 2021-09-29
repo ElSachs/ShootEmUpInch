@@ -313,6 +313,7 @@ MonoBehaviour:
   resetShoot: 1
   waveManager: {fileID: 0}
   loots: []
+  timeUntilStop: 3
   redBullet: 3
   blueBullet: 4
   blueSpawnPoint: {fileID: 8313779488432795195}
