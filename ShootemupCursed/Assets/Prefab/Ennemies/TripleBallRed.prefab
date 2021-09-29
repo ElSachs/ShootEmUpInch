@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 7161509596279232611}
   - component: {fileID: 7161509596279232610}
   - component: {fileID: 7161509596279232609}
-  - component: {fileID: 7161509596279232608}
+  - component: {fileID: -9045233886776765484}
   m_Layer: 10
   m_Name: TripleBallRed
   m_TagString: Triple
@@ -235,7 +235,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7161509596279232608
+--- !u!114 &-9045233886776765484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,15 +244,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7161509596279232615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3007eefe68048468b1a1ca3e6408ce, type: 3}
+  m_Script: {fileID: 11500000, guid: e9eb7473f443f9843a1cd0200cb4b6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   moveSpeed: 25
   bullet: 3
   bulletSpeed: 100
   shootingRate: 1
-  resetShoot: 0
+  scoreGive: 30
+  stoppingPoint: 3
   life: 5
+  resetShoot: 1
+  waveManager: {fileID: 0}
 --- !u!1 &7161509596347646295
 GameObject:
   m_ObjectHideFlags: 0

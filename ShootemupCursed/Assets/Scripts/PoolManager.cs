@@ -30,7 +30,8 @@ public class PoolManager : MonoBehaviour
     {
         ______ShipBullet______, normalBullet,
         ______EnnemieBullet______, RedBullet, BlueBullet, TriangleBlueBullet, TriangleRedBullet,PentaRedBullet,PentaBlueBullet,
-        ______Ennemies_______, RedEnnemy, BlueEnemy
+        ______Ennemies_______, RedEnnemy, BlueEnemy,
+        _____Items______, shootBullet
     }
     
     public Transform Spawnpoint;
@@ -57,7 +58,6 @@ public class PoolManager : MonoBehaviour
 
     public Rigidbody2D spawnFromPool(Generate tag, Transform transform)
     {
-        Debug.Log(tag.ToString());
         GameObject obj = dictionaryPool[tag].Dequeue();
         obj.SetActive(true);
         obj.transform.position = transform.position;

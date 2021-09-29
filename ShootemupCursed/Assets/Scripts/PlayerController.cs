@@ -12,11 +12,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D self;
     public int life = 3;
     public float attackSpeed = 5;
+    public int shootBullet = 1;
     [SerializeField] float SwitchSpeed;
     public float coolDown = 0;
-    public Transform Spawner;
+    public Transform[] Spawner;
     public bool Isblue = false;
+
+    Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
+    [SerializeField] private float bonusTime = 5;
     
+
     public GameObject redCube;
     public GameObject blueCube;
 
@@ -38,12 +43,16 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
-        { 
-            //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
-            Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner);
-            shotBullet.AddForce(Vector2.up * bulletSpeed);
-                coolDown = 2;
+        {
+            for (int i = 0; i < shootBullet; i++)
+            {
+                
+                //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
+                Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
+                shotBullet.AddForce(Vector2.up * bulletSpeed);
 
+            }
+            coolDown = 2;
         }
 
         if (coolDown>0)
@@ -74,7 +83,25 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0f, -200f*Time.deltaTime*SwitchSpeed, 0f);
         }
-        
+
+        if (bonusQueue.Count != 0)
+        {
+            if (bonusTime > 0)
+            {
+                bonusTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                bonusTime = 10;
+                PoolManager.Generate bonus = bonusQueue.Dequeue();
+                switch (bonus)
+                {
+                    case PoolManager.Generate.shootBullet :
+                        shootBullet--;
+                        break;
+                }
+            }
+        }
         
     }
 
@@ -93,5 +120,16 @@ public class PlayerController : MonoBehaviour
 
 
         self.velocity = move * maxSpeed * Time.deltaTime;
+    }
+
+    public void AddBonus(PoolManager.Generate bonus)
+    {
+        bonusQueue.Enqueue(bonus);
+        switch (bonus)
+        {
+            case PoolManager.Generate.shootBullet :
+                shootBullet++;
+                break;
+        }
     }
 }

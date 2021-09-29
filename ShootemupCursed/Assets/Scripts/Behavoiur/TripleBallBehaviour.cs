@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Random;
 
-public class PentaBehaviour : MonoBehaviour
+public class TripleBallBehaviour : MonoBehaviour
 {
     private Rigidbody2D self;
     [SerializeField] private float moveSpeed;
@@ -11,47 +10,45 @@ public class PentaBehaviour : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingRate;
     [SerializeField] private int scoreGive = 30;
+    public bool resetShoot = true;
     public int life = 5;
-    public bool resetShoot;
     private Transform waveManager;
-    private Vector3 target;
-    private Vector3 pentaToTarget;
-    private float timeElapsed;
-    private float timeUntilStop = 4f;
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
         self.AddForce(Vector2.down * moveSpeed);
         resetShoot = true;
-        timeElapsed = Time.time;
     }
 
     private void Update()
     {
-        if(resetShoot == true)
+        if (resetShoot == true)
+        {
             Shooting();
-        if (life == 0)
+        }
+
+        if (transform.position.y <= 3f)
+        {
+            self.velocity = Vector2.zero;
+        }
+        if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
-            Debug.Log("mort");
             gameObject.SetActive(false);
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
-        }
-
-        if (Time.time >= timeElapsed + timeUntilStop)
-        {
-            self.velocity = Vector2.zero; 
         }
     }
 
     void Shooting()
     {
         resetShoot = false;
-        target = new Vector2(Random.Range(-3.5f, 3.5f), Random.Range(-4.5f, 1f));
-        pentaToTarget = target - transform.position;
         Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(bullet, transform);
-        shotBullet.AddForce(pentaToTarget.normalized * bulletSpeed);
+        Rigidbody2D shotBullet2 = PoolManager.Instance.spawnFromPool(bullet, transform);
+        Rigidbody2D shotBullet3 = PoolManager.Instance.spawnFromPool(bullet, transform);
+        shotBullet.AddForce(Vector2.down * bulletSpeed);
+        shotBullet2.AddForce((Vector2.down - Vector2.left) * bulletSpeed);
+        shotBullet3.AddForce((Vector2.down - Vector2.right) * bulletSpeed);
         Invoke(("ResetShoot"), shootingRate);
     }
 

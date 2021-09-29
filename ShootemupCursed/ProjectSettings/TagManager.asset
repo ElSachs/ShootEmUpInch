@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Penta
   - Boss
+  - laser
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - RedEnemies
   - ShipBullet
   - PlayerRed
-  - 
-  - 
-  - 
+  - RedLaser
+  - BlueLaser
+  - Items
   - 
   - 
   - 

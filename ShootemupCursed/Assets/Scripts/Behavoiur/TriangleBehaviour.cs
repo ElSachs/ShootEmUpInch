@@ -38,7 +38,7 @@ public class TriangleBehaviour : MonoBehaviour
             Shooting();
         }
         LookAtPlayer();
-        if (life == 0)
+        if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
