@@ -103,11 +103,13 @@ MonoBehaviour:
   bulletSpeed: 0
   shootingRate: 9
   scoreGive: 30
+  stoppingPoint: 2.5
   life: 5
   resetShoot: 1
   waveManager: {fileID: 0}
+  loots: []
   laser: {fileID: 3535524594282303418, guid: 305533f84b8423045a57f8d22f11c2c6, type: 3}
-  laserSpeed: 900
+  laserSpeed: 600
   glow: {fileID: 1822299390462799800}
   animationName: BlueCube
 --- !u!50 &1822299390462799801

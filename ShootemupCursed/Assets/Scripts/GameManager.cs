@@ -33,9 +33,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Lifes;
     public List<BonusClass> allBonus;
     public TextMeshProUGUI scoreText;
+
     public Material blueMaterial;
     public Material redMaterial;
     public GameObject[] border;
+    
+    public int level;
+
 
     private void Start()
     {

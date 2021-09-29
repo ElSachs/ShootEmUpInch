@@ -19,17 +19,20 @@ public class BossBehaviours : EnemyBehaviour
     private bool redGoToZero = false;
     private bool resetPattern = true;
     private float patternTime;
-    private float patternChange = 2f;
+    [SerializeField] private GameObject healthBar; 
 
     public override void Start()
     {
         base.Start();
         elapsedTime = Time.time;
         pattern = Random.Range(1, 4);
+        Instantiate(healthBar);
+        healthBar.SetActive(true);
     }
 
     public override void Update()
     {
+        
         if (Time.time >= elapsedTime + timeUntilStop)
         {
             self.velocity = Vector2.zero;
@@ -43,6 +46,7 @@ public class BossBehaviours : EnemyBehaviour
             Drop();
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+            healthBar.SetActive(false);
         }
 
         if (resetPattern)

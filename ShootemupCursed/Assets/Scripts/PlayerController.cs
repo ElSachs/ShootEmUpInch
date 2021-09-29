@@ -17,17 +17,19 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
-
     Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
     [SerializeField] private float bonusTime = 5;
-    
-
     public GameObject redCube;
     public GameObject blueCube;
-
     public GameObject gameOverCanvas;
+
+
+    public AudioSource shoot;
+    public AudioSource swap;
     
     [SerializeField] private float bulletSpeed;
+    public bool invincibilityFrame = false;
+    [SerializeField] private GameObject invincibilityCircle; 
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -38,8 +40,15 @@ public class PlayerController : MonoBehaviour
         Move();
         if (life <= 0)
         {
+            GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
             gameObject.SetActive(false);
             gameOverCanvas.SetActive(true);
+        }
+
+        if (invincibilityFrame)
+        {
+            Instantiate(invincibilityCircle, transform.position, Quaternion.identity);
+            invincibilityFrame = false;
         }
 
         if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
@@ -76,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
                 
             }
+            swap.Play();
         }
         if (Isblue && transform.rotation.eulerAngles.y < 175)
         {
@@ -104,7 +114,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            shoot.Stop();
+        }
     }
 
     void Move()
