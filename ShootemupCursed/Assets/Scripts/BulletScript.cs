@@ -83,8 +83,8 @@ public class BulletScript : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
             case "Boss" :
-                other.GetComponent<BossBehaviour>().life--;
-                Debug.Log(other.GetComponent<BossBehaviour>().life);
+                other.GetComponent<BossBehaviours>().life--;
+                Debug.Log(other.GetComponent<BossBehaviours>().life);
                 gameObject.SetActive(false);
                 
                 break;

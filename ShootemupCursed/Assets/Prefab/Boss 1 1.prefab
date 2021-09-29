@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8062232691207118643}
   - component: {fileID: 4133751753268857895}
   - component: {fileID: 405426968091123321}
-  - component: {fileID: 3556606611546728498}
+  - component: {fileID: -2795023300311966935}
   m_Layer: 10
   m_Name: Boss 1 1
   m_TagString: Boss
@@ -246,7 +246,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3556606611546728498
+--- !u!114 &-2795023300311966935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,18 +255,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7782420177912093323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 564cad935025e5544822fd0d0575e5c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 439e9d5d1cb16254381172d5e37ca277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  self: {fileID: 0}
   moveSpeed: 25
+  bullet: 0
   bulletSpeed: 200
+  shootingRate: 0.25
+  scoreGive: 500
+  stoppingPoint: 2.5
+  life: 50
+  resetShoot: 1
+  waveManager: {fileID: 0}
+  loots: []
   redBullet: 3
   blueBullet: 4
-  shootingRate: 0.25
   blueSpawnPoint: {fileID: 8313779488432795195}
   redSpawnPoint: {fileID: 8313779488160127086}
-  life: 50
 --- !u!1 &8313779488160127057
 GameObject:
   m_ObjectHideFlags: 0

@@ -1513,7 +1513,7 @@ MonoBehaviour:
   maxSpeed: 2500
   life: 3
   attackSpeed: 20
-  shootBullet: 1
+  shootBullet: 5
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -1774,6 +1774,7 @@ MonoBehaviour:
   PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
   PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
+  waveType: 10
   parent: {fileID: 889595248}
 --- !u!1 &997224948
 GameObject:
@@ -1907,109 +1908,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997224948}
   m_CullTransparentMesh: 1
-
-
---- !u!1001 &1041729550
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2054406208394873458, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_Name
-      value: Boss 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261035222286110666, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_TagString
-      value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 3936873927401725362, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: bullet
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: moveSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: redBullet
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: blueBullet
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: bulletSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772655326095129971, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: shootingRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8380975382008171854, guid: cd2620307b769c840831f6460504c1ee, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd2620307b769c840831f6460504c1ee, type: 3}
 --- !u!1 &1119333865
 GameObject:
   m_ObjectHideFlags: 0

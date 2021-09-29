@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Random;
-public class BossBehaviour : MonoBehaviour
+
+public class BossBehaviours : EnemyBehaviour
 {
-    [SerializeField] private Rigidbody2D self;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private PoolManager.Generate redBullet;
     [SerializeField] private PoolManager.Generate blueBullet;
-    [SerializeField] float shootingRate;
     private int pattern;
     private float elapsedTime;
     private float timeUntilStop = 2f;
     private float targetY = -9.5f;
     private float targetX = -4f;
-    private bool resetShoot = true;
     private PoolManager.Generate bulletToShoot = PoolManager.Generate.RedBullet;
     private int numberOfShots = 0;
     [SerializeField] private Transform blueSpawnPoint;
@@ -25,22 +20,31 @@ public class BossBehaviour : MonoBehaviour
     private bool resetPattern = true;
     private float patternTime;
     private float patternChange = 2f;
-    private Transform waveManager;
-    public int life = 50;
-    void Start()
+
+    public override void Start()
     {
-        self = GetComponent<Rigidbody2D>();
-        self.AddForce(Vector2.down * moveSpeed);
+        base.Start();
         elapsedTime = Time.time;
         pattern = Random.Range(1, 4);
     }
 
-    void Update()
+    public override void Update()
     {
         if (Time.time >= elapsedTime + timeUntilStop)
         {
             self.velocity = Vector2.zero;
         }
+        
+        if (life <= 0)
+        {
+            GameManager.Instance.AddScore(scoreGive);
+            Debug.Log("mort");
+            gameObject.SetActive(false);
+            Drop();
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+        }
+
         if (resetPattern)
         {
             pattern = 0;
@@ -115,18 +119,11 @@ public class BossBehaviour : MonoBehaviour
                     break;
             }
 
-        if (life == 0)
-        {
-            
-            Debug.Log("mort");
-            gameObject.SetActive(false);
-            waveManager = GameObject.Find("WaveManager").transform;
-            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
-        }
+        
         
     }
 
-    private void Shooting()
+    public override void Shooting()
     {
         resetShoot = false;
         bulletSpeed = 200f;
@@ -151,7 +148,6 @@ public class BossBehaviour : MonoBehaviour
 
         Invoke(("ResetShoot"), shootingRate);
     }
-
     private void Shooting2()
     {
         resetShoot = false;
@@ -229,10 +225,6 @@ public class BossBehaviour : MonoBehaviour
         Invoke(("ResetShoot"), shootingRate);
     }
     
-    private void ResetShoot()
-    {
-        resetShoot = true;
-    }
-    
-    
 }
+
+
