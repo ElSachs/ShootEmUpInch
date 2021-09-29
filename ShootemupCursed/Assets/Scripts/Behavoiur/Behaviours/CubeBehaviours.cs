@@ -9,6 +9,7 @@ public class CubeBehaviours : EnemyBehaviour
     private Color color;
     [SerializeField] private Animation glow;
     [SerializeField] private string animationName;
+    public bool iAmShooting = false;
 
     public override void Update()
     {
@@ -35,8 +36,9 @@ public class CubeBehaviours : EnemyBehaviour
         {
             resetShoot = false;
             WaveManager.cubeShooting = true;
+            iAmShooting = true;
             glow.Play(animationName);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
             Debug.Log("start corout");
             Rigidbody2D shotLaser = Instantiate(laser, new Vector2(0f, 37f), Quaternion.identity);
             shotLaser.AddForce(Vector3.down * laserSpeed);
@@ -48,6 +50,7 @@ public class CubeBehaviours : EnemyBehaviour
         {
             yield return new WaitForSeconds(4f);
             WaveManager.cubeShooting = false;
+            iAmShooting = false;
         }
         
     }

@@ -9,11 +9,13 @@ public class BulletScript : MonoBehaviour
     [NonSerialized]public Rigidbody2D rb;
     private Vector2 triangleToPlayer;
     private float notMoving;
+    private Transform waveManager;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        waveManager = GameObject.Find("WaveManager").transform;
     }
     
     private void OnDisable()
@@ -43,14 +45,15 @@ public class BulletScript : MonoBehaviour
             case "Player" :
                 if (gameObject.tag == "laser")
                 {
-                    other.GetComponent<PlayerController>().life = 0;
-                    GameManager.Instance.InstantKill();
+                    other.GetComponent<PlayerController>().life--;
+                    GameManager.Instance.UpdateLife();
                 }
                 else
                 {
-                other.GetComponent<PlayerController>().life--;
-                GameManager.Instance.UpdateLife();
-                    
+                     other.GetComponent<PlayerController>().life--;
+                     other.GetComponent<PlayerController>().invincibilityFrame = true;
+                     GameManager.Instance.UpdateLife();
+
                 }
                 gameObject.SetActive(false);
                 break;
@@ -61,7 +64,7 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "Cube" :
-                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero && other.GetComponent<CubeBehaviours>().iAmShooting)
                 {
                     other.GetComponent<CubeBehaviours>().life--;
                 }
@@ -84,7 +87,6 @@ public class BulletScript : MonoBehaviour
                 break;
             case "Boss" :
                 other.GetComponent<BossBehaviours>().life--;
-                Debug.Log(other.GetComponent<BossBehaviours>().life);
                 gameObject.SetActive(false);
                 
                 break;

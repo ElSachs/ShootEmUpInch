@@ -1516,7 +1516,7 @@ MonoBehaviour:
   maxSpeed: 2500
   life: 3
   attackSpeed: 20
-  shootBullet: 5
+  shootBullet: 1
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -1539,6 +1539,8 @@ MonoBehaviour:
   shoot: {fileID: 792468303}
   swap: {fileID: 792468304}
   bulletSpeed: 500
+  invincibilityFrame: 0
+  invincibilityCircle: {fileID: 354024396249199953, guid: 9f0b0a4b6790b2345a3b76eeb745a8cb, type: 3}
 --- !u!4 &792468300
 Transform:
   m_ObjectHideFlags: 0
@@ -1971,7 +1973,8 @@ MonoBehaviour:
   PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
   PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
-  waveType: 0
+  waveType: 1
+
   parent: {fileID: 889595248}
 --- !u!1 &997224948
 GameObject:
