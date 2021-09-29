@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class ItemScript : MonoBehaviour
 {
+    [SerializeField] private PoolManager.Generate typeOfBonus;
     private void Update()
     {
-        transform.Translate(0f, 1f, 0f);
+        transform.Translate(0f, -1f*Time.deltaTime, 0f);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        Debug.Log("getting");
+        
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("get");
-            //other.gameObject.GetComponents<PlayerController>().shootBullet++;
+            other.gameObject.GetComponent<PlayerController>().AddBonus(typeOfBonus);
         }
+        gameObject.SetActive(false);
     }
+    
 }

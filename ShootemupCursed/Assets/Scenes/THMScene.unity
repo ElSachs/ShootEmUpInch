@@ -1529,6 +1529,7 @@ MonoBehaviour:
   - {fileID: 691430544}
   - {fileID: 179787078}
   Isblue: 0
+  bonusTime: 5
   redCube: {fileID: 1514652205}
   blueCube: {fileID: 172579669}
   gameOverCanvas: {fileID: 348742049}
@@ -2613,6 +2614,11 @@ MonoBehaviour:
     typeOfObject: 8
     Prefabs: {fileID: 7222615484941985752, guid: 6372f51b42ab5214eaa84e5453a3da44, type: 3}
     initialSize: 50
+    Stat: {fileID: 11400000, guid: bc9119c0fb111c843af5de9deb0290de, type: 2}
+  - name: ShootBonus
+    typeOfObject: 13
+    Prefabs: {fileID: 6416184319851624745, guid: 3c0c76f1675213e4a93e087a701fa228, type: 3}
+    initialSize: 5
     Stat: {fileID: 11400000, guid: bc9119c0fb111c843af5de9deb0290de, type: 2}
 --- !u!4 &1582413793
 Transform:

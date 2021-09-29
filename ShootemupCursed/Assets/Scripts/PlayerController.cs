@@ -17,7 +17,11 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
+
+    Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
+    [SerializeField] private float bonusTime = 5;
     
+
     public GameObject redCube;
     public GameObject blueCube;
 
@@ -48,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 shotBullet.AddForce(Vector2.up * bulletSpeed);
 
             }
-                coolDown = 2;
+            coolDown = 2;
         }
 
         if (coolDown>0)
@@ -79,7 +83,25 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0f, -200f*Time.deltaTime*SwitchSpeed, 0f);
         }
-        
+
+        if (bonusQueue.Count != 0)
+        {
+            if (bonusTime > 0)
+            {
+                bonusTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                bonusTime = 10;
+                PoolManager.Generate bonus = bonusQueue.Dequeue();
+                switch (bonus)
+                {
+                    case PoolManager.Generate.shootBullet :
+                        shootBullet--;
+                        break;
+                }
+            }
+        }
         
     }
 
@@ -98,5 +120,16 @@ public class PlayerController : MonoBehaviour
 
 
         self.velocity = move * maxSpeed * Time.deltaTime;
+    }
+
+    public void AddBonus(PoolManager.Generate bonus)
+    {
+        bonusQueue.Enqueue(bonus);
+        switch (bonus)
+        {
+            case PoolManager.Generate.shootBullet :
+                shootBullet++;
+                break;
+        }
     }
 }

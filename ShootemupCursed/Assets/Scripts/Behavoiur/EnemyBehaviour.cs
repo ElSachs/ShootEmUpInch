@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     [System.Serializable]
     public class Loot
     {
-        public GameManager.Bonus bonusType;
+        public PoolManager.Generate bonusType;
         public int chanceOfDrop;
     }
     
@@ -41,7 +41,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (life <= 0)
         {
             GameManager.Instance.AddScore(scoreGive);
-            Debug.Log("mort");
+            //Debug.Log("mort");
             Drop();
             gameObject.SetActive(false);
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
@@ -65,13 +65,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         foreach (Loot loot in loots)
         {
-            float intt = UnityEngine.Random.Range(1f, 101f);
-            Debug.Log("intt : " + intt);
+            float intt = UnityEngine.Random.Range(1f, 100f);
+            //Debug.Log("intt : " + intt);
             
             if (intt <= loot.chanceOfDrop)
             {
                 Debug.Log("drop");
-                Instantiate(GameManager.Instance.bonusDictionary[loot.bonusType], transform);
+                PoolManager.Instance.spawnFromPool(loot.bonusType, transform);
             }
         }
     }
