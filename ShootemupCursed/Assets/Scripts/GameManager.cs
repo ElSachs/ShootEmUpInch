@@ -33,7 +33,13 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Lifes;
     public List<BonusClass> allBonus;
     public TextMeshProUGUI scoreText;
+
+    public Material blueMaterial;
+    public Material redMaterial;
+    public GameObject[] border;
+    
     public int level;
+
 
     private void Start()
     {
@@ -63,6 +69,24 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < Lifes.Count; i++)
         {
            UpdateLife(); 
+        }
+    }
+
+    public void UpdateBorder(bool Blue)
+    {
+        if (Blue)
+        {
+            foreach (GameObject gam in border)
+            {
+                gam.GetComponent<MeshRenderer>().material = blueMaterial;
+            }
+        }
+        else
+        {
+            foreach (GameObject gam in border)
+            {
+                gam.GetComponent<MeshRenderer>().material = redMaterial;
+            }
         }
     }
 }
