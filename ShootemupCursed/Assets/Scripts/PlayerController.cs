@@ -65,12 +65,14 @@ public class PlayerController : MonoBehaviour
             if (Isblue)
             {
                 Isblue = false;
+                GameManager.Instance.UpdateBorder(false);
                 gameObject.layer = 12;
                 
             }
             else
             {
                 Isblue = true;
+                GameManager.Instance.UpdateBorder(true);
                 gameObject.layer = 3;
                 
             }
