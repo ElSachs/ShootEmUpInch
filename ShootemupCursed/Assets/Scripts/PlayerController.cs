@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     public GameObject blueCube;
 
     public GameObject gameOverCanvas;
+
+    public AudioSource shoot;
+    public AudioSource swap;
     
     [SerializeField] private float bulletSpeed;
     private void Start()
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
                 
             }
+            swap.Play();
         }
         if (Isblue && transform.rotation.eulerAngles.y < 175)
         {
@@ -102,7 +106,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot.Play();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            shoot.Stop();
+        }
     }
 
     void Move()
