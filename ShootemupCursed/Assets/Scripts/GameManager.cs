@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public int level;
 
+    public AudioSource lifeMinus;
 
     private void Start()
     {
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
+        lifeMinus.Play();
         Debug.Log(Lifes.Count-1);
        Lifes[Lifes.Count-1].SetActive(false);
        Lifes.Remove(Lifes[Lifes.Count-1]);

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource shoot;
     public AudioSource swap;
+    public AudioSource bonusSound;
     
     [SerializeField] private float bulletSpeed;
     public bool invincibilityFrame = false;
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
     public void AddBonus(PoolManager.Generate bonus)
     {
+        bonusSound.Play();
         bonusQueue.Enqueue(bonus);
         switch (bonus)
         {
