@@ -8,6 +8,7 @@ public class SoundController : MonoBehaviour
     public AudioClip levelOne;
     public AudioClip boss;
     public AudioClip transition;
+    public AudioClip death;
     bool isTransition;
     [SerializeField] AudioSource source;
     private void Start()
@@ -40,6 +41,13 @@ public class SoundController : MonoBehaviour
     {
         source.loop = true;
         source.clip = boss;
+        source.Play();
+    }
+
+    public void PlayDeathSound()
+    {
+        source.loop = false;
+        source.clip = death;
         source.Play();
     }
 }

@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
         Move();
         if (life <= 0)
         {
+            GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
             gameObject.SetActive(false);
             gameOverCanvas.SetActive(true);
         }
