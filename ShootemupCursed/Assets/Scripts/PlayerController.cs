@@ -125,6 +125,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        self.velocity = move * maxSpeed;
+        
+    }
+
     void Move()
     {
         input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
@@ -135,11 +141,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            move = Vector3.Lerp(move, Vector3.zero, decelerationSpeed * Time.deltaTime);
+            move = Vector3.Lerp(move, Vector3.zero, decelerationSpeed);
         }
 
 
-        self.velocity = move * maxSpeed * Time.deltaTime;
     }
 
     public void AddBonus(PoolManager.Generate bonus)

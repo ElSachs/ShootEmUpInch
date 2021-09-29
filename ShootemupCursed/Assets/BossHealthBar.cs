@@ -6,13 +6,23 @@ using UnityEngine.UI;
 
 public class BossHealthBar : MonoBehaviour
 {
+    public static BossHealthBar Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
     [SerializeField] private Slider slider;
-    [SerializeField] private Transform boss;
-    private int health;
+    [SerializeField] public GameObject boss;
+    private int health = 1;
 
     private void Start()
     {
-        boss = GameObject.FindGameObjectWithTag("Boss").transform;
+        
+        Debug.Log("c'est moi weshhhh");
+        gameObject.SetActive(true);
         health = boss.GetComponent<BossBehaviours>().life;
         SetMaxHealth(health);
     }

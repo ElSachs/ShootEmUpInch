@@ -36,6 +36,7 @@ public class WaveManager : MonoBehaviour
     private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
+    private int level = 1;
 
     private void Awake()
     {
@@ -63,113 +64,116 @@ public class WaveManager : MonoBehaviour
         waveType ++;
 
         Debug.Log("Wave : " + waveType);
-
-        switch (waveType)
+        if (level == 1)
         {
-            case 1 :
-                enemyToSpawn = RedEnemy;
-                distanceBeetweenEnemiesX = 1f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 8;
-                Wave();
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                
-                break;
-            case 2 :
-                enemyToSpawn = BlueEnemy;
-                distanceBeetweenEnemiesX = 1f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 8;
-                Wave();
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                break;
-            case 3 :
-                enemyToSpawn = RedEnemy;
-                distanceBeetweenEnemiesX = 1f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 8;
-                enemySpawned = 0;
-                for (int i = 0; i < enemiesToSpawn; i++)
-                {
-                    Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
-                    spawnPoint.x = spawnPoint.x + 1f;
-                    spawnedEnemy.transform.SetParent(parent);
-                    enemySpawned = enemySpawned + 1;
-                    enemiesLeft++;
-                    if (enemySpawned == 4)
+            switch (waveType)
+            {
+                case 1:
+                    enemyToSpawn = RedEnemy;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 8;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+
+                    break;
+                case 2:
+                    enemyToSpawn = BlueEnemy;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 8;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+                case 3:
+                    enemyToSpawn = RedEnemy;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 8;
+                    enemySpawned = 0;
+                    for (int i = 0; i < enemiesToSpawn; i++)
                     {
-                        enemyToSpawn = BlueEnemy;
+                        Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                        spawnPoint.x = spawnPoint.x + 1f;
+                        spawnedEnemy.transform.SetParent(parent);
+                        enemySpawned = enemySpawned + 1;
+                        enemiesLeft++;
+                        if (enemySpawned == 4)
+                        {
+                            enemyToSpawn = BlueEnemy;
+                        }
                     }
-                }
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                break;
-            case 4 :
-                enemyToSpawn = RedEnemy;
-                distanceBeetweenEnemiesX = 2f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 4;
-                Wave();
-                enemyToSpawn = BlueEnemy;
-                enemiesToSpawn = 4;
-                spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
-                Wave();
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                break;
-            case 5 :
-                enemyToSpawn = RedTriangle;
-                distanceBeetweenEnemiesX = 0f;
-                distanceBeetweenEnemiesY = -1f;
-                enemiesToSpawn = 3;
-                Wave();
-                enemyToSpawn = BlueTriangle;
-                spawnPoint.x = 3.5f;
-                spawnPoint.y = initialSpawnPoint.y;
-                enemiesToSpawn = 3;
-                Wave();
-                initialSpawnPoint = new Vector2(-3.5f, 6f);
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                
-                break;
-            case 6 :
-                enemyToSpawn = RedCube;
-                distanceBeetweenEnemiesX = 0f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 1;
-                Wave();
-                enemyToSpawn = BlueCube;
-                spawnPoint.x = 3.5f;
-                Wave();
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                break;
-            case 7 :
-                enemyToSpawn = TripleBlue;
-                enemySpawned = 0;
-                distanceBeetweenEnemiesX = 1f;
-                distanceBeetweenEnemiesY = 0f;
-                enemiesToSpawn = 8;
-                for (int i = 0; i < enemiesToSpawn; i++)
-                {
-                    Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
-                    spawnPoint.x = spawnPoint.x + 1f;
-                    spawnedEnemy.transform.SetParent(parent);
-                    enemySpawned = enemySpawned + 1;
-                    enemiesLeft++;
-                    if (enemySpawned == 4)
+
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+                case 4:
+                    enemyToSpawn = RedEnemy;
+                    distanceBeetweenEnemiesX = 2f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 4;
+                    Wave();
+                    enemyToSpawn = BlueEnemy;
+                    enemiesToSpawn = 4;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+                case 5:
+                    enemyToSpawn = RedTriangle;
+                    distanceBeetweenEnemiesX = 0f;
+                    distanceBeetweenEnemiesY = -1f;
+                    enemiesToSpawn = 3;
+                    Wave();
+                    enemyToSpawn = BlueTriangle;
+                    spawnPoint.x = 3.5f;
+                    spawnPoint.y = initialSpawnPoint.y;
+                    enemiesToSpawn = 3;
+                    Wave();
+                    initialSpawnPoint = new Vector2(-3.5f, 6f);
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+
+                    break;
+                case 6:
+                    enemyToSpawn = RedCube;
+                    distanceBeetweenEnemiesX = 0f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    enemyToSpawn = BlueCube;
+                    spawnPoint.x = 3.5f;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+                case 7:
+                    enemyToSpawn = TripleBlue;
+                    enemySpawned = 0;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 8;
+                    for (int i = 0; i < enemiesToSpawn; i++)
                     {
-                        enemyToSpawn = TripleRed;
+                        Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
+                        spawnPoint.x = spawnPoint.x + 1f;
+                        spawnedEnemy.transform.SetParent(parent);
+                        enemySpawned = enemySpawned + 1;
+                        enemiesLeft++;
+                        if (enemySpawned == 4)
+                        {
+                            enemyToSpawn = TripleRed;
+                        }
                     }
-                }
-                Debug.Log(enemiesLeft);
-                enemySpawned = 0;
-                spawnPoint = initialSpawnPoint;
-                break;
-            case 8 :
+
+                    Debug.Log(enemiesLeft);
+                    enemySpawned = 0;
+                    spawnPoint = initialSpawnPoint;
+                    break;
+                case 8:
                     enemyToSpawn = RedTriangle;
                     distanceBeetweenEnemiesX = 1f;
                     distanceBeetweenEnemiesY = 0f;
@@ -203,6 +207,7 @@ public class WaveManager : MonoBehaviour
                             enemyToSpawn = TripleBlue;
                         }
                     }
+
                     enemyToSpawn = RedEnemy;
                     spawnPoint = new Vector2(initialSpawnPoint.x, initialSpawnPoint.y - 1.5f);
                     enemySpawned = 0;
@@ -218,9 +223,9 @@ public class WaveManager : MonoBehaviour
                             enemyToSpawn = BlueEnemy;
                         }
                     }
-                    
+
                     break;
-            case 9 :
+                case 9:
                     enemyToSpawn = PentaBlue;
                     enemySpawned = 0;
                     enemiesToSpawn = 2;
@@ -242,16 +247,88 @@ public class WaveManager : MonoBehaviour
                     spawnPoint = initialSpawnPoint;
                     enemySpawned = 0;
                     break;
-            case 10 :
-                spawnPoint = new Vector2(0f, initialSpawnPoint.y);
-                enemyToSpawn = Boss;
-                enemiesToSpawn = 1;
-                Wave();
-                spawnPoint = initialSpawnPoint;
-                enemySpawned = 0;
-                break;
-            
+                case 10:
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    enemyToSpawn = Boss;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    break;
+
+            }
         }
+
+        /*if (level == 2)
+        {
+            switch (waveType)
+            {
+                case 1 :
+                    enemyToSpawn = RedEnemy;
+                    distanceBeetweenEnemiesX = 2f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 4;
+                    Wave();
+                    enemyToSpawn = BlueEnemy;
+                    enemiesToSpawn = 4;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x, initialSpawnPoint.y -1f);
+                    enemySpawned = 0;
+                    distanceBeetweenEnemiesX = 2f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 4;
+                    Wave();
+                    enemyToSpawn = RedEnemy;
+                    enemiesToSpawn = 4;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x, spawnPoint.y);
+                    enemySpawned = 0;
+                    
+                    break;
+                
+                case 2 :
+                    
+                    break;
+                
+                case 3 :
+                    
+                    break;
+                
+                case 4 :
+                    
+                    break;
+                
+                case 5 :
+                    
+                    break;
+                
+                case 6 :
+                    
+                    break;
+                
+                case 7 :
+                    
+                    break;
+                
+                case 8 :
+                    
+                    break;
+                
+                case 9 :
+                    
+                    break;
+                
+                case 10 :
+                    
+                    break;
+                
+                case 11 :
+                    
+                    break;
+            }
+        }*/
 
     }
 

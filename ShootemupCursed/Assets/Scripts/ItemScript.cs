@@ -10,7 +10,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnEnable()
     {
-        timer = 500;
+        timer = 5000;
     }
 
     private void Update()

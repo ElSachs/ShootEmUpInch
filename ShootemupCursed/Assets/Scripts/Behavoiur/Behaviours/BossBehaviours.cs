@@ -19,7 +19,9 @@ public class BossBehaviours : EnemyBehaviour
     private bool redGoToZero = false;
     private bool resetPattern = true;
     private float patternTime;
-    [SerializeField] private GameObject healthBar; 
+    [SerializeField] private GameObject healthBar;
+
+    public GameObject tamere;
 
     public override void Start()
     {
@@ -28,7 +30,11 @@ public class BossBehaviours : EnemyBehaviour
         pattern = Random.Range(1, 4);
         Instantiate(healthBar);
         healthBar.SetActive(true);
+        GameManager.Instance.healthBar.SetActive(true);
+        BossHealthBar.Instance.boss = gameObject;
+        Debug.Log("c'est moi wesh");
     }
+    
 
     public override void Update()
     {
