@@ -31,7 +31,7 @@ public class PoolManager : MonoBehaviour
         ______ShipBullet______, normalBullet,
         ______EnnemieBullet______, RedBullet, BlueBullet, TriangleBlueBullet, TriangleRedBullet,PentaRedBullet,PentaBlueBullet,
         ______Ennemies_______, RedEnnemy, BlueEnemy,
-        _____Items______, shootBullet
+        _____Items______, shootBullet, SpeedBullet, shield, destroyBullet
     }
     
     public Transform Spawnpoint;
