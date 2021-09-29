@@ -17,17 +17,14 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
-
     Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
     [SerializeField] private float bonusTime = 5;
-    
-
     public GameObject redCube;
     public GameObject blueCube;
-
     public GameObject gameOverCanvas;
-    
     [SerializeField] private float bulletSpeed;
+    public bool invincibilityFrame = false;
+    [SerializeField] private GameObject invincibilityCircle; 
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -40,6 +37,12 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.SetActive(false);
             gameOverCanvas.SetActive(true);
+        }
+
+        if (invincibilityFrame)
+        {
+            Instantiate(invincibilityCircle, transform.position, Quaternion.identity);
+            invincibilityFrame = false;
         }
 
         if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
