@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D Boss;
 
 
-    [SerializeField] private int waveType = 0;
+    public int waveType = 0;
 
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);
