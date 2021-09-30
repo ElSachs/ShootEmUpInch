@@ -11,7 +11,6 @@ public class BulletScript : MonoBehaviour
     private float notMoving;
     private Transform waveManager;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

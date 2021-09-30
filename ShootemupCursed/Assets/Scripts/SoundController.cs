@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
+
+    public static SoundController Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public GameObject waveManager;
     public AudioClip levelOne;
     public AudioClip boss;
     public AudioClip transition;
     public AudioClip death;
+    public AudioClip nextLevel;
     bool isTransition;
     [SerializeField] AudioSource source;
     private void Start()
@@ -48,6 +56,13 @@ public class SoundController : MonoBehaviour
     {
         source.loop = false;
         source.clip = death;
+        source.Play();
+    }
+
+    public void NextLevel()
+    {
+        source.loop = false;
+        source.clip = nextLevel;
         source.Play();
     }
 }

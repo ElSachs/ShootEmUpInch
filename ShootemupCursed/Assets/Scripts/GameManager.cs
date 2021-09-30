@@ -28,7 +28,16 @@ public class GameManager : MonoBehaviour
     public GameObject healthBar;
 
     public int level;
-    
+
+    public AudioSource lifeMinus;
+
+    private void Start()
+    {
+        foreach (BonusClass clas in allBonus)
+        {
+            bonusDictionary.Add(clas.bonusType, clas.itemPrefabs);
+        }
+    }
 
     public void AddScore(int score)
     {
@@ -39,6 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
+        lifeMinus.Play();
         Debug.Log(Lifes.Count-1);
        Lifes[Lifes.Count-1].SetActive(false);
        Lifes.Remove(Lifes[Lifes.Count-1]);

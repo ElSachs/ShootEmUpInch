@@ -538,7 +538,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SCHmup
+  m_Text: Palais Noir
 --- !u!222 &303863921
 CanvasRenderer:
   m_ObjectHideFlags: 0
