@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
+    bool isDead;
     
     Queue<PoolManager.Generate> shootQueue = new Queue<PoolManager.Generate>();
     Queue<PoolManager.Generate> speedQueue = new Queue<PoolManager.Generate>();
@@ -30,7 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedTime = 5;
     [SerializeField] private float shieldTime = 5;
     public GameObject gameOverCanvas;
-
+    public ParticleSystem deathParticle;
+    public GameObject playerModel;
 
     public AudioSource shoot;
     public AudioSource swap;
@@ -50,11 +52,11 @@ public class PlayerController : MonoBehaviour
         speedQueues = speedQueue.Count;
         shieldQueues = shieldQueue.Count;
         Move();
-        if (life <= 0)
+        if (life <= 0 && !isDead)
         {
-            GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
-            gameObject.SetActive(false);
+            isDead = true;
             gameOverCanvas.SetActive(true);
+            StartCoroutine(Death());
         }
 
         if (invincibilityFrame)
@@ -204,5 +206,14 @@ public class PlayerController : MonoBehaviour
                 shieldQueue.Enqueue(bonus);
                 break;
         }
+    }
+
+    IEnumerator Death()
+    {
+        GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
+        deathParticle.Play();
+        playerModel.SetActive(false);
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }
