@@ -42,18 +42,9 @@ public class BulletScript : MonoBehaviour
         switch (other.tag)
         {
             case "Player" :
-                if (gameObject.tag == "laser")
-                {
-                    other.GetComponent<PlayerController>().life--;
-                    GameManager.Instance.UpdateLife();
-                }
-                else
-                {
-                     other.GetComponent<PlayerController>().life--;
-                     other.GetComponent<PlayerController>().invincibilityFrame = true;
-                     GameManager.Instance.UpdateLife();
+                
+                other.GetComponent<PlayerController>().LooseLife();
 
-                }
                 gameObject.SetActive(false);
                 break;
             

@@ -27,11 +27,10 @@ public class PlayerController : MonoBehaviour
     
     Queue<PoolManager.Generate> shootQueue = new Queue<PoolManager.Generate>();
     Queue<PoolManager.Generate> speedQueue = new Queue<PoolManager.Generate>();
-    Queue<PoolManager.Generate> shieldQueue = new Queue<PoolManager.Generate>();
+    public int shieldQueue = 0;
 
     [SerializeField] private int shootQueues;
     [SerializeField] private int speedQueues;
-    [SerializeField] private int shieldQueues;
 
     [SerializeField] private float shootTime = 5;
     [SerializeField] private float speedTime = 5;
@@ -48,7 +47,8 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private float bulletSpeed;
     public bool invincibilityFrame = false;
-    [SerializeField] private GameObject invincibilityCircle; 
+    [SerializeField] private GameObject invincibilityCircle;
+    public GameObject shield;
     private void Start()
     {
         self = GetComponent<Rigidbody2D>();
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     {
         shootQueues = shootQueue.Count;
         speedQueues = speedQueue.Count;
-        shieldQueues = shieldQueue.Count;
         if (canMove)
         {
             Move();
@@ -109,14 +108,20 @@ public class PlayerController : MonoBehaviour
             {
                 Isblue = false;
                 GameManager.Instance.UpdateBorder(false);
-                gameObject.layer = 12;
+                if (shieldQueue == 0)
+                {
+                    gameObject.layer = 12;
+                }
                 
             }
             else
             {
                 Isblue = true;
                 GameManager.Instance.UpdateBorder(true);
-                gameObject.layer = 3;
+                if (shieldQueue == 0)
+                {
+                    gameObject.layer = 3;
+                }
                 
             }
             swap.Play();
@@ -156,19 +161,23 @@ public class PlayerController : MonoBehaviour
                 attackSpeed-=3;
             }
         }
-        if (shieldQueue.Count != 0)
+        if (shieldQueue != 0)
         {
+            
             if (shieldTime > 0)
             {
-                shieldTime -= Time.deltaTime*2f;
+                shieldTime -= Time.deltaTime*1f;
             }
             else
             {
                 shieldTime = 10;
-                PoolManager.Generate bonus = shieldQueue.Dequeue();
-                if (shieldQueue.Count == 0)
+                shieldQueue--;
+                if (shieldQueue== 0)
                 {
-                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    if(Isblue) gameObject.layer = 3;
+                    else gameObject.layer = 12;
+                    shield.SetActive(false);
+                        
                 }
             }
         }
@@ -309,10 +318,19 @@ public class PlayerController : MonoBehaviour
                 break;
             
             case  PoolManager.Generate.shield :
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                shieldQueue.Enqueue(bonus);
+                shieldQueue++;
+                shield.SetActive(true);
+                gameObject.layer = 16;
                 break;
+            
         }
+    }
+
+    public void LooseLife()
+    {
+        life--;
+        GameManager.Instance.UpdateLife();
+        invincibilityFrame = true;
     }
 
     IEnumerator Death()

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public int Score;
     public PlayerController player;
+    public GameObject ship;
     public List<GameObject> Lifes;
     public TextMeshProUGUI scoreText;
 
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
             player.spawnShip = true;
             spawnShip = false;
         }
+
     }
 
     public bool shootEnable;
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
            Lifes[Lifes.Count-1].SetActive(false);
            Lifes.Remove(Lifes[Lifes.Count-1]);
         }
+
+        player.gameObject.layer = 16;
         lifeMinus.Play();
         StartCoroutine(BorderDamage());
         GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
@@ -118,19 +122,36 @@ public class GameManager : MonoBehaviour
 
     IEnumerator BorderDamage()
     {
+       
         if (!player.Isblue) UpdateBorder(true);
         yield return new WaitForSeconds(0.1f);
+        ship.SetActive(false);
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
+        ship.SetActive(true);
         UpdateBorder(true);
         yield return new WaitForSeconds(0.1f);
+        ship.SetActive(false);
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
+        ship.SetActive(true);
         UpdateBorder(true);
         yield return new WaitForSeconds(0.1f);
+        ship.SetActive(false);
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
-        if (player.Isblue) UpdateBorder(true);
+        ship.SetActive(true);
+        if (player.Isblue)
+        {
+            UpdateBorder(true);
+            player.gameObject.layer = 3;
+        }
+        else
+        {
+            player.gameObject.layer = 12;
+            
+        }
+        player.GetComponent<BoxCollider2D>().enabled = true;
     }
 
 }
