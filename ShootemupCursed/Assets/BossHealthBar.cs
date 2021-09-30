@@ -16,20 +16,20 @@ public class BossHealthBar : MonoBehaviour
 
     [SerializeField] private Slider slider;
     [SerializeField] public GameObject boss;
-    private int health = 1;
+    public int health = 1;
 
     private void Start()
     {
-        
         Debug.Log("c'est moi weshhhh");
         gameObject.SetActive(true);
-        health = boss.GetComponent<BossBehaviours>().life;
+        health = boss.GetComponent<BossHealth>().life;
         SetMaxHealth(health);
+        
     }
 
     void Update()
     {
-        health = boss.GetComponent<BossBehaviours>().life;
+        health = boss.GetComponent<BossHealth>().life;
         Debug.Log(health);
         SetHealth(health);
     }

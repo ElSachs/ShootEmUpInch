@@ -87,7 +87,7 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "Boss" :
-                other.GetComponent<BossBehaviours>().life--;
+                other.GetComponent<BossHealth>().life--;
                 gameObject.SetActive(false);
                 break;
             
