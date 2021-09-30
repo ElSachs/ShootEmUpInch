@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             invincibilityFrame = false;
         }
 
-        if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
+        if (Input.GetKey(KeyCode.Mouse0) && coolDown <= 0f)
         {
             for (int i = 0; i < shootBullet; i++)
             {
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
             coolDown -= Time.deltaTime * attackSpeed;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (Isblue)
             {
@@ -201,24 +201,24 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             shoot.Play();
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             shoot.Stop();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             decelerationSpeed = 100f;
-            maxSpeed -= 5f;
+            maxSpeed -= 10f;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             decelerationSpeed = 5;
-            maxSpeed += 5;
+            maxSpeed += 10;
 
         }
     }

@@ -2271,8 +2271,8 @@ MonoBehaviour:
   Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
   TTRed: {fileID: 2368631377933919201, guid: 66a5084eb39b2524a8459ab14f05fa81, type: 3}
   TTBlue: {fileID: 3715776934130245981, guid: c9669e42e9f04454682d6837918fef02, type: 3}
-  waveType: 10
-  level: 3
+  waveType: 1
+  level: 1
   parent: {fileID: 889595248}
 --- !u!1 &925339321
 GameObject:
