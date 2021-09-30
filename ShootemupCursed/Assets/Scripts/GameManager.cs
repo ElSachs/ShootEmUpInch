@@ -30,7 +30,9 @@ public class GameManager : MonoBehaviour
     public GameObject healthBar;
 
     public int level;
-    
+
+    public AudioSource lifeMinus;
+    public GameObject player;
 
     public void AddScore(int score)
     {
@@ -48,6 +50,12 @@ public class GameManager : MonoBehaviour
            Lifes[Lifes.Count-1].SetActive(false);
            Lifes.Remove(Lifes[Lifes.Count-1]);
         }
+        lifeMinus.Play();
+        StartCoroutine(BorderDamage());
+        GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
+        Debug.Log(Lifes.Count-1);
+       Lifes[Lifes.Count-1].SetActive(false);
+       Lifes.Remove(Lifes[Lifes.Count-1]);
        
     }
 
@@ -81,6 +89,22 @@ public class GameManager : MonoBehaviour
     {
         player.canMove = false;
         player.isTransiting = true;
-        
     }
+    
+    IEnumerator BorderDamage()
+    {
+        if(!player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        if (player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
+    
 }

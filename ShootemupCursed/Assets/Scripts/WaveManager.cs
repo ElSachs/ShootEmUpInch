@@ -38,6 +38,7 @@ public class WaveManager : MonoBehaviour
     private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
+    public int level = 2;
 
     private void Awake()
     {
@@ -62,6 +63,10 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
+        if(waveType == 10)
+        {
+            SoundController.Instance.NextLevel();
+        }
         waveType ++;
 
         Debug.Log("Wave : " + waveType);

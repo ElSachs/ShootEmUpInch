@@ -109,6 +109,9 @@ MonoBehaviour:
   loots:
   - bonusType: 13
     chanceOfDrop: 25
+  - bonusType: 14
+    chanceOfDrop: 25
+  timeUntilStop: 2
 --- !u!50 &7179575042768289371
 Rigidbody2D:
   serializedVersion: 4

@@ -58,8 +58,11 @@ MonoBehaviour:
   resetShoot: 0
   waveManager: {fileID: 0}
   loots:
+  - bonusType: 13
+    chanceOfDrop: 25
   - bonusType: 14
-    chanceOfDrop: 75
+    chanceOfDrop: 25
+  timeUntilStop: 2
 --- !u!33 &441353157282803745
 MeshFilter:
   m_ObjectHideFlags: 0
