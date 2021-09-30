@@ -117,7 +117,6 @@ public class BossBehaviour : MonoBehaviour
 
         if (life == 0)
         {
-            SoundController.Instance.NextLevel();
             Debug.Log("mort");
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;

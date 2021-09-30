@@ -61,6 +61,10 @@ public class WaveManager : MonoBehaviour
     void waveSpawning()
     {
         waveFinished = false;
+        if(waveType == 10)
+        {
+            SoundController.Instance.NextLevel();
+        }
         waveType ++;
 
         Debug.Log("Wave : " + waveType);
