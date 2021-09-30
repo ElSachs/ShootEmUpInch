@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource lifeMinus;
     public GameObject player;
+    public bool shootEnable;
 
     public void AddScore(int score)
     {

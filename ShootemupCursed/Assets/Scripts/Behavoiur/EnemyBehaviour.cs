@@ -38,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public virtual void Update()
     {
-        if(resetShoot == true)
+        if(resetShoot == true && GameManager.Instance.shootEnable)
             Shooting();
         if (life <= 0)
         {
@@ -54,6 +54,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (Time.time >= elapsedTime + timeUntilStop)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            GameObject.Find("WaveManager").GetComponent<WaveManager>().doomOfBullet.SetActive(false);
         }
     }
 

@@ -38,6 +38,7 @@ public class WaveManager : MonoBehaviour
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
     public int level = 2;
+    public GameObject doomOfBullet;
 
     private void Awake()
     {
@@ -56,13 +57,15 @@ public class WaveManager : MonoBehaviour
         if(enemiesLeft == 0f)
         {
             waveFinished = true;
+            GameManager.Instance.shootEnable = false;
+            doomOfBullet.SetActive(true);
         }
     }
 
     void waveSpawning()
     {
         waveFinished = false;
-        if(waveType == 10)
+        if (waveType == 10)
         {
             SoundController.Instance.NextLevel();
         }

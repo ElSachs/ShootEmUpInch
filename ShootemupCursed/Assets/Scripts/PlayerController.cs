@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             invincibilityFrame = false;
         }
 
-        if (Input.GetKey(KeyCode.Space) && coolDown <= 0f)
+        if (Input.GetKey(KeyCode.Space) && coolDown <= 0f && GameManager.Instance.shootEnable)
         {
             for (int i = 0; i < shootBullet; i++)
             {
@@ -153,11 +153,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && GameManager.Instance.shootEnable && !shoot.isPlaying)
         {
             shoot.Play();
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) || !GameManager.Instance.shootEnable)
         {
             shoot.Stop();
         }
