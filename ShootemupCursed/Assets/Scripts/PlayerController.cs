@@ -17,8 +17,18 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
-    Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
-    [SerializeField] private float bonusTime = 5;
+    
+    Queue<PoolManager.Generate> shootQueue = new Queue<PoolManager.Generate>();
+    Queue<PoolManager.Generate> speedQueue = new Queue<PoolManager.Generate>();
+    Queue<PoolManager.Generate> shieldQueue = new Queue<PoolManager.Generate>();
+
+    [SerializeField] private int shootQueues;
+    [SerializeField] private int speedQueues;
+    [SerializeField] private int shieldQueues;
+
+    [SerializeField] private float shootTime = 5;
+    [SerializeField] private float speedTime = 5;
+    [SerializeField] private float shieldTime = 5;
     public GameObject redCube;
     public GameObject blueCube;
     public GameObject gameOverCanvas;
@@ -37,6 +47,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        shootQueues = shootQueue.Count;
+        speedQueues = speedQueue.Count;
+        shieldQueues = shieldQueue.Count;
         Move();
         if (life <= 0)
         {
@@ -96,21 +109,45 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0f, -200f*Time.deltaTime*SwitchSpeed, 0f);
         }
 
-        if (bonusQueue.Count != 0)
+        if (shootQueue.Count != 0)
         {
-            if (bonusTime > 0)
+            if (shootTime > 0)
             {
-                bonusTime -= Time.deltaTime*2f;
+                shootTime -= Time.deltaTime*2f;
             }
             else
             {
-                bonusTime = 10;
-                PoolManager.Generate bonus = bonusQueue.Dequeue();
-                switch (bonus)
+                shootTime = 10;
+                PoolManager.Generate bonus = shootQueue.Dequeue();
+                shootBullet--;
+            }
+        }
+        if (speedQueue.Count != 0)
+        {
+            if (speedTime > 0)
+            {
+                speedTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                speedTime = 10;
+                PoolManager.Generate bonus = speedQueue.Dequeue();
+                attackSpeed-=3;
+            }
+        }
+        if (shieldQueue.Count != 0)
+        {
+            if (shieldTime > 0)
+            {
+                shieldTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                shieldTime = 10;
+                PoolManager.Generate bonus = shieldQueue.Dequeue();
+                if (shieldQueue.Count == 0)
                 {
-                    case PoolManager.Generate.shootBullet :
-                        shootBullet--;
-                        break;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }
@@ -149,11 +186,21 @@ public class PlayerController : MonoBehaviour
 
     public void AddBonus(PoolManager.Generate bonus)
     {
-        bonusQueue.Enqueue(bonus);
         switch (bonus)
         {
             case PoolManager.Generate.shootBullet :
+                shootQueue.Enqueue(bonus);
                 shootBullet++;
+                break;
+            
+            case  PoolManager.Generate.SpeedBullet :
+                speedQueue.Enqueue(bonus);
+                attackSpeed += 3;
+                break;
+            
+            case  PoolManager.Generate.shield :
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                shieldQueue.Enqueue(bonus);
                 break;
         }
     }

@@ -574,11 +574,6 @@ MonoBehaviour:
   - {fileID: 106345440}
   - {fileID: 1339211133}
   - {fileID: 1196745297}
-  allBonus:
-  - bonusType: 0
-    itemPrefabs: {fileID: 0}
-  - bonusType: 1
-    itemPrefabs: {fileID: 6416184319851624745, guid: 3c0c76f1675213e4a93e087a701fa228, type: 3}
   scoreText: {fileID: 523028266}
   blueMaterial: {fileID: 2100000, guid: 9359377246188ef4baafa390855d5706, type: 2}
   redMaterial: {fileID: 2100000, guid: 04d2d3342df3b2140819615cbdc9572b, type: 2}
@@ -1620,6 +1615,7 @@ MonoBehaviour:
   life: 3
   attackSpeed: 20
   shootBullet: 5
+
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -1635,7 +1631,12 @@ MonoBehaviour:
   - {fileID: 691430544}
   - {fileID: 179787078}
   Isblue: 0
-  bonusTime: 5
+  shootQueues: 0
+  speedQueues: 0
+  shieldQueues: 0
+  shootTime: 5
+  speedTime: 5
+  shieldTime: 5
   redCube: {fileID: 1514652205}
   blueCube: {fileID: 172579669}
   gameOverCanvas: {fileID: 348742049}
@@ -3242,7 +3243,22 @@ MonoBehaviour:
     typeOfObject: 13
     Prefabs: {fileID: 6416184319851624745, guid: 3c0c76f1675213e4a93e087a701fa228, type: 3}
     initialSize: 5
-    Stat: {fileID: 11400000, guid: bc9119c0fb111c843af5de9deb0290de, type: 2}
+    Stat: {fileID: 0}
+  - name: SpeedBonus
+    typeOfObject: 14
+    Prefabs: {fileID: 7933956088064768424, guid: 89a6445a26164c349bc15379653454d1, type: 3}
+    initialSize: 5
+    Stat: {fileID: 0}
+  - name: Shield
+    typeOfObject: 15
+    Prefabs: {fileID: 146830734415023075, guid: 0b0d2a2e37ae0e24db095bda640f02c6, type: 3}
+    initialSize: 5
+    Stat: {fileID: 0}
+  - name: DestroyBonus
+    typeOfObject: 16
+    Prefabs: {fileID: 2726229620979697316, guid: 459f1ca109a5a6944baa21e6a048403d, type: 3}
+    initialSize: 5
+    Stat: {fileID: 0}
 --- !u!4 &1582413793
 Transform:
   m_ObjectHideFlags: 0
