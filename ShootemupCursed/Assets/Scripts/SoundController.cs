@@ -13,12 +13,16 @@ public class SoundController : MonoBehaviour
 
     public GameObject waveManager;
     public AudioClip levelOne;
-    public AudioClip boss;
-    public AudioClip transition;
+    public AudioClip levelTwo;
+    public AudioClip levelThree;
+    public AudioClip bossOne;
+    public AudioClip bossTwo;
+    public AudioClip bossThree;
     public AudioClip death;
     public AudioClip nextLevel;
-    bool isTransition;
     [SerializeField] AudioSource source;
+    bool odd;
+    bool isTransition;
     private void Start()
     {
         source.clip = levelOne;
@@ -26,29 +30,46 @@ public class SoundController : MonoBehaviour
     }
     void Update()
     {
+        if(waveManager.GetComponent<WaveManager>().level == 2 && !odd)
+        {
+            source.loop = true;
+            odd = true;
+            source.clip = levelTwo;
+            source.Play();
+            
+        }
+        if(waveManager.GetComponent<WaveManager>().level == 3 && odd)
+        {
+            source.loop = true;
+            odd = false;
+            source.clip = levelThree;
+            source.Play();
+        }
         if(waveManager.GetComponent<WaveManager>().waveType == 10 && !isTransition)
         {
             isTransition = true;
-            source.clip = transition;
-            source.Play();
-            source.loop = false;
-            StartCoroutine(WaitForAudio(transition));
+            PlayBossMusic();
         }
-    }
-
-    private IEnumerator WaitForAudio(AudioClip clip)
-    {
-        while (source.isPlaying)
+        if (waveManager.GetComponent<WaveManager>().waveType != 10)
         {
-            yield return null;
+            isTransition = false;
         }
-        PlayBossMusic();
     }
 
     void PlayBossMusic()
     {
-        source.loop = true;
-        source.clip = boss;
+        switch (waveManager.GetComponent<WaveManager>().level)
+        {
+            case 1:
+                source.clip = bossOne;
+                break;
+            case 2:
+                source.clip = bossTwo;
+                break;
+            case 3:
+                source.clip = bossThree;
+                break;
+        }
         source.Play();
     }
 

@@ -31,14 +31,6 @@ public class GameManager : MonoBehaviour
 
     public AudioSource lifeMinus;
 
-    private void Start()
-    {
-        foreach (BonusClass clas in allBonus)
-        {
-            bonusDictionary.Add(clas.bonusType, clas.itemPrefabs);
-        }
-    }
-
     public void AddScore(int score)
     {
         Score += score;

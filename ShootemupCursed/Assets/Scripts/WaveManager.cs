@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
     private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
-    private int level = 2;
+    public int level = 2;
 
     private void Awake()
     {
