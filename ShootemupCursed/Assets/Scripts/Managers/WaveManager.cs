@@ -27,7 +27,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D Boss2;
     [SerializeField] private Rigidbody2D TTRed;
     [SerializeField] private Rigidbody2D TTBlue;
-
+    [SerializeField] private Rigidbody2D Boss3;
 
     public int waveType = 0;
     public int level = 1;
@@ -797,7 +797,17 @@ public class WaveManager : MonoBehaviour
                     spawnPoint.x = spawnPoint.x + 2f;
                     Wave();
                     break;
+                case 11 :
                 
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    enemyToSpawn = Boss3;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    enemiesLeft = 1;
+
+                    break;
             }
         }
 
