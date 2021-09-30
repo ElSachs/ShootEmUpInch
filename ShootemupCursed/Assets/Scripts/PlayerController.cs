@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
         {
             case PoolManager.Generate.shootBullet :
                 shootQueue.Enqueue(bonus);
-                shootBullet++;
+                if(shootBullet < 5) shootBullet++;
                 break;
             
             case  PoolManager.Generate.SpeedBullet :
