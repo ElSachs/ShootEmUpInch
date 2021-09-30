@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     public void EndAnimation()
     {
         player.move = Vector3.zero;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.canMove = false;
         levelAnim.Play("levelAnim");
         player.isTransiting = true;
