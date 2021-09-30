@@ -23,7 +23,7 @@ public class Boss3Behaviours : EnemyBehaviour
     private float targetX = -4f;
     private float timeElapsed;
     private int pattern;
-    private bool resetPattern;
+    private bool resetPattern = true;
     private float patternTime;
     private int numberOfShots;
     private bool blueGoToZero;
@@ -35,7 +35,6 @@ public class Boss3Behaviours : EnemyBehaviour
     {
         base.Start();
         timeElapsed = Time.time;
-        pattern = 3;
         GameManager.Instance.healthBar.SetActive(true);
         BossHealthBar.Instance.boss = gameObject;
         Debug.Log(BossHealthBar.Instance.boss.name);
@@ -123,7 +122,7 @@ public class Boss3Behaviours : EnemyBehaviour
                     Shooting3();
                     numberOfShots++;
                 }
-                if (numberOfShots >= 30)
+                if (numberOfShots >= 10)
                 {
                     resetPattern = true;
                     resetShoot = false;

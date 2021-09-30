@@ -730,7 +730,7 @@ MonoBehaviour:
   resetShoot: 0
   waveManager: {fileID: 0}
   loots: []
-  timeUntilStop: 2
+  timeUntilStop: 4
 --- !u!61 &3614581108081546492
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -801,7 +801,7 @@ MonoBehaviour:
   resetShoot: 0
   waveManager: {fileID: 0}
   loots: []
-  timeUntilStop: 2
+  timeUntilStop: 4
   Redlaser: {fileID: 4085435465998362549, guid: 2df0e5e6915565d42b3fa87ee8e00ea1, type: 3}
   BlueLaser: {fileID: 3535524594282303418, guid: 305533f84b8423045a57f8d22f11c2c6, type: 3}
   laserSpeed: 900
