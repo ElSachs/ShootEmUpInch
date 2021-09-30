@@ -103,7 +103,9 @@ MonoBehaviour:
   life: 6
   resetShoot: 1
   waveManager: {fileID: 0}
-  loots: []
+  loots:
+  - bonusType: 14
+    chanceOfDrop: 40
   timeUntilStop: 5
   triangleToPlayer: {x: 0, y: 0}
   player: {fileID: 0}
