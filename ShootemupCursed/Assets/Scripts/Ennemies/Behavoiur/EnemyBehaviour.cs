@@ -38,10 +38,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     public virtual void Update()
     {
-        if(resetShoot == true)
+        if(resetShoot == true && GameManager.Instance.shootEnable)
             Shooting();
         if (life <= 0)
         {
+            if(gameObject.layer == 10) PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionRed, transform);
+            else PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionBlue, transform);
             GameManager.Instance.AddScore(scoreGive);
             //Debug.Log("mort");
             Drop();
@@ -52,6 +54,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (Time.time >= elapsedTime + timeUntilStop)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            GameObject.Find("WaveManager").GetComponent<WaveManager>().doomOfBullet.SetActive(false);
         }
     }
 

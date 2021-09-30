@@ -60,9 +60,7 @@ MonoBehaviour:
   loots:
   - bonusType: 13
     chanceOfDrop: 25
-  - bonusType: 14
-    chanceOfDrop: 25
-  timeUntilStop: 4
+  timeUntilStop: 2
 --- !u!33 &441353157282803745
 MeshFilter:
   m_ObjectHideFlags: 0

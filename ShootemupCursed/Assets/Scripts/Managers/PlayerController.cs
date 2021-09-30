@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
+    bool isDead;
     
     Queue<PoolManager.Generate> shootQueue = new Queue<PoolManager.Generate>();
     Queue<PoolManager.Generate> speedQueue = new Queue<PoolManager.Generate>();
@@ -36,7 +37,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedTime = 5;
     [SerializeField] private float shieldTime = 5;
     public GameObject gameOverCanvas;
-
+    public ParticleSystem deathParticle;
+    public GameObject playerModel;
 
     public AudioSource shoot;
     public AudioSource swap;
@@ -62,11 +64,11 @@ public class PlayerController : MonoBehaviour
 
         
         
-        if (life <= 0)
+        if (life <= 0 && !isDead)
         {
-            GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
-            gameObject.SetActive(false);
+            isDead = true;
             gameOverCanvas.SetActive(true);
+            StartCoroutine(Death());
         }
 
         if (invincibilityFrame)
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
             invincibilityFrame = false;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && coolDown <= 0f)
+        if (Input.GetKey(KeyCode.Space) && coolDown <= 0f && GameManager.Instance.shootEnable)
         {
             for (int i = 0; i < shootBullet; i++)
             {
@@ -170,11 +172,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && GameManager.Instance.shootEnable && !shoot.isPlaying)
         {
             shoot.Play();
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) || !GameManager.Instance.shootEnable)
         {
             shoot.Stop();
         }
@@ -288,5 +290,14 @@ public class PlayerController : MonoBehaviour
                 shieldQueue.Enqueue(bonus);
                 break;
         }
+    }
+
+    IEnumerator Death()
+    {
+        GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
+        deathParticle.Play();
+        playerModel.SetActive(false);
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

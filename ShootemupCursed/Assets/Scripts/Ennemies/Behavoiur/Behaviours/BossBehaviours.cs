@@ -40,7 +40,19 @@ public class BossBehaviours : EnemyBehaviour
         {
             self.velocity = Vector2.zero;
         }
-        
+		
+        if (life <= 0)
+        {
+            PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionRed, transform);
+            PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionBlue, transform);
+            GameManager.Instance.AddScore(scoreGive);
+            Debug.Log("mort");
+            gameObject.SetActive(false);
+            Drop();
+            waveManager = GameObject.Find("WaveManager").transform;
+            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
+            healthBar.SetActive(false);
+        }
 
         if (resetPattern)
         {

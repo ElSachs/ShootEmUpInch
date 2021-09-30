@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject player;
+    public bool shootEnable;
 
     public void AddScore(int score)
     {
