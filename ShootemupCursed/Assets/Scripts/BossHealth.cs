@@ -15,6 +15,7 @@ public class BossHealth : EnemyBehaviour
         {
             GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
+            GameManager.Instance.EndAnimation();
             Drop();
             waveManager = GameObject.Find("WaveManager").transform;
             WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;

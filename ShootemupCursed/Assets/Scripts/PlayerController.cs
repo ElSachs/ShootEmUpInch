@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [NonSerialized] public bool canMove = true;
+    public bool spawnShip;
     [NonSerialized] public bool isTransiting;
     private int transitTimer = 0;
-    private float vroom = 0.1f;
+    public float vroom = 0.1f;
     
     private Vector3 input;
-    private Vector3 move;
+    public Vector3 move;
     [SerializeField] float decelerationSpeed;
     [SerializeField] private float maxSpeed;
     private Rigidbody2D self;
@@ -59,39 +60,7 @@ public class PlayerController : MonoBehaviour
             Move();
         }
 
-        if (isTransiting)
-        {
-            if (transform.position.x > 0.5)
-            {
-                transform.Translate(-0.5f, 0f, 0f);
-            }
-            else if (transform.position.x < -0.5)
-            {
-                transform.Translate(-0.5f, 0f, 0f);
-            }
-            else
-            {
-                if (transitTimer >= 0)
-                {
-                    transitTimer--;
-                }
-                else
-                {
-                    if (transform.position.y < 7)
-                    {
-                        transform.Translate(0f, vroom, 0f);
-                        vroom = vroom * 1.5f;
-                    }
-                    else
-                    {
-                        vroom = 0.1f;
-                        transitTimer = 100;
-                        isTransiting = false;
-                        canMove = true;
-                    }
-                }
-            }
-        }
+        
         
         if (life <= 0)
         {
@@ -228,6 +197,56 @@ public class PlayerController : MonoBehaviour
     {
         self.velocity = move * maxSpeed;
         
+        if (isTransiting)
+        {
+            if (transform.position.x > 0.1)
+            {
+                transform.Translate(-0.01f, 0f, 0f);
+            }
+            else if (transform.position.x < -0.1)
+            {
+                transform.Translate(+0.01f, 0f, 0f);
+            }
+            else
+            {
+                if (transitTimer >= 0)
+                {
+                    transitTimer--;
+                }
+                else
+                {
+                    if (transform.position.y < 7)
+                    {
+                        transform.Translate(0f, vroom, 0f);
+                    }
+                    else
+                    {
+                        vroom = 0.1f;
+                        transitTimer = 100;
+                        isTransiting = false;
+                        canMove = true;
+                        GameManager.Instance.spawnShip = true;
+                    }
+                }
+            }
+        }
+
+        if (spawnShip)
+        {
+            if (transform.position.y < -4 )
+            {
+                Debug.Log("avance");
+                transform.Translate(0f, vroom, 0f);
+                Debug.Log("avancé");
+            }
+            else
+            {
+                spawnShip = false;
+                GetComponent<BoxCollider2D>().enabled = true;
+                WaveManager.Instance.level++;
+                WaveManager.Instance.waveType = 0;
+            }
+        }
     }
 
     void Move()
@@ -245,6 +264,8 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    
+    
 
     public void AddBonus(PoolManager.Generate bonus)
     {

@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance;
+
     [SerializeField] private Rigidbody2D RedEnemy;
     [SerializeField] private Rigidbody2D BlueEnemy;
     [SerializeField] private Rigidbody2D RedTriangle;
@@ -42,7 +44,7 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-
+        Instance = this;
         waveType --;
         waveFinished = true;
         enemiesLeft = 0;
@@ -69,7 +71,6 @@ public class WaveManager : MonoBehaviour
         }
         waveType ++;
 
-        Debug.Log("Wave : " + waveType);
         if (level == 1)
         {
             switch (waveType)
@@ -261,6 +262,7 @@ public class WaveManager : MonoBehaviour
                     spawnPoint = initialSpawnPoint;
                     enemySpawned = 0;
                     break;
+                    
 
             }
         }
