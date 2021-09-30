@@ -1613,8 +1613,9 @@ MonoBehaviour:
   decelerationSpeed: 5
   maxSpeed: 15
   life: 3
-  attackSpeed: 10
-  shootBullet: 1
+  attackSpeed: 20
+  shootBullet: 5
+
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -2075,9 +2076,11 @@ MonoBehaviour:
   TripleBlue: {fileID: 3836893243822863282, guid: 2bb2f48af33cc1f4ea1430fa124b1888, type: 3}
   PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
   PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
+  RedStar: {fileID: 466255516605592014, guid: 50cd7ef0053bb2743a0c56acaf2dc052, type: 3}
+  BlueStar: {fileID: 614681726716482534, guid: d462068f9228ae744b485c5c0ec3ec0c, type: 3}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
   waveType: 1
-  parent: {fileID: 0}
+  parent: {fileID: 889595248}
 --- !u!1 &925339321
 GameObject:
   m_ObjectHideFlags: 0

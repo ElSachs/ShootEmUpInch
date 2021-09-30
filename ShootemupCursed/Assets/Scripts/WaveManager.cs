@@ -19,7 +19,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D TripleBlue;
     [SerializeField] private Rigidbody2D PentaBlue;
     [SerializeField] private Rigidbody2D PentaRed;
-
+    [SerializeField] private Rigidbody2D RedStar;
+    [SerializeField] private Rigidbody2D BlueStar;
     [SerializeField] private Rigidbody2D Boss;
 
 
@@ -36,7 +37,7 @@ public class WaveManager : MonoBehaviour
     private int enemiesToSpawn = 0;
     public static bool cubeShooting = false;
     public static int enemiesLeft = 0;
-    private int level = 1;
+    private int level = 2;
 
     private void Awake()
     {
@@ -259,11 +260,79 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        /*if (level == 2)
+        if (level == 2)
         {
             switch (waveType)
             {
                 case 1 :
+
+                    for (int i = 0; i < 2; i++)
+                    {
+                        enemyToSpawn = RedEnemy;
+                        distanceBeetweenEnemiesX = 2f;
+                        distanceBeetweenEnemiesY = 0f;
+                        enemiesToSpawn = 4;
+                        Wave();
+                        enemyToSpawn = BlueEnemy;
+                        enemiesToSpawn = 4;
+                        spawnPoint = new Vector2(initialSpawnPoint.x + 1, spawnPoint.y);
+                        Wave(); 
+                        enemySpawned = 0;
+                        spawnPoint = new Vector2(initialSpawnPoint.x, spawnPoint.y - 1f);
+                    }
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
+                    
+                    break;
+                
+                case 2 :
+                    enemyToSpawn = TripleBlue;
+                    enemiesToSpawn = 2;
+                    distanceBeetweenEnemiesX = 4f;
+                    spawnPoint = new Vector2(spawnPoint.x + 1.5f, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 2f, initialSpawnPoint.y - 1f);
+                    distanceBeetweenEnemiesX = 3f;
+                    Wave();
+                    enemiesToSpawn = 1;
+                    enemyToSpawn = RedCube;
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    Wave();
+                    enemySpawned = 0;
+                    spawnPoint = initialSpawnPoint;
+                    break;
+                
+                case 3 :
+                    enemyToSpawn = RedStar;
+                    enemiesToSpawn = 1;
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y - 3f);
+                    enemyToSpawn = BlueStar;
+                    Wave();
+                    enemySpawned = 0;
+                    spawnPoint = initialSpawnPoint;
+                    break;
+                
+                case 4 :
+                    enemyToSpawn = TripleRed;
+                    enemiesToSpawn = 1;
+                    distanceBeetweenEnemiesX = 0f;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 0.5f, initialSpawnPoint.y);
+                    Wave();
+                    enemyToSpawn = TripleBlue;
+                    spawnPoint = new Vector2(3f, initialSpawnPoint.y);
+                    Wave();
+                    distanceBeetweenEnemiesX = 4f;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1.5f, initialSpawnPoint.y - 0.5f);
+                    enemiesToSpawn = 2;
+                    enemyToSpawn = RedTriangle;
+                    Wave();
+                    spawnPoint = new Vector2(0f, spawnPoint.y);
+                    enemiesToSpawn = 1;
+                    enemyToSpawn = BlueTriangle;
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x, spawnPoint.y - 1.5f);
                     enemyToSpawn = RedEnemy;
                     distanceBeetweenEnemiesX = 2f;
                     distanceBeetweenEnemiesY = 0f;
@@ -271,52 +340,133 @@ public class WaveManager : MonoBehaviour
                     Wave();
                     enemyToSpawn = BlueEnemy;
                     enemiesToSpawn = 4;
-                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, spawnPoint.y);
                     Wave();
-                    spawnPoint = new Vector2(initialSpawnPoint.x, initialSpawnPoint.y -1f);
+                    spawnPoint = initialSpawnPoint;
                     enemySpawned = 0;
-                    distanceBeetweenEnemiesX = 2f;
-                    distanceBeetweenEnemiesY = 0f;
-                    enemiesToSpawn = 4;
-                    Wave();
-                    enemyToSpawn = RedEnemy;
-                    enemiesToSpawn = 4;
-                    spawnPoint = new Vector2(initialSpawnPoint.x + 1, initialSpawnPoint.y);
-                    Wave();
-                    spawnPoint = new Vector2(initialSpawnPoint.x, spawnPoint.y);
-                    enemySpawned = 0;
-                    
-                    break;
-                
-                case 2 :
-                    
-                    break;
-                
-                case 3 :
-                    
-                    break;
-                
-                case 4 :
-                    
                     break;
                 
                 case 5 :
-                    
+                    enemyToSpawn = PentaBlue;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 0.75f, initialSpawnPoint.y);
+                    distanceBeetweenEnemiesX = 4f;
+                    enemiesToSpawn = 2;
+                    Wave();
+                    enemyToSpawn = PentaRed;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 2.25f, initialSpawnPoint.y);
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 0.75f, initialSpawnPoint.y - 2f);
+                    Wave();
+                    enemyToSpawn = PentaBlue;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 2.25f, initialSpawnPoint.y - 2f);
+                    Wave();
+                    enemySpawned = 0;
+                    spawnPoint = initialSpawnPoint;
                     break;
                 
                 case 6 :
-                    
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y - 3f);
+                    enemyToSpawn = RedStar;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    distanceBeetweenEnemiesX = 2f;
+                    spawnPoint = new Vector2(-2f, initialSpawnPoint.y);
+                    enemyToSpawn = BlueTriangle;
+                    enemiesToSpawn = 3;
+                    Wave();
+                    distanceBeetweenEnemiesX = 2.5f;
+                    spawnPoint = new Vector2(-2.5f, initialSpawnPoint.y - 1f);
+                    enemyToSpawn = RedTriangle;
+                    enemiesToSpawn = 3;
+                    Wave();
+                    distanceBeetweenEnemiesX = 2.5f;
+                    spawnPoint = new Vector2(-1.25f, spawnPoint.y);
+                    enemyToSpawn = BlueTriangle;
+                    enemiesToSpawn = 2;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
                     break;
                 
                 case 7 :
+                    distanceBeetweenEnemiesX = 4f;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1.5f, initialSpawnPoint.y);
+                    enemiesToSpawn = 2;
+                    enemyToSpawn = BlueEnemy;
+                    Wave();
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    enemiesToSpawn = 1;
+                    enemyToSpawn = RedEnemy;
+                    Wave();
+                    distanceBeetweenEnemiesX = 4f;
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1.5f, initialSpawnPoint.y - 3f);
+                    enemiesToSpawn = 2;
+                    enemyToSpawn = RedStar;
+                    Wave();
+                    distanceBeetweenEnemiesX = 0f;
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y - 3f);
+                    distanceBeetweenEnemiesY = 2f;
+                    enemiesToSpawn = 2;
+                    enemyToSpawn = BlueStar;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
                     
                     break;
                 
                 case 8 :
-                    
+                    enemyToSpawn = RedCube;
+                    distanceBeetweenEnemiesX = 0f;
+                    distanceBeetweenEnemiesY = 0f;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    enemyToSpawn = BlueCube;
+                    spawnPoint.x = 3.5f;
+                    Wave();
+                    spawnPoint.x = 0f;
+                    enemyToSpawn = PentaBlue;
+                    Wave();
+                    spawnPoint.y = initialSpawnPoint.y - 2f;
+                    enemyToSpawn = PentaRed;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
                     break;
                 
                 case 9 :
+                    enemyToSpawn = RedTriangle;
+                    spawnPoint.x = spawnPoint.x + 1;
+                    distanceBeetweenEnemiesX = 1f;
+                    distanceBeetweenEnemiesY = 1f;
+                    enemiesToSpawn = 2;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    spawnPoint.x = spawnPoint.x + 1;
+                    enemyToSpawn = TripleBlue;
+                    distanceBeetweenEnemiesX = -1f;
+                    spawnPoint.x = spawnPoint.x + 1f;
+                    Wave();
+                    enemyToSpawn = BlueTriangle;
+                    spawnPoint.x = 2.5f;
+                    spawnPoint.y = initialSpawnPoint.y;
+                    distanceBeetweenEnemiesX = -1f;
+                    distanceBeetweenEnemiesY = 1f;
+                    enemiesToSpawn = 2;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    spawnPoint.x = 1.5f;
+                    enemyToSpawn = TripleRed;
+                    distanceBeetweenEnemiesX = 1f;
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 1.5f, initialSpawnPoint.y - 3f);
+                    enemyToSpawn = RedStar;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    spawnPoint = new Vector2(initialSpawnPoint.x + 5.5f, initialSpawnPoint.y - 3f);
+                    enemyToSpawn = BlueStar;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
                     
                     break;
                 
@@ -328,7 +478,7 @@ public class WaveManager : MonoBehaviour
                     
                     break;
             }
-        }*/
+        }
 
     }
 

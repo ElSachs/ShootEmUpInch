@@ -108,10 +108,12 @@ MonoBehaviour:
   resetShoot: 1
   waveManager: {fileID: 0}
   loots: []
+  timeUntilStop: 4
   laser: {fileID: 4085435465998362549, guid: 2df0e5e6915565d42b3fa87ee8e00ea1, type: 3}
   laserSpeed: 600
   glow: {fileID: 712060566270160608}
   animationName: RedCube
+  iAmShooting: 0
 --- !u!50 &4820843360287663892
 Rigidbody2D:
   serializedVersion: 4

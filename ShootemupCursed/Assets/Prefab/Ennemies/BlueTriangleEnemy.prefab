@@ -99,9 +99,12 @@ MonoBehaviour:
   bulletSpeed: 100
   shootingRate: 0.5
   scoreGive: 30
+  stoppingPoint: 2.5
   life: 4
   resetShoot: 1
   waveManager: {fileID: 0}
+  loots: []
+  timeUntilStop: 5
   player: {fileID: 0}
 --- !u!1001 &8376450549341768642
 PrefabInstance:
