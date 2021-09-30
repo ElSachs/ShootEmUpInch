@@ -25,6 +25,8 @@ public class CubeBehaviours : EnemyBehaviour
         }
         if (life <= 0)
         {
+            if (gameObject.layer == 10) PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionRed, transform);
+            else PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionBlue, transform);
             GameManager.Instance.AddScore(scoreGive);
             gameObject.SetActive(false);
             WaveManager.cubeShooting = false;
