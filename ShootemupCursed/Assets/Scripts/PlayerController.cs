@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [NonSerialized] public bool canMove = true;
+    [NonSerialized] public bool isTransiting;
+    private int transitTimer = 0;
+    private float vroom = 0.1f;
+    
     private Vector3 input;
     private Vector3 move;
     [SerializeField] float decelerationSpeed;
@@ -17,15 +22,24 @@ public class PlayerController : MonoBehaviour
     public float coolDown = 0;
     public Transform[] Spawner;
     public bool Isblue = false;
-    Queue<PoolManager.Generate> bonusQueue = new Queue<PoolManager.Generate>();
-    [SerializeField] private float bonusTime = 5;
-    public GameObject redCube;
-    public GameObject blueCube;
+    
+    Queue<PoolManager.Generate> shootQueue = new Queue<PoolManager.Generate>();
+    Queue<PoolManager.Generate> speedQueue = new Queue<PoolManager.Generate>();
+    Queue<PoolManager.Generate> shieldQueue = new Queue<PoolManager.Generate>();
+
+    [SerializeField] private int shootQueues;
+    [SerializeField] private int speedQueues;
+    [SerializeField] private int shieldQueues;
+
+    [SerializeField] private float shootTime = 5;
+    [SerializeField] private float speedTime = 5;
+    [SerializeField] private float shieldTime = 5;
     public GameObject gameOverCanvas;
 
 
     public AudioSource shoot;
     public AudioSource swap;
+    public AudioSource bonusSound;
     
     [SerializeField] private float bulletSpeed;
     public bool invincibilityFrame = false;
@@ -37,7 +51,48 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        shootQueues = shootQueue.Count;
+        speedQueues = speedQueue.Count;
+        shieldQueues = shieldQueue.Count;
+        if (canMove)
+        {
+            Move();
+        }
+
+        if (isTransiting)
+        {
+            if (transform.position.x > 0.5)
+            {
+                transform.Translate(-0.5f, 0f, 0f);
+            }
+            else if (transform.position.x < -0.5)
+            {
+                transform.Translate(-0.5f, 0f, 0f);
+            }
+            else
+            {
+                if (transitTimer >= 0)
+                {
+                    transitTimer--;
+                }
+                else
+                {
+                    if (transform.position.y < 7)
+                    {
+                        transform.Translate(0f, vroom, 0f);
+                        vroom = vroom * 1.5f;
+                    }
+                    else
+                    {
+                        vroom = 0.1f;
+                        transitTimer = 100;
+                        isTransiting = false;
+                        canMove = true;
+                    }
+                }
+            }
+        }
+        
         if (life <= 0)
         {
             GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
@@ -55,10 +110,17 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < shootBullet; i++)
             {
-                
+                if (Spawner.Length > i)
+                {
+                    
                 //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
                 Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
                 shotBullet.AddForce(Vector2.up * bulletSpeed);
+                }
+                else
+                {
+                    Debug.Log("MaxShoot");
+                }
 
             }
             coolDown = 2;
@@ -96,21 +158,45 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0f, -200f*Time.deltaTime*SwitchSpeed, 0f);
         }
 
-        if (bonusQueue.Count != 0)
+        if (shootQueue.Count != 0)
         {
-            if (bonusTime > 0)
+            if (shootTime > 0)
             {
-                bonusTime -= Time.deltaTime*2f;
+                shootTime -= Time.deltaTime*2f;
             }
             else
             {
-                bonusTime = 10;
-                PoolManager.Generate bonus = bonusQueue.Dequeue();
-                switch (bonus)
+                shootTime = 10;
+                PoolManager.Generate bonus = shootQueue.Dequeue();
+                shootBullet--;
+            }
+        }
+        if (speedQueue.Count != 0)
+        {
+            if (speedTime > 0)
+            {
+                speedTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                speedTime = 10;
+                PoolManager.Generate bonus = speedQueue.Dequeue();
+                attackSpeed-=3;
+            }
+        }
+        if (shieldQueue.Count != 0)
+        {
+            if (shieldTime > 0)
+            {
+                shieldTime -= Time.deltaTime*2f;
+            }
+            else
+            {
+                shieldTime = 10;
+                PoolManager.Generate bonus = shieldQueue.Dequeue();
+                if (shieldQueue.Count == 0)
                 {
-                    case PoolManager.Generate.shootBullet :
-                        shootBullet--;
-                        break;
+                    gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }
@@ -123,7 +209,20 @@ public class PlayerController : MonoBehaviour
         {
             shoot.Stop();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            decelerationSpeed = 100;
+            maxSpeed -= 5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            decelerationSpeed = 5;
+            maxSpeed += 5;
+
+        }
     }
+    
 
     private void FixedUpdate()
     {
@@ -149,11 +248,23 @@ public class PlayerController : MonoBehaviour
 
     public void AddBonus(PoolManager.Generate bonus)
     {
-        bonusQueue.Enqueue(bonus);
+        bonusSound.Play();
+
         switch (bonus)
         {
             case PoolManager.Generate.shootBullet :
-                shootBullet++;
+                shootQueue.Enqueue(bonus);
+                if(shootBullet < 5) shootBullet++;
+                break;
+            
+            case  PoolManager.Generate.SpeedBullet :
+                speedQueue.Enqueue(bonus);
+                attackSpeed += 3;
+                break;
+            
+            case  PoolManager.Generate.shield :
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                shieldQueue.Enqueue(bonus);
                 break;
         }
     }

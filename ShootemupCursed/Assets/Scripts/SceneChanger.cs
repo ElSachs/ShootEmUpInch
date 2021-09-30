@@ -9,4 +9,9 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(buildIndex);
     }
+
+    public void DestroyManager()
+    {
+        Destroy(GameManager.Instance.gameObject);
+    }
 }

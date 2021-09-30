@@ -31,7 +31,7 @@ public class BossBehaviours : EnemyBehaviour
         healthBar.SetActive(true);
         GameManager.Instance.healthBar.SetActive(true);
         BossHealthBar.Instance.boss = gameObject;
-        Debug.Log("c'est moi wesh");
+        Debug.Log(BossHealthBar.Instance.boss.name);
     }
     
 
@@ -45,7 +45,9 @@ public class BossBehaviours : EnemyBehaviour
         
         if (life <= 0)
         {
+            
             GameManager.Instance.AddScore(scoreGive);
+            GameManager.Instance.EndAnimation();
             Debug.Log("mort");
             gameObject.SetActive(false);
             Drop();

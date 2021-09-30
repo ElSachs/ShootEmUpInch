@@ -12,26 +12,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
-    public enum Bonus
-    {
-        SpeedBullet, shootBullet
-    }
-
-    [System.Serializable]
-    public class BonusClass
-    {
-        public Bonus bonusType;
-        public GameObject itemPrefabs;
-    }
-
-    public Dictionary<Bonus, GameObject> bonusDictionary = new Dictionary<Bonus, GameObject>();
+    
 
     public int Score;
+    public PlayerController player;
     public List<GameObject> Lifes;
-    public List<BonusClass> allBonus;
     public TextMeshProUGUI scoreText;
 
     public Material blueMaterial;
@@ -42,14 +31,8 @@ public class GameManager : MonoBehaviour
 
     public int level;
 
-
-    private void Start()
-    {
-        foreach (BonusClass clas in allBonus)
-        {
-            bonusDictionary.Add(clas.bonusType, clas.itemPrefabs);
-        }
-    }
+    public AudioSource lifeMinus;
+    public GameObject player;
 
     public void AddScore(int score)
     {
@@ -60,6 +43,16 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
+        if (Lifes[Lifes.Count-1] != null)
+        {
+            
+            Debug.Log(Lifes.Count-1);
+           Lifes[Lifes.Count-1].SetActive(false);
+           Lifes.Remove(Lifes[Lifes.Count-1]);
+        }
+        lifeMinus.Play();
+        StartCoroutine(BorderDamage());
+        GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
         Debug.Log(Lifes.Count-1);
        Lifes[Lifes.Count-1].SetActive(false);
        Lifes.Remove(Lifes[Lifes.Count-1]);
@@ -91,4 +84,27 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void EndAnimation()
+    {
+        player.canMove = false;
+        player.isTransiting = true;
+    }
+    
+    IEnumerator BorderDamage()
+    {
+        if(!player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(true);
+        yield return new WaitForSeconds(0.1f);
+        UpdateBorder(false);
+        yield return new WaitForSeconds(0.1f);
+        if (player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
+    
 }
