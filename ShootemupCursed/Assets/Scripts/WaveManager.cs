@@ -22,6 +22,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private Rigidbody2D RedStar;
     [SerializeField] private Rigidbody2D BlueStar;
     [SerializeField] private Rigidbody2D Boss;
+    [SerializeField] private Rigidbody2D Boss2;
 
 
     public int waveType = 0;
@@ -476,8 +477,14 @@ public class WaveManager : MonoBehaviour
                     break;
                 
                 case 10 :
-                    
+                    spawnPoint = new Vector2(0f, initialSpawnPoint.y);
+                    enemyToSpawn = Boss2;
+                    enemiesToSpawn = 1;
+                    Wave();
+                    spawnPoint = initialSpawnPoint;
+                    enemySpawned = 0;
                     break;
+                    
                 
                 case 11 :
                     

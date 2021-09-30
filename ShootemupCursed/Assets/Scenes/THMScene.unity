@@ -2269,8 +2269,8 @@ MonoBehaviour:
   RedStar: {fileID: 0}
   BlueStar: {fileID: 0}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
-  waveType: 9
-  level: 1
+  Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
+  waveType: 10
   parent: {fileID: 889595248}
   level: 1
 --- !u!1 &925339321
@@ -4031,6 +4031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1711979832}
   boss: {fileID: 0}
+  health: 1
 --- !u!222 &1711979834
 CanvasRenderer:
   m_ObjectHideFlags: 0
