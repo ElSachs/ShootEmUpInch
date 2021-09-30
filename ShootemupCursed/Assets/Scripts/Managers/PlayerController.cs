@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public GameObject gameOverCanvas;
     public ParticleSystem deathParticle;
     public GameObject playerModel;
+    public GameObject pauseCanvas;
+    bool isPaused;
 
     public AudioSource shoot;
     public AudioSource swap;
@@ -67,7 +69,6 @@ public class PlayerController : MonoBehaviour
         if (life <= 0 && !isDead)
         {
             isDead = true;
-            gameOverCanvas.SetActive(true);
             StartCoroutine(Death());
         }
 
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && GameManager.Instance.shootEnable && !shoot.isPlaying)
+        if (Input.GetKey(KeyCode.Mouse0) && GameManager.Instance.shootEnable && !shoot.isPlaying && !isPaused)
         {
             shoot.Play();
         }
@@ -191,6 +192,26 @@ public class PlayerController : MonoBehaviour
             decelerationSpeed = 5;
             maxSpeed += 10;
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isPaused)
+            {
+                pauseCanvas.SetActive(true);
+                Time.timeScale = 0;
+                isPaused = true;
+                if (shoot.isPlaying)
+                {
+                    shoot.Stop();
+                }
+            }
+            else
+            {
+                isPaused = false;
+                pauseCanvas.SetActive(false);
+                Time.timeScale = 1;
+            }
         }
     }
     
@@ -300,6 +321,14 @@ public class PlayerController : MonoBehaviour
         deathParticle.Play();
         playerModel.SetActive(false);
         yield return new WaitForSeconds(2);
+        if(GameManager.Instance.Score > PlayerPrefs.GetInt("HighScore5"))
+        {
+            GameObject.Find("EventSystem").GetComponent<UpdateHighscore>().HighscoreAdd();
+        }
+        else
+        {
+            gameOverCanvas.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 }
