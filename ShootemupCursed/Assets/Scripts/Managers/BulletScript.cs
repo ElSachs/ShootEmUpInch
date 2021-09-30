@@ -38,69 +38,75 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log(gameObject.name + " touch " + other.name);
-        switch (other.tag)
+        if (GameManager.Instance.shootEnable)
         {
-            case "Player" :
-                
-                other.GetComponent<PlayerController>().LooseLife();
 
-                gameObject.SetActive(false);
-                break;
             
-            case "Triangle" :
-                other.GetComponent<TriangleBehaviours>().life--;
-                gameObject.SetActive(false);
-                break;
-            
-            case "Cube" :
-                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
-                {
-                    other.GetComponent<CubeBehaviours>().life--;
-                }
+            //Debug.Log(gameObject.name + " touch " + other.name);
+            switch (other.tag)
+            {
+                case "Player":
 
-                gameObject.SetActive(false);
-                break;
-            
-            case "Triple" :
-                other.GetComponent<TripleBallBehaviours>().life--;
-                gameObject.SetActive(false);
-                break;
-            
-            case "BulletDestroyer" :
-                GameManager.Instance.AddScore(2);
-                gameObject.SetActive(false);
-                break;
+                    other.GetComponent<PlayerController>().LooseLife();
 
-            case "BlockBullet":
-                GameManager.Instance.Score += 2;
-                gameObject.SetActive(false);
-                break;
+                    gameObject.SetActive(false);
+                    break;
 
-            case "Penta" :
-                other.GetComponent<PentaBehaviours>().life--;
-                gameObject.SetActive(false);
-                break;
+                case "Triangle":
+                    other.GetComponent<TriangleBehaviours>().life--;
+                    gameObject.SetActive(false);
+                    break;
+
+                case "Cube":
+                    if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
+                    {
+                        other.GetComponent<CubeBehaviours>().life--;
+                    }
+
+                    gameObject.SetActive(false);
+                    break;
+
+                case "Triple":
+                    other.GetComponent<TripleBallBehaviours>().life--;
+                    gameObject.SetActive(false);
+                    break;
+
+                case "BulletDestroyer":
+                    GameManager.Instance.AddScore(2);
+                    gameObject.SetActive(false);
+                    break;
+
+                case "BlockBullet":
+                    GameManager.Instance.Score += 2;
+                    gameObject.SetActive(false);
+                    break;
+
+                case "Penta":
+                    other.GetComponent<PentaBehaviours>().life--;
+                    gameObject.SetActive(false);
+                    break;
+
+                case "Boss":
+                    other.GetComponent<BossHealth>().life--;
+                    gameObject.SetActive(false);
+                    break;
+
+                case "Star":
+                    other.GetComponent<StarBehaviours>().life--;
+                    gameObject.SetActive(false);
+                    break;
+                case "TripleTriangle":
+                    other.GetComponent<TripleTriangle>().life--;
+                    gameObject.SetActive(false);
+                    break;
+
+                default:
+                    Debug.Log("j'ai touché");
+                    other.GetComponent<EnemyBehaviour>().life--;
+                    gameObject.SetActive(false);
+                    break;
+            }
             
-            case "Boss" :
-                other.GetComponent<BossHealth>().life--;
-                gameObject.SetActive(false);
-                break;
-            
-            case "Star" :
-                other.GetComponent<StarBehaviours>().life--;
-                gameObject.SetActive(false);
-                break;
-            case "TripleTriangle":
-                other.GetComponent<TripleTriangle>().life--;
-                gameObject.SetActive(false);
-                break;
-            
-            default :
-                Debug.Log("j'ai touché");
-                other.GetComponent<EnemyBehaviour>().life--;
-                gameObject.SetActive(false);
-                break;
         }
         /*if (other.tag == "Player")
         {

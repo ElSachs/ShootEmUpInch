@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             invincibilityFrame = false;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && coolDown <= 0f && GameManager.Instance.shootEnable)
+        if (Input.GetKey(KeyCode.Mouse0) && coolDown <= 0f)
         {
             for (int i = 0; i < shootBullet; i++)
             {
@@ -182,11 +182,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0) && GameManager.Instance.shootEnable && !shoot.isPlaying && !isPaused)
+        if (Input.GetKey(KeyCode.Mouse0) && !shoot.isPlaying && !isPaused)
         {
             shoot.Play();
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0) || !GameManager.Instance.shootEnable)
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             shoot.Stop();
         }
@@ -231,18 +231,7 @@ public class PlayerController : MonoBehaviour
         
         if (isTransiting)
         {
-            if (transform.position.x > 0.1)
-            {
-                Debug.Log("-");
-                transform.Translate(-0.01f, 0f, 0f);
-            }
-            else if (transform.position.x < -0.1)
-            {
-                Debug.Log("+");
-                transform.Translate(+0.01f, 0f, 0f);
-            }
-            else
-            {
+            
                 if (transitTimer >= 0)
                 {
                     transitTimer--;
@@ -262,7 +251,7 @@ public class PlayerController : MonoBehaviour
                         GameManager.Instance.spawnShip = true;
                     }
                 }
-            }
+            
         }
 
         if (spawnShip)
