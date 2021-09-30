@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
+  player: {fileID: 792468299}
   Lifes:
   - {fileID: 106345440}
   - {fileID: 1339211133}
@@ -1645,7 +1646,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792468298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.4, z: 0}
+  m_LocalPosition: {x: 0, y: -4.25, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1658388676}
@@ -2071,7 +2072,8 @@ MonoBehaviour:
   RedStar: {fileID: 466255516605592014, guid: 50cd7ef0053bb2743a0c56acaf2dc052, type: 3}
   BlueStar: {fileID: 614681726716482534, guid: d462068f9228ae744b485c5c0ec3ec0c, type: 3}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
-  waveType: 1
+  waveType: 9
+  level: 1
   parent: {fileID: 889595248}
 --- !u!1 &925339321
 GameObject:
@@ -2349,6 +2351,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 597920856}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: DestroyManager
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
