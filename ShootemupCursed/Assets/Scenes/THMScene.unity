@@ -7718,7 +7718,7 @@ MonoBehaviour:
   - {fileID: 106345440}
   - {fileID: 1339211133}
   - {fileID: 1196745297}
-  scoreText: {fileID: 1225356575}
+  scoreText: {fileID: 523028266}
   blueMaterial: {fileID: 2100000, guid: 9359377246188ef4baafa390855d5706, type: 2}
   redMaterial: {fileID: 2100000, guid: 04d2d3342df3b2140819615cbdc9572b, type: 2}
   border:

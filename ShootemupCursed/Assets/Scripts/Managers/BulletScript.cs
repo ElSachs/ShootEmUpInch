@@ -77,9 +77,15 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "BulletDestroyer" :
+                GameManager.Instance.AddScore(2);
                 gameObject.SetActive(false);
                 break;
-            
+
+            case "BlockBullet":
+                GameManager.Instance.Score += 2;
+                gameObject.SetActive(false);
+                break;
+
             case "Penta" :
                 other.GetComponent<PentaBehaviours>().life--;
                 gameObject.SetActive(false);

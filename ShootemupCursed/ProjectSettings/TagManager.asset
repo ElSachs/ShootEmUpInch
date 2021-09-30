@@ -14,6 +14,7 @@ TagManager:
   - laser
   - Star
   - TripleTriangle
+  - BlockBullets
   layers:
   - Default
   - TransparentFX
