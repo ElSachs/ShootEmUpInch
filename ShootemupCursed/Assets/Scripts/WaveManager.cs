@@ -25,6 +25,7 @@ public class WaveManager : MonoBehaviour
 
 
     public int waveType = 0;
+    public int level = 1;
 
     private Vector2 spawnPoint = new Vector2(-3.5f, 6f);
     private static Vector2 initialSpawnPoint = new Vector2(-3.5f, 6f);

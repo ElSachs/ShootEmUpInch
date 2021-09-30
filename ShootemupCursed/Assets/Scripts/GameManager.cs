@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
     
 
     public int Score;
+    public PlayerController player;
     public List<GameObject> Lifes;
     public TextMeshProUGUI scoreText;
 
@@ -41,6 +43,13 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
+        if (Lifes[Lifes.Count-1] != null)
+        {
+            
+            Debug.Log(Lifes.Count-1);
+           Lifes[Lifes.Count-1].SetActive(false);
+           Lifes.Remove(Lifes[Lifes.Count-1]);
+        }
         lifeMinus.Play();
         StartCoroutine(BorderDamage());
         GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
@@ -76,6 +85,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EndAnimation()
+    {
+        player.canMove = false;
+        player.isTransiting = true;
+    }
+    
     IEnumerator BorderDamage()
     {
         if(!player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
@@ -91,5 +106,5 @@ public class GameManager : MonoBehaviour
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
         if (player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
-    }
+    
 }

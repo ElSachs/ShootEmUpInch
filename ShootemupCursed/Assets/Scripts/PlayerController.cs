@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [NonSerialized] public bool canMove = true;
+    [NonSerialized] public bool isTransiting;
+    private int transitTimer = 0;
+    private float vroom = 0.1f;
+    
     private Vector3 input;
     private Vector3 move;
     [SerializeField] float decelerationSpeed;
@@ -49,7 +54,45 @@ public class PlayerController : MonoBehaviour
         shootQueues = shootQueue.Count;
         speedQueues = speedQueue.Count;
         shieldQueues = shieldQueue.Count;
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
+
+        if (isTransiting)
+        {
+            if (transform.position.x > 0.5)
+            {
+                transform.Translate(-0.5f, 0f, 0f);
+            }
+            else if (transform.position.x < -0.5)
+            {
+                transform.Translate(-0.5f, 0f, 0f);
+            }
+            else
+            {
+                if (transitTimer >= 0)
+                {
+                    transitTimer--;
+                }
+                else
+                {
+                    if (transform.position.y < 7)
+                    {
+                        transform.Translate(0f, vroom, 0f);
+                        vroom = vroom * 1.5f;
+                    }
+                    else
+                    {
+                        vroom = 0.1f;
+                        transitTimer = 100;
+                        isTransiting = false;
+                        canMove = true;
+                    }
+                }
+            }
+        }
+        
         if (life <= 0)
         {
             GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
@@ -67,10 +110,17 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < shootBullet; i++)
             {
-                
+                if (Spawner.Length > i)
+                {
+                    
                 //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
                 Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
                 shotBullet.AddForce(Vector2.up * bulletSpeed);
+                }
+                else
+                {
+                    Debug.Log("MaxShoot");
+                }
 
             }
             coolDown = 2;
@@ -159,7 +209,20 @@ public class PlayerController : MonoBehaviour
         {
             shoot.Stop();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            decelerationSpeed = 100;
+            maxSpeed -= 5f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            decelerationSpeed = 5;
+            maxSpeed += 5;
+
+        }
     }
+    
 
     private void FixedUpdate()
     {
