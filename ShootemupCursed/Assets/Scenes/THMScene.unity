@@ -1615,7 +1615,6 @@ MonoBehaviour:
   life: 3
   attackSpeed: 20
   shootBullet: 5
-
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -1625,11 +1624,6 @@ MonoBehaviour:
   - {fileID: 410303575}
   - {fileID: 181194980}
   - {fileID: 412238068}
-  - {fileID: 1119333866}
-  - {fileID: 420746524}
-  - {fileID: 1691218097}
-  - {fileID: 691430544}
-  - {fileID: 179787078}
   Isblue: 0
   shootQueues: 0
   speedQueues: 0
@@ -1637,8 +1631,6 @@ MonoBehaviour:
   shootTime: 5
   speedTime: 5
   shieldTime: 5
-  redCube: {fileID: 1514652205}
-  blueCube: {fileID: 172579669}
   gameOverCanvas: {fileID: 348742049}
   shoot: {fileID: 792468303}
   swap: {fileID: 792468304}

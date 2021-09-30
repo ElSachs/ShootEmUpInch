@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float shootTime = 5;
     [SerializeField] private float speedTime = 5;
     [SerializeField] private float shieldTime = 5;
-    public GameObject redCube;
-    public GameObject blueCube;
     public GameObject gameOverCanvas;
 
 
