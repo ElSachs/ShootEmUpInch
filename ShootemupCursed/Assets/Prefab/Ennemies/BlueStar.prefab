@@ -87,7 +87,9 @@ MonoBehaviour:
   life: 5
   resetShoot: 1
   waveManager: {fileID: 0}
-  loots: []
+  loots:
+  - bonusType: 15
+    chanceOfDrop: 20
   timeUntilStop: 2
   spawnPoint1: {fileID: 614681727551710079}
   spawnPoint2: {fileID: 614681728311771683}

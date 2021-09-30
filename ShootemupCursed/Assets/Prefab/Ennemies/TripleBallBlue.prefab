@@ -95,7 +95,9 @@ MonoBehaviour:
   life: 5
   resetShoot: 1
   waveManager: {fileID: 0}
-  loots: []
+  loots:
+  - bonusType: 13
+    chanceOfDrop: 35
   timeUntilStop: 5
 --- !u!1 &5612297074622419002
 GameObject:
