@@ -45,6 +45,8 @@ public class BossBehaviours : EnemyBehaviour
         
         if (life <= 0)
         {
+            PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionRed, transform);
+            PoolManager.Instance.spawnFromPool(PoolManager.Generate.ExplosionBlue, transform);
             GameManager.Instance.AddScore(scoreGive);
             Debug.Log("mort");
             gameObject.SetActive(false);

@@ -8289,6 +8289,16 @@ MonoBehaviour:
     Prefabs: {fileID: 2726229620979697316, guid: 459f1ca109a5a6944baa21e6a048403d, type: 3}
     initialSize: 5
     Stat: {fileID: 0}
+  - name: ExplosionRed
+    typeOfObject: 18
+    Prefabs: {fileID: 1387066171723981949, guid: ec9e96043b9e17c40823b5a9edda9062, type: 3}
+    initialSize: 10
+    Stat: {fileID: 0}
+  - name: ExplosionBlue
+    typeOfObject: 19
+    Prefabs: {fileID: 7164275592719908514, guid: a8f3d44332994fd459aeff683a5d6c3a, type: 3}
+    initialSize: 10
+    Stat: {fileID: 0}
 --- !u!4 &1582413793
 Transform:
   m_ObjectHideFlags: 0
