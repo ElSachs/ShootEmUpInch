@@ -586,6 +586,7 @@ MonoBehaviour:
   healthBar: {fileID: 1711979831}
   level: 0
   lifeMinus: {fileID: 189717910}
+  player: {fileID: 792468298}
 --- !u!4 &189717909
 Transform:
   m_ObjectHideFlags: 0
@@ -3665,6 +3666,7 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
+  - component: {fileID: 1687258588}
   - component: {fileID: 1687258587}
   - component: {fileID: 1687258583}
   m_Layer: 0
@@ -3889,6 +3891,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1687258588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f323741009851a46a59e1a23922ceed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1691218096
 GameObject:
   m_ObjectHideFlags: 0
