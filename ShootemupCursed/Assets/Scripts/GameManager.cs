@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
     
 
     public int Score;
+    public PlayerController player;
     public List<GameObject> Lifes;
     public TextMeshProUGUI scoreText;
 
@@ -39,9 +41,13 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
-        Debug.Log(Lifes.Count-1);
-       Lifes[Lifes.Count-1].SetActive(false);
-       Lifes.Remove(Lifes[Lifes.Count-1]);
+        if (Lifes[Lifes.Count-1] != null)
+        {
+            
+            Debug.Log(Lifes.Count-1);
+           Lifes[Lifes.Count-1].SetActive(false);
+           Lifes.Remove(Lifes[Lifes.Count-1]);
+        }
        
     }
 
@@ -69,5 +75,12 @@ public class GameManager : MonoBehaviour
                 gam.GetComponent<MeshRenderer>().material = redMaterial;
             }
         }
+    }
+
+    public void EndAnimation()
+    {
+        player.canMove = false;
+        player.isTransiting = true;
+        
     }
 }
