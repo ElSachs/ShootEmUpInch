@@ -491,8 +491,9 @@ public class WaveManager : MonoBehaviour
                     Wave();
                     spawnPoint = initialSpawnPoint;
                     enemySpawned = 0;
-                    level = 3;
-                    waveType = 1;
+                    enemiesLeft = 1;
+                    
+
                     break;
                 
             }

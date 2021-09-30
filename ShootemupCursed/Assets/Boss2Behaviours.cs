@@ -20,7 +20,7 @@ public class Boss2Behaviours : EnemyBehaviour
     private bool isShooting3 = false;
     private bool hasShot3 = false;
     private PoolManager.Generate bulletToShoot;
-    private bool resetPattern = false;
+    private bool resetPattern = true;
     private float timeElapsed;
     [SerializeField] private GameObject healthBar;
     private float patternTime;
@@ -34,7 +34,7 @@ public class Boss2Behaviours : EnemyBehaviour
     {
         base.Start();
         timeElapsed = Time.time;
-        pattern = Random.Range(1, 4);
+        //pattern = Random.Range(1, 4);
         GameManager.Instance.healthBar.SetActive(true);
         BossHealthBar.Instance.boss = gameObject;
     }
@@ -44,6 +44,8 @@ public class Boss2Behaviours : EnemyBehaviour
         if (Time.time >= timeElapsed + timeUntilStop)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            WaveManager.Instance.doomOfBullet.SetActive(false);
         }
 
         
@@ -60,7 +62,7 @@ public class Boss2Behaviours : EnemyBehaviour
             patternTime -= Time.deltaTime;
         }
 
-        if (patternTime < 0f)
+        if (patternTime < 0f && GameManager.Instance.shootEnable)
         {
             pattern = Random.Range(1,4);
             patternTime = 0f;
