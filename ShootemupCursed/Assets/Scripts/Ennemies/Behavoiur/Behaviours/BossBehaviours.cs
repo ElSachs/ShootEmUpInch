@@ -41,18 +41,6 @@ public class BossBehaviours : EnemyBehaviour
             self.velocity = Vector2.zero;
         }
         
-        if (life <= 0)
-        {
-            
-            GameManager.Instance.AddScore(scoreGive);
-            GameManager.Instance.EndAnimation();
-            Debug.Log("mort");
-            gameObject.SetActive(false);
-            Drop();
-            waveManager = GameObject.Find("WaveManager").transform;
-            WaveManager.enemiesLeft = WaveManager.enemiesLeft - 1;
-            healthBar.SetActive(false);
-        }
 
         if (resetPattern)
         {

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     
+    [NonSerialized] public bool spawnShip = false;
+    
 
     public int Score;
     public PlayerController player;
@@ -32,6 +34,20 @@ public class GameManager : MonoBehaviour
     public int level;
 
     public AudioSource lifeMinus;
+
+    [SerializeField] private Animation levelAnim;
+
+
+    private void Update()
+    {
+        if (spawnShip && !levelAnim.isPlaying)
+        {
+            player.transform.position = new Vector3(0f, -7f, 0f);
+            player.spawnShip = true;
+            spawnShip = false;
+        }
+    }
+
 
     public void AddScore(int score)
     {
@@ -53,6 +69,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(BorderDamage());
         GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
       
+
        
     }
 
@@ -85,7 +102,16 @@ public class GameManager : MonoBehaviour
     public void EndAnimation()
     {
         player.canMove = false;
+        levelAnim.Play("levelAnim");
+        player.move = Vector3.zero;
         player.isTransiting = true;
+        player.GetComponent<BoxCollider2D>().enabled = false;
+        Debug.Log("animlaucnh");
+    }
+
+    public void LevelComplete()
+    {
+        
     }
 
     IEnumerator BorderDamage()
