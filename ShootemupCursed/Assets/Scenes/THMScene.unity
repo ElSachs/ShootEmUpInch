@@ -587,7 +587,6 @@ MonoBehaviour:
   healthBar: {fileID: 1711979831}
   level: 0
   lifeMinus: {fileID: 189717910}
-  player: {fileID: 792468298}
 --- !u!4 &189717909
 Transform:
   m_ObjectHideFlags: 0
@@ -1715,7 +1714,7 @@ MonoBehaviour:
   maxSpeed: 15
   life: 3
   attackSpeed: 20
-  shootBullet: 5
+  shootBullet: 1
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -2266,13 +2265,13 @@ MonoBehaviour:
   TripleBlue: {fileID: 3836893243822863282, guid: 2bb2f48af33cc1f4ea1430fa124b1888, type: 3}
   PentaBlue: {fileID: 3557532862900120084, guid: b6145a4291b6b424cae0a3690d143238, type: 3}
   PentaRed: {fileID: 2919520113183386050, guid: ad7ba379b637262428cf0048fd980be2, type: 3}
-  RedStar: {fileID: 0}
-  BlueStar: {fileID: 0}
+  RedStar: {fileID: 466255516605592014, guid: 50cd7ef0053bb2743a0c56acaf2dc052, type: 3}
+  BlueStar: {fileID: 614681726716482534, guid: d462068f9228ae744b485c5c0ec3ec0c, type: 3}
   Boss: {fileID: 405426968091123321, guid: 78318345e77ce07498c62a713fbefe76, type: 3}
   Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
-  waveType: 10
-  parent: {fileID: 889595248}
+  waveType: 9
   level: 1
+  parent: {fileID: 889595248}
 --- !u!1 &925339321
 GameObject:
   m_ObjectHideFlags: 0

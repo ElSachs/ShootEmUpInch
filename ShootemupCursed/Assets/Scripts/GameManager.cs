@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public int level;
 
     public AudioSource lifeMinus;
-    public GameObject player;
 
     public void AddScore(int score)
     {
@@ -90,10 +89,10 @@ public class GameManager : MonoBehaviour
         player.canMove = false;
         player.isTransiting = true;
     }
-    
+
     IEnumerator BorderDamage()
     {
-        if(!player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
+        if (!player.Isblue) UpdateBorder(true);
         yield return new WaitForSeconds(0.1f);
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
@@ -105,6 +104,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         UpdateBorder(false);
         yield return new WaitForSeconds(0.1f);
-        if (player.GetComponent<PlayerController>().Isblue) UpdateBorder(true);
-    
+        if (player.Isblue) UpdateBorder(true);
+    }
+
 }

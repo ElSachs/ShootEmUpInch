@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            decelerationSpeed = 100;
+            decelerationSpeed = 100f;
             maxSpeed -= 5f;
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))

@@ -27,8 +27,6 @@ public class BossBehaviours : EnemyBehaviour
         base.Start();
         timeElapsed = Time.time;
         pattern = Random.Range(1, 4);
-        Instantiate(healthBar);
-        healthBar.SetActive(true);
         GameManager.Instance.healthBar.SetActive(true);
         BossHealthBar.Instance.boss = gameObject;
         Debug.Log(BossHealthBar.Instance.boss.name);

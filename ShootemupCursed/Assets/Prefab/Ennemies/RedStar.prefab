@@ -51,7 +51,7 @@ MonoBehaviour:
   moveSpeed: 50
   bullet: 3
   bulletSpeed: 100
-  shootingRate: 0.1
+  shootingRate: 0.25
   scoreGive: 30
   stoppingPoint: 2.5
   life: 5

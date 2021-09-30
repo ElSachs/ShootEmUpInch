@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 3953414763593068432}
   boss: {fileID: 0}
+  health: 1
 --- !u!114 &3953414763593068432
 MonoBehaviour:
   m_ObjectHideFlags: 0
