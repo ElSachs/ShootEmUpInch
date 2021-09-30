@@ -7,7 +7,6 @@ public class PentaBehaviours : EnemyBehaviour
     private Vector3 target;
     private Vector3 pentaToTarget;
     private float timeElapsed;
-    private float timeUntilStop = 4f;
 
     public override void Start()
     {

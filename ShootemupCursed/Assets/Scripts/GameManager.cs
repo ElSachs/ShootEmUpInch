@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     public Material blueMaterial;
     public Material redMaterial;
     public GameObject[] border;
-    
+
+    public GameObject healthBar;
+
     public int level;
 
 

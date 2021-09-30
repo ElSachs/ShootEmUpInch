@@ -313,11 +313,13 @@ MonoBehaviour:
   resetShoot: 1
   waveManager: {fileID: 0}
   loots: []
+  timeUntilStop: 3
   redBullet: 3
   blueBullet: 4
   blueSpawnPoint: {fileID: 8313779488432795195}
   redSpawnPoint: {fileID: 8313779488160127086}
   healthBar: {fileID: 4658398459177767202, guid: 23ea6655e154f9247aac5101a2e380f2, type: 3}
+  tamere: {fileID: 7782420177912093323}
 --- !u!1 &8313779488160127057
 GameObject:
   m_ObjectHideFlags: 0

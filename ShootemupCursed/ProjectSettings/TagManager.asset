@@ -12,6 +12,7 @@ TagManager:
   - Penta
   - Boss
   - laser
+  - Star
   layers:
   - Default
   - TransparentFX

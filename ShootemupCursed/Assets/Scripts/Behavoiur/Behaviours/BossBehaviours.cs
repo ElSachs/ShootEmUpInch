@@ -7,8 +7,7 @@ public class BossBehaviours : EnemyBehaviour
     [SerializeField] private PoolManager.Generate redBullet;
     [SerializeField] private PoolManager.Generate blueBullet;
     private int pattern;
-    private float elapsedTime;
-    private float timeUntilStop = 2f;
+    private float timeElapsed;
     private float targetY = -9.5f;
     private float targetX = -4f;
     private PoolManager.Generate bulletToShoot = PoolManager.Generate.RedBullet;
@@ -19,21 +18,27 @@ public class BossBehaviours : EnemyBehaviour
     private bool redGoToZero = false;
     private bool resetPattern = true;
     private float patternTime;
-    [SerializeField] private GameObject healthBar; 
+    [SerializeField] private GameObject healthBar;
+
+    public GameObject tamere;
 
     public override void Start()
     {
         base.Start();
-        elapsedTime = Time.time;
+        timeElapsed = Time.time;
         pattern = Random.Range(1, 4);
         Instantiate(healthBar);
         healthBar.SetActive(true);
+        GameManager.Instance.healthBar.SetActive(true);
+        BossHealthBar.Instance.boss = gameObject;
+        Debug.Log("c'est moi wesh");
     }
+    
 
     public override void Update()
     {
         
-        if (Time.time >= elapsedTime + timeUntilStop)
+        if (Time.time >= timeElapsed + timeUntilStop)
         {
             self.velocity = Vector2.zero;
         }
