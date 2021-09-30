@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public BulletScriptable stat;
-    [NonSerialized]public Rigidbody2D rb;
+    [NonSerialized] public Rigidbody2D rb;
     private Vector2 triangleToPlayer;
     private float notMoving;
     private Transform waveManager;
@@ -63,7 +63,7 @@ public class BulletScript : MonoBehaviour
                 break;
             
             case "Cube" :
-                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero && other.GetComponent<CubeBehaviours>().iAmShooting)
+                if (other.GetComponent<Rigidbody2D>().velocity == Vector2.zero)
                 {
                     other.GetComponent<CubeBehaviours>().life--;
                 }
@@ -92,6 +92,10 @@ public class BulletScript : MonoBehaviour
             
             case "Star" :
                 other.GetComponent<StarBehaviours>().life--;
+                gameObject.SetActive(false);
+                break;
+            case "TripleTriangle":
+                other.GetComponent<TripleTriangle>().life--;
                 gameObject.SetActive(false);
                 break;
             

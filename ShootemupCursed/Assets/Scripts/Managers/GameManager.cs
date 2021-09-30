@@ -52,9 +52,7 @@ public class GameManager : MonoBehaviour
         lifeMinus.Play();
         StartCoroutine(BorderDamage());
         GameObject.Find("Main Camera").GetComponent<ShakeCam>().TriggerShake();
-        Debug.Log(Lifes.Count-1);
-       Lifes[Lifes.Count-1].SetActive(false);
-       Lifes.Remove(Lifes[Lifes.Count-1]);
+      
        
     }
 

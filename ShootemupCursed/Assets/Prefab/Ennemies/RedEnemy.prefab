@@ -62,7 +62,7 @@ MonoBehaviour:
     chanceOfDrop: 25
   - bonusType: 14
     chanceOfDrop: 25
-  timeUntilStop: 2
+  timeUntilStop: 4
 --- !u!33 &441353157282803745
 MeshFilter:
   m_ObjectHideFlags: 0

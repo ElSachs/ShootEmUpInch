@@ -13,6 +13,7 @@ TagManager:
   - Boss
   - laser
   - Star
+  - TripleTriangle
   layers:
   - Default
   - TransparentFX
