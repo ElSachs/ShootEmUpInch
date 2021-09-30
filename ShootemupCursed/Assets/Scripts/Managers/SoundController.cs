@@ -25,12 +25,15 @@ public class SoundController : MonoBehaviour
     bool isTransition;
     private void Start()
     {
-        source.clip = levelOne;
-        source.Play();
+        if(waveManager.GetComponent<WaveManager>().level == 1)
+        {
+            source.clip = levelOne;
+            source.Play();
+        }
     }
     void Update()
     {
-        if(waveManager.GetComponent<WaveManager>().level == 2 && !odd)
+        if(waveManager.GetComponent<WaveManager>().level == 2 && (source.clip != levelTwo && source.clip != bossTwo))
         {
             source.loop = true;
             odd = true;
@@ -38,19 +41,20 @@ public class SoundController : MonoBehaviour
             source.Play();
             
         }
-        if(waveManager.GetComponent<WaveManager>().level == 3 && odd)
+        if(waveManager.GetComponent<WaveManager>().level == 3 && (source.clip != levelThree && source.clip != bossThree))
         {
+            Debug.Log("Music 3");
             source.loop = true;
             odd = false;
             source.clip = levelThree;
             source.Play();
         }
-        if(waveManager.GetComponent<WaveManager>().waveType == 10 && !isTransition)
+        if(((waveManager.GetComponent<WaveManager>().waveType == 10 && waveManager.GetComponent<WaveManager>().level != 3) || waveManager.GetComponent<WaveManager>().waveType == 11) && !isTransition)
         {
             isTransition = true;
             PlayBossMusic();
         }
-        if (waveManager.GetComponent<WaveManager>().waveType != 10)
+        if (waveManager.GetComponent<WaveManager>().waveType < 10)
         {
             isTransition = false;
         }
@@ -70,6 +74,7 @@ public class SoundController : MonoBehaviour
                 source.clip = bossThree;
                 break;
         }
+        Debug.Log(source.clip);
         source.Play();
     }
 

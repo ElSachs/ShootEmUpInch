@@ -1675,7 +1675,7 @@ MonoBehaviour:
   maxSpeed: 15
   life: 3
   attackSpeed: 20
-  shootBullet: 1
+  shootBullet: 5
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -5364,7 +5364,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   SizeBySpeedModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -7065,8 +7065,8 @@ MonoBehaviour:
   Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
   TTRed: {fileID: 2368631377933919201, guid: 66a5084eb39b2524a8459ab14f05fa81, type: 3}
   TTBlue: {fileID: 3715776934130245981, guid: c9669e42e9f04454682d6837918fef02, type: 3}
-  waveType: 10
-  level: 2
+  waveType: 1
+  level: 1
   parent: {fileID: 889595248}
   doomOfBullet: {fileID: 184386403}
 --- !u!1 &925339321
@@ -7519,7 +7519,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73aa8ac74d77f0642a69cec9490b4b2b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
