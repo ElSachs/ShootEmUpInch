@@ -55,7 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             self.velocity = Vector2.zero;
             GameManager.Instance.shootEnable = true;
-            GameObject.Find("WaveManager").GetComponent<WaveManager>().doomOfBullet.SetActive(false);
+            WaveManager.Instance.doomOfBullet.SetActive(false);
         }
     }
 

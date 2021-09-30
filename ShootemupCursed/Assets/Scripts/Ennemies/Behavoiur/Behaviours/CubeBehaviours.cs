@@ -13,7 +13,7 @@ public class CubeBehaviours : EnemyBehaviour
 
     public override void Update()
     {
-        if (resetShoot && WaveManager.cubeShooting == false)
+        if (resetShoot && WaveManager.cubeShooting == false && GameManager.Instance.shootEnable)
         {
             StartCoroutine(Shooting());
         }
@@ -21,6 +21,8 @@ public class CubeBehaviours : EnemyBehaviour
         if (transform.position.y <= 2.5f)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            WaveManager.Instance.doomOfBullet.SetActive(false);
             
         }
         if (life <= 0)
@@ -40,7 +42,7 @@ public class CubeBehaviours : EnemyBehaviour
             WaveManager.cubeShooting = true;
             iAmShooting = true;
             glow.Play(animationName);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             Debug.Log("start corout");
             Rigidbody2D shotLaser = Instantiate(laser, new Vector2(0f, 37f), Quaternion.identity);
             shotLaser.AddForce(Vector3.down * laserSpeed);

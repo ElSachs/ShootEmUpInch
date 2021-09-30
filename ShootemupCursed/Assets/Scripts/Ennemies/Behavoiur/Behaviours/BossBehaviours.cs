@@ -39,6 +39,8 @@ public class BossBehaviours : EnemyBehaviour
         if (Time.time >= timeElapsed + timeUntilStop)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            WaveManager.Instance.doomOfBullet.SetActive(false);
         }
 		
         if (life <= 0)
@@ -66,7 +68,7 @@ public class BossBehaviours : EnemyBehaviour
             patternTime -= Time.deltaTime;
         }
 
-        if (patternTime < 0f)
+        if (patternTime < 0f && GameManager.Instance.shootEnable)
         {
             pattern = Random.Range(1, 4);
             Debug.Log(pattern);

@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public GameObject player;
     public bool shootEnable;
 
     public void AddScore(int score)
@@ -103,9 +102,9 @@ public class GameManager : MonoBehaviour
 
     public void EndAnimation()
     {
+        player.move = Vector3.zero;
         player.canMove = false;
         levelAnim.Play("levelAnim");
-        player.move = Vector3.zero;
         player.isTransiting = true;
         player.GetComponent<BoxCollider2D>().enabled = false;
         Debug.Log("animlaucnh");

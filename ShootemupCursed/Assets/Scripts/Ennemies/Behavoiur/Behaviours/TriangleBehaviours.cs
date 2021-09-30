@@ -37,6 +37,8 @@ public class TriangleBehaviours : EnemyBehaviour
         if (Time.time > timeElapsed + timeUntilStop)
         {
             self.velocity = Vector2.zero;
+            GameManager.Instance.shootEnable = true;
+            WaveManager.Instance.doomOfBullet.SetActive(false);
         }
     }
 
