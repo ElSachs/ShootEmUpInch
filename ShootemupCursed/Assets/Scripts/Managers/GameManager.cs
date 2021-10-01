@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +46,18 @@ public class GameManager : MonoBehaviour
             player.transform.position = new Vector3(0f, -7f, 0f);
             player.spawnShip = true;
             spawnShip = false;
+        }
+        if (!player.isTransiting && (level > 3 || WaveManager.Instance.waveType > 11))
+        {
+            Time.timeScale = 0;
+            if (GameManager.Instance.Score > PlayerPrefs.GetInt("HighScore5"))
+            {
+                GameObject.Find("EventSystem").GetComponent<UpdateHighscore>().HighscoreAdd();
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
