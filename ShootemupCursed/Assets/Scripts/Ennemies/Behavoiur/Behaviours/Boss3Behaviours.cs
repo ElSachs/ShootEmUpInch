@@ -107,7 +107,7 @@ public class Boss3Behaviours : EnemyBehaviour
                     Shooting2();
                     numberOfShots++;
                 }
-                if (numberOfShots >= 100)
+                if (numberOfShots >= 50)
                 {
                     resetPattern = true;
                     resetShoot = false;
