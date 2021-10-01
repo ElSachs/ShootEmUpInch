@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             player.spawnShip = true;
             spawnShip = false;
         }
-        if (!player.isTransiting && (level > 3 || WaveManager.Instance.waveType > 11))
+        if (!player.isTransiting && level >= 3 && WaveManager.Instance.waveType > 11)
         {
             Time.timeScale = 0;
             if (GameManager.Instance.Score > PlayerPrefs.GetInt("HighScore5"))

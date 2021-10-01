@@ -1769,7 +1769,7 @@ MonoBehaviour:
   maxSpeed: 15
   life: 3
   attackSpeed: 20
-  shootBullet: 5
+  shootBullet: 1
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -7160,9 +7160,8 @@ MonoBehaviour:
   Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
   TTRed: {fileID: 2368631377933919201, guid: 66a5084eb39b2524a8459ab14f05fa81, type: 3}
   TTBlue: {fileID: 3715776934130245981, guid: c9669e42e9f04454682d6837918fef02, type: 3}
-  Boss3: {fileID: 3614581108081546493, guid: f95fa8398ce51c54a89ae78850a28b10, type: 3}
-  waveType: 10
-  level: 3
+  waveType: 1
+  level: 1
   parent: {fileID: 889595248}
   doomOfBullet: {fileID: 184386403}
 --- !u!1 &925339321
