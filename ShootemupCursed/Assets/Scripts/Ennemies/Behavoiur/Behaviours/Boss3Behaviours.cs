@@ -151,7 +151,7 @@ public class Boss3Behaviours : EnemyBehaviour
 
     private void Shooting2()
     {
-        shootingRate = 0.07f;
+        shootingRate = 0.2f;
         resetShoot = false;
         bulletSpeed = 300f;
         if (blueSpawnPoint.position.y >= -5f && blueGoToZero == false)
