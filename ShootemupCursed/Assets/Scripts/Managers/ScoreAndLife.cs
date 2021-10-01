@@ -28,4 +28,6 @@ public class ScoreAndLife : MonoBehaviour
             Player.GetComponent<PlayerController>().life++;
         }
     }
+
+    
 }

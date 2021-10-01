@@ -60,7 +60,7 @@ public class UpdateHighscore : MonoBehaviour
                 PlayerPrefs.SetString("HighName5", text.GetComponent<TextMeshProUGUI>().text);
                 PlayerPrefs.SetInt("HighScore5", GameManager.Instance.Score);
             }
-            SceneManager.LoadScene(0);
+            
         }
     }
 }
