@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedTime = 5;
     [SerializeField] private float shieldTime = 5;
     public GameObject gameOverCanvas;
+    public GameObject HighscoreCanvas;
+    public GameObject goMenuCanvas;
+    
     public ParticleSystem deathParticle;
     public GameObject playerModel;
     public GameObject pauseCanvas;
@@ -225,6 +228,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    public void StopPause()
+    {
+        isPaused = false;
+        pauseCanvas.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     private void FixedUpdate()
     {
@@ -325,18 +334,28 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Death()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
+        canMove = false;
         GameObject.Find("Main Camera").GetComponent<SoundController>().PlayDeathSound();
         deathParticle.Play();
         playerModel.SetActive(false);
-        yield return new WaitForSeconds(2);
+        Debug.Log("lu 1");
+        yield return new WaitForSeconds(1);
+        Debug.Log("lu 2");
+        gameObject.SetActive(false);
+        gameOverCanvas.SetActive(true);
         if(GameManager.Instance.Score > PlayerPrefs.GetInt("HighScore5"))
         {
+            Debug.Log("highscore");
+            
             GameObject.Find("EventSystem").GetComponent<UpdateHighscore>().HighscoreAdd();
+            HighscoreCanvas.SetActive(true);
         }
         else
         {
-            gameOverCanvas.SetActive(true);
+            Debug.Log("pas highscore");
+            HighscoreCanvas.SetActive(false);
+            goMenuCanvas.SetActive(true);
         }
-        gameObject.SetActive(false);
     }
 }

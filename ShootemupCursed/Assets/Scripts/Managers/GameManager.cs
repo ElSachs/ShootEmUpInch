@@ -61,12 +61,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLife()
     {
-        if (Lifes[Lifes.Count-1] != null)
+        if (Lifes.Count > 0)
         {
-            
-            Debug.Log(Lifes.Count-1);
-           Lifes[Lifes.Count-1].SetActive(false);
-           Lifes.Remove(Lifes[Lifes.Count-1]);
+            if (Lifes[Lifes.Count - 1] != null)
+            {
+
+                Debug.Log(Lifes.Count - 1);
+                Lifes[Lifes.Count - 1].SetActive(false);
+                Lifes.Remove(Lifes[Lifes.Count - 1]);
+            }
         }
 
         player.gameObject.layer = 16;
