@@ -83,10 +83,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (Spawner.Length > i)
                 {
-                    
-                //Vector3 pos = new Vector3(transform.position.x, transform.position.y + 12f, transform.position.z);
-                Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
-                shotBullet.AddForce(Vector2.up * bulletSpeed);
+                    Rigidbody2D shotBullet = PoolManager.Instance.spawnFromPool(PoolManager.Generate.normalBullet, Spawner[i]);
+                    shotBullet.AddForce(Vector2.up * bulletSpeed);
                 }
                 else
                 {
@@ -145,7 +143,10 @@ public class PlayerController : MonoBehaviour
             {
                 shootTime = 10;
                 PoolManager.Generate bonus = shootQueue.Dequeue();
-                shootBullet--;
+                if (shootBullet>0)
+                {
+                    shootBullet--;
+                }
             }
         }
         if (speedQueue.Count != 0)

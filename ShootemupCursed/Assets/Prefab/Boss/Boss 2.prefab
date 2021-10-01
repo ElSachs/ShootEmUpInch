@@ -363,7 +363,7 @@ MonoBehaviour:
   shootingRate: 0
   scoreGive: 30
   stoppingPoint: 2.5
-  life: 50
+  life: 250
   resetShoot: 0
   waveManager: {fileID: 0}
   loots: []

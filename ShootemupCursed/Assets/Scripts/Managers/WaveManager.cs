@@ -817,7 +817,6 @@ public class WaveManager : MonoBehaviour
         enemySpawned = 0;
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Debug.Log(spawnPoint);
             Rigidbody2D spawnedEnemy = Instantiate(enemyToSpawn, spawnPoint, Quaternion.identity);
             spawnPoint.x = spawnPoint.x + distanceBeetweenEnemiesX;
             spawnPoint.y = spawnPoint.y + distanceBeetweenEnemiesY;

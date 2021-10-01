@@ -726,7 +726,7 @@ MonoBehaviour:
   shootingRate: 0
   scoreGive: 30
   stoppingPoint: 2.5
-  life: 80
+  life: 300
   resetShoot: 0
   waveManager: {fileID: 0}
   loots: []
@@ -797,7 +797,7 @@ MonoBehaviour:
   shootingRate: 4
   scoreGive: 30
   stoppingPoint: 2.5
-  life: 80
+  life: 300
   resetShoot: 0
   waveManager: {fileID: 0}
   loots: []
