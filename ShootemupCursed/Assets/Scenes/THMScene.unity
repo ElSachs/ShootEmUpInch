@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 40880410}
   m_Layer: 0
   m_Name: anilator
-  m_TagString: BulletDestroyer
+  m_TagString: BlockBullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1262,7 +1262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522355686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.38, z: 0}
+  m_LocalPosition: {x: 0, y: 7.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1681746476}
@@ -1769,7 +1769,7 @@ MonoBehaviour:
   maxSpeed: 15
   life: 3
   attackSpeed: 20
-  shootBullet: 5
+  shootBullet: 1
   SwitchSpeed: 5
   coolDown: 0
   Spawner:
@@ -7161,9 +7161,9 @@ MonoBehaviour:
   Boss2: {fileID: 698399313765738756, guid: 1e618040a01da644aa5411d10d8951d2, type: 3}
   TTRed: {fileID: 2368631377933919201, guid: 66a5084eb39b2524a8459ab14f05fa81, type: 3}
   TTBlue: {fileID: 3715776934130245981, guid: c9669e42e9f04454682d6837918fef02, type: 3}
-  Boss3: {fileID: 0}
+  Boss3: {fileID: 3614581108081546493, guid: f95fa8398ce51c54a89ae78850a28b10, type: 3}
   waveType: 5
-  level: 2
+  level: 1
   parent: {fileID: 889595248}
   doomOfBullet: {fileID: 184386403}
 --- !u!1 &925339321

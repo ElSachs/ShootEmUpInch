@@ -11,11 +11,6 @@ public class StarBehaviours : EnemyBehaviour
     [SerializeField] private Transform spawnPoint5;
     [SerializeField] private Transform directionPoint1;
 
-    public override void Update()
-    {
-        base.Update();
-    }
-    
 
     public override void Shooting()
     {

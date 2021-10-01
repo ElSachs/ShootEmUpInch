@@ -72,12 +72,11 @@ public class BulletScript : MonoBehaviour
                     break;
 
                 case "BulletDestroyer":
-                    GameManager.Instance.AddScore(2);
                     gameObject.SetActive(false);
                     break;
 
-                case "BlockBullet":
-                    GameManager.Instance.Score += 2;
+                case "BlockBullets":
+                    GameManager.Instance.AddScore(2);
                     gameObject.SetActive(false);
                     break;
 
@@ -95,6 +94,7 @@ public class BulletScript : MonoBehaviour
                     other.GetComponent<StarBehaviours>().life--;
                     gameObject.SetActive(false);
                     break;
+                
                 case "TripleTriangle":
                     other.GetComponent<TripleTriangle>().life--;
                     gameObject.SetActive(false);

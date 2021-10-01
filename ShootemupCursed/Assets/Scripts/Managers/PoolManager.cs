@@ -61,6 +61,7 @@ public class PoolManager : MonoBehaviour
     {
         GameObject obj = dictionaryPool[tag].Dequeue();
         obj.SetActive(true);
+        if (obj.GetComponent<Rigidbody2D>() != null) obj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         obj.transform.position = transform.position;
         dictionaryPool[tag].Enqueue(obj);
         return obj.GetComponent<Rigidbody2D>();

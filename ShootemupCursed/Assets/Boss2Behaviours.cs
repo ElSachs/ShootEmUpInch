@@ -34,7 +34,6 @@ public class Boss2Behaviours : EnemyBehaviour
     {
         base.Start();
         timeElapsed = Time.time;
-        //pattern = Random.Range(1, 4);
         GameManager.Instance.healthBar.SetActive(true);
         BossHealthBar.Instance.boss = gameObject;
     }
@@ -65,6 +64,7 @@ public class Boss2Behaviours : EnemyBehaviour
         if (patternTime < 0f && GameManager.Instance.shootEnable)
         {
             pattern = Random.Range(1,4);
+            Debug.Log(pattern);
             patternTime = 0f;
         }
 
@@ -115,13 +115,12 @@ public class Boss2Behaviours : EnemyBehaviour
                     StartCoroutine(Shooting3());
                 }
 
-                if (hasShot3)
+                if (numberOfShots >= 2) ;
                 {
                     resetPattern = true;
                     resetShoot = false;
                     Debug.Log("k'arrête");
                     numberOfShots = 0;
-                    hasShot3 = false;
                 }
                 break;
         }
@@ -272,10 +271,12 @@ public class Boss2Behaviours : EnemyBehaviour
     IEnumerator GridSpawn()
     {
         GameObject newGrid = Instantiate(grid);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         Destroy(newGrid);
         isShooting3 = false;
-        hasShot3 = true;
-        
+        resetShoot = true;
+        numberOfShots++;
+        Debug.Log(numberOfShots);
+
     }
 }

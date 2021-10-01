@@ -89,7 +89,7 @@ MonoBehaviour:
   resetShoot: 1
   waveManager: {fileID: 0}
   loots: []
-  timeUntilStop: 4
+  timeUntilStop: 3
   triangleToPlayer: {x: 0, y: 0}
   player: {fileID: 0}
   spawnPoint1: {fileID: 3715776934461988475}

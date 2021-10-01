@@ -110,7 +110,7 @@ MonoBehaviour:
   loots:
   - bonusType: 15
     chanceOfDrop: 40
-  timeUntilStop: 4
+  timeUntilStop: 3
   laser: {fileID: 3535524594282303418, guid: 305533f84b8423045a57f8d22f11c2c6, type: 3}
   laserSpeed: 600
   glow: {fileID: 1822299390462799800}
